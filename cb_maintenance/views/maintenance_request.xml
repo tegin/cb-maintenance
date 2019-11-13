@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="hr_equipment_request_view_form">
+        <field name="name">maintenance.request.form (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <form position="attributes">
+                <attribute name="create">false</attribute>
+                <attribute name="delete">false</attribute>
+            </form>
+
+            <button name="archive_equipment_request" position="before">
+                <button string="Assign to another Team" name="%(cb_maintenance.wizard_change_maintenance_team_act_window)d" class="oe_highlight"
+                        type="action" attrs="{'invisible': [('archive', '=', True)]}"/>
+            </button>
+
+            <xpath expr="//span[hasclass('label')]/.." position="after">
+                <field name="solved" invisible="1"/>
+                <div attrs="{'invisible': [('solved', '=', False)]}">
+                    <span class="label label-success pull-right">Solved</span>
+                </div>
+            </xpath>
+
+            <field name="technician_user_id" position="after">
+                <field name="write_date" readonly="1"/>
+                <field name="maintenance_team_id_member_ids" invisible="1"/>
+            </field>
+            <field name="technician_user_id" position="attributes">
+                <attribute name="options">{'no_open': True, 'no_create': True}</attribute>
+            </field>
+
+            <xpath expr="//div[hasclass('oe_right')]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <field name="name" position="after">
+                <span style="margin-left: 0.5em"/>
+                <field name="kanban_state" class="oe_inline" widget="state_selection"/>
+            </field>
+
+            <field name="description" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="description" position="after">
+                <group string="Description">
+                    <field name="description" placeholder="Issue description..." nolabel="1"/>
+                </group>
+            </field>
+
+
+            <field name="request_date" position="replace">
+                <field name="create_date" string="Request Date" readonly="1"/>
+            </field>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_request_tree_view">
+        <field name="name">maintenance.request.kanban (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">false</attribute>
+                <attribute name="delete">false</attribute>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_request_kanban_view">
+        <field name="name">maintenance.request.kanban (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+        <field name="arch" type="xml">
+            <kanban position="attributes">
+                <attribute name="group_create">false</attribute>
+                <attribute name="create">false</attribute>
+                <attribute name="delete">false</attribute>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_m_request_label"
+        name="Maintenance Requests"
+        parent="maintenance.menu_m_request"
+        groups="maintenance.group_equipment_manager,base.group_user"
+        sequence="1"/>
+
+    <record model="ir.ui.menu" id="maintenance.menu_m_request_form">
+        <field name="name">View Maintenance Requests</field>
+        <field name="parent_id" ref="menu_m_request_label"/>
+        <field name="sequence" eval="10"/>
+    </record>
+
+    <record model="ir.ui.menu" id="maintenance.menu_m_request_calendar">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_plan.hr_equipment_request_view_form">
+        <field name="active" eval="False"/>
+    </record>
+</odoo>

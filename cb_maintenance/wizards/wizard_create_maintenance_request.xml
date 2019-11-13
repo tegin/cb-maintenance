@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="wizard_create_maintenance_request_form_view">
+        <field name="name">wizard.create.maintenance.request.form (in cb_maintenance)</field>
+        <field name="model">wizard.create.maintenance.request</field>
+        <field name="arch" type="xml">
+            <form string="Create Maintenance Request">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="severity"/>
+                    </group>
+                    <group>
+                        <field name="maintenance_team_id"/>
+                        <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name'}"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="description"/>
+                </group>
+                <footer>
+                    <button name="create_request"
+                            string="Create Request"
+                            class="btn-primary"
+                            type="object"/>
+                    <button string="Cancel"
+                            class="btn-default"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="wizard_create_maintenance_request_act_window">
+        <field name="name">Create Maintenance Request</field>
+        <field name="res_model">wizard.create.maintenance.request</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_m_request_wizard_create"
+        name="Create Maintenance Requests"
+        action="wizard_create_maintenance_request_act_window"
+        parent="cb_maintenance.menu_m_request_label"
+        sequence="5"/>
+
+</odoo>
