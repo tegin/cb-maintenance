@@ -11,11 +11,11 @@
     'website': 'www.creublanca.es',
     'depends': [
         'maintenance_plan',
-        # TODO: dependiente del widget de hierarchy :D
+        'maintenance_location',
+        'web_widget_child_selector',
     ],
     'data': [
         'views/maintenance_stage.xml',
-        'views/maintenance_location.xml',
         'views/maintenance_team.xml',
         'wizards/wizard_change_maintenance_team.xml',
         'views/maintenance_request.xml',
