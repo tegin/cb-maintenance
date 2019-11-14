@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="used_by_maintenance_location" model="stock.location">
+            <field name="name">Used in Maintenance</field>
+            <field name="scrap_location" eval="True"/>
+        </record>
+    </data>
+</odoo>

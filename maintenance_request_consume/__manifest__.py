@@ -10,11 +10,12 @@
     'author': 'Creu Blanca',
     'website': 'www.creublanca.es',
     'depends': [
+        'maintenance',
+        'stock',
     ],
     'data': [
-    ],
-    'demo': [
+        # 'views/maintenance_request.xml',
+        'views/maintenance_team.xml',
+        'data/stock_location_data.xml',
     ],
 }
-
-# TODO: Pensar si el location the stock se debe definir a nivel de location o de team (probablemente el segundo)
