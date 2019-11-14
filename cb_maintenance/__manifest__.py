@@ -10,7 +10,8 @@
     'author': 'Creu Blanca',
     'website': 'www.creublanca.es',
     'depends': [
-        'maintenance_plan'
+        'maintenance_plan',
+        # TODO: dependiente del widget de hierarchy :D
     ],
     'data': [
         'views/maintenance_stage.xml',

@@ -5,6 +5,7 @@ from odoo import api, fields, models, _
 
 
 class WizardChangeMaintenanceTeam(models.TransientModel):
+    # TODO: Revisar si es válido plantearlo así
 
     _name = 'wizard.change.maintenance.team'
 

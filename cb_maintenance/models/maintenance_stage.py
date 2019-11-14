@@ -9,3 +9,4 @@ class MaintenanceStage(models.Model):
     _inherit = 'maintenance.stage'
 
     requires_technician = fields.Boolean('Requires Technician')
+    # TODO: Hablar de por que lo hacemos :)
