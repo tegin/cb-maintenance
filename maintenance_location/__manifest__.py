@@ -10,9 +10,10 @@
     'author': 'Creu Blanca,Odoo Community Association (OCA)',
     'website': 'www.creublanca.es',
     'depends': [
+        'maintenance'
     ],
     'data': [
-    ],
-    'demo': [
+        'views/maintenance_request.xml',
+        'views/maintenance_location.xml',
     ],
 }
