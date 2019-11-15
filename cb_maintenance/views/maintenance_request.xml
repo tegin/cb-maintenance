@@ -52,9 +52,6 @@
                 </group>
             </field>
 
-            <field name="owner_user_id" position="after">
-                <field name="location_id" options='{"no_open": True, "no_create": True}'/>
-            </field>
 
             <field name="request_date" position="replace">
                 <field name="create_date" string="Request Date" readonly="1"/>

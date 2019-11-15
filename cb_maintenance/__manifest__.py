@@ -3,18 +3,19 @@
 
 {
     'name': 'Cb Maintenance',
-    'description': """
+    'summary': """
         CB maintenance base""",
     'version': '11.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Creu Blanca',
     'website': 'www.creublanca.es',
     'depends': [
-        'maintenance_plan'
+        'maintenance_plan',
+        'maintenance_location',
+        'web_widget_child_selector',
     ],
     'data': [
         'views/maintenance_stage.xml',
-        'views/maintenance_location.xml',
         'views/maintenance_team.xml',
         'wizards/wizard_change_maintenance_team.xml',
         'views/maintenance_request.xml',

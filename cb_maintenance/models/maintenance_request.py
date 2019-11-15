@@ -20,7 +20,6 @@ class MaintenanceRequest(models.Model):
     ], default='unspecified', required=True)
     category_id = fields.Many2one(related=False)
     solved = fields.Boolean(related='stage_id.done')
-    location_id = fields.Many2one('maintenance.location')
     close_datetime = fields.Datetime('Close Date', readonly=True)
     maintenance_team_id_member_ids = fields.Many2many(
         'res.users',
