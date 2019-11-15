@@ -18,9 +18,10 @@ class MaintenanceRequest(models.Model):
         inverse_name='maintenance_request_id',
     )
 
-    @api.model
+    @api.multi
     def consume_products(self):
         self.ensure_one()
-        self.consumable_ids.filtered(
+        for consu in self.consumable_ids.filtered(
                 lambda r: r.state == 'pending'
-        ).write({'state': 'consumed'})
+        ):
+            consu.write({'state': 'consumed'})

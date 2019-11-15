@@ -32,8 +32,7 @@ class TestMaintenancePurchase(TransactionCase):
         wiz = self.env['wizard.link.maintenance.po'].create({
             'maintenance_request_id': self.request_1.id,
             'purchase_order_ids': [(4, self.po_1.id)]
-        }
-        )
+        })
         wiz.link_po()
         self.assertEqual(self.request_1.purchases_count, 1)
         self.assertEqual(self.po_1.maintenance_requests_count, 1)
