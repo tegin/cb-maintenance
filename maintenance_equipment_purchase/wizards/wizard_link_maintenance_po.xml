@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="wizard_link_maintenance_po_form_view">
+        <field name="name">wizard.link.maintenance.po.form (in maintenance_equipment_purchase)</field>
+        <field name="model">wizard.link.maintenance.po</field>
+        <field name="arch" type="xml">
+            <form string="Link to PO">
+                <div>
+                    <h5>Select Purchase Orders and Link them or Create a new Purchase Order</h5>
+                </div>
+                <group>
+                    <field name="purchase_order_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="link_po" string="Link Selected Purchase Orders"
+                            class="btn-primary" type="object"/>
+                    <button name="create_po" string="New Purchase Order"
+                            class="btn-primary" type="object"/>
+                    <button string="Cancel"
+                            class="btn-default"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="wizard_link_maintenance_po_act_window">
+        <field name="name">Link to PO</field>
+        <field name="res_model">wizard.link.maintenance.po</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>
