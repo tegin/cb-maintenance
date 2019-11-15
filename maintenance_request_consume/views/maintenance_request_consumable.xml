@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="maintenance_request_consumable_form_view">
+        <field name="name">maintenance.request.consumable.form (in maintenance_request_consume)</field>
+        <field name="model">maintenance.request.consumable</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="used_qty"/>
+                        </group>
+                        <group>
+                            <field name="stock_location_id"/>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_request_consumable_tree_view">
+        <field name="name">maintenance.request.consumable.tree (in maintenance_request_consume)</field>
+        <field name="model">maintenance.request.consumable</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id"/>
+                <field name="used_qty"/>
+                <field name="stock_location_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>
