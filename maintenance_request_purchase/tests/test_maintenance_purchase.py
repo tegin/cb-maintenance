@@ -27,10 +27,6 @@ class TestMaintenancePurchase(TransactionCase):
             'partner_id': self.supplier.id,
             'date_planned': '2017-02-11 22:00:00',
         })
-        self.po_2 = self.env['purchase.order'].create({
-            'partner_id': self.supplier.id,
-            'date_planned': '2017-02-11 22:00:00',
-        })
 
     def test_maintenance_purchase(self):
         wiz = self.env['wizard.link.maintenance.po'].create({
@@ -46,3 +42,20 @@ class TestMaintenancePurchase(TransactionCase):
             action['context'].get('maintenance_request'),
             self.request_1.id
         )
+        po_2 = self.env['purchase.order'].with_context(
+            maintenance_request=self.request_1.id
+        ).create({
+            'partner_id': self.supplier.id,
+            'date_planned': '2017-02-11 22:00:00',
+        })
+        action = po_2.action_view_maintenance_request()
+        self.assertEqual(action['res_id'], self.request_1.id)
+
+        self.request_2.write({'purchase_order_ids': [(4, po_2.id)]})
+        action = po_2.action_view_maintenance_request()
+        self.assertTrue(action['domain'])
+
+        action = self.request_1.action_view_purchase()
+        self.assertTrue(action['domain'])
+        action = self.request_2.action_view_purchase()
+        self.assertEqual(action['res_id'], po_2.id)

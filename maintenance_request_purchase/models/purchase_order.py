@@ -32,7 +32,7 @@ class PurchaseOrder(models.Model):
             'maintenance.hr_equipment_request_action').read()[0]
         if len(self.maintenance_request_ids) > 1:
             action['domain'] = [('id', 'in', self.maintenance_request_ids.ids)]
-        elif self.purchase_order_ids:
+        elif self.maintenance_request_ids:
             action['views'] = [(False, 'form')]
             action['res_id'] = self.maintenance_request_ids.id
         return action
