@@ -8,6 +8,7 @@ class MaintenanceRequest(models.Model):
 
     _inherit = 'maintenance.request'
 
-    location_id = fields.Many2one(
-        'maintenance.location'
+    picking_ids = fields.One2many(
+        'stock.picking',
+        inverse_name='maintenance_request_id',
     )
