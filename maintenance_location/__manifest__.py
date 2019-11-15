@@ -13,6 +13,7 @@
         'maintenance'
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/maintenance_request.xml',
         'views/maintenance_location.xml',
     ],

@@ -3,7 +3,7 @@
 
 {
     'name': 'Maintenance Request Consume',
-    'description': """
+    'summary': """
         Allows to consume material from a maintenance request""",
     'version': '11.0.1.0.0',
     'license': 'AGPL-3',
@@ -14,8 +14,10 @@
         'stock',
     ],
     'data': [
-        # 'views/maintenance_request.xml',
-        'views/maintenance_team.xml',
         'data/stock_location_data.xml',
+        'security/ir.model.access.csv',
+        'views/maintenance_request_consumable.xml',
+        'views/maintenance_request.xml',
+        'views/maintenance_team.xml',
     ],
 }

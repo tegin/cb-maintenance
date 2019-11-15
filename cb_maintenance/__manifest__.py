@@ -3,7 +3,7 @@
 
 {
     'name': 'Cb Maintenance',
-    'description': """
+    'summary': """
         CB maintenance base""",
     'version': '11.0.1.0.0',
     'license': 'AGPL-3',

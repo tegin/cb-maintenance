@@ -18,6 +18,6 @@ class TestMaintenanceLocation(TransactionCase):
         })
 
     def test_maintenance_location(self):
-        self.assertEqual(self.location_2.name, 'L1 / L2')
+        self.assertEqual(self.location_2.complete_name, 'L1 / L2')
         with self.assertRaises(ValidationError):
             self.location_1.write({'parent_id': self.location_2.id})

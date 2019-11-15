@@ -4,15 +4,22 @@
 
 <odoo>
 
-    <record model="ir.ui.view" id="maintenance_request_form_view">
+    <record model="ir.ui.view" id="hr_equipment_request_view_form">
         <field name="name">maintenance.request.form (in maintenance_request_consume)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="TODO othermodule.form_view"/>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
-            <!-- TODO -->
+            <field name="priority" position="after">
+                <field name="consumable_ids">
+                    <tree editable="bottom">
+                        <field name="product_id"/>
+                        <field name="used_qty"/>
+                        <field name="stock_location_id"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </field>
         </field>
     </record>
-
-
 
 </odoo>
