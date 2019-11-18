@@ -46,15 +46,23 @@
             <field name="description" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
+
+            <button name="archive_equipment_request" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </button>
+
             <field name="description" position="after">
                 <group string="Description">
                     <field name="description" placeholder="Issue description..." nolabel="1"/>
                 </group>
             </field>
 
-
             <field name="request_date" position="replace">
                 <field name="create_date" string="Request Date" readonly="1"/>
+            </field>
+
+            <field name="technician_user_id" position="after">
+                <field name="manager_id" options="{'no_open': True, 'no_create': True}"/>
             </field>
 
         </field>
