@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="team_mantenimiento" model="maintenance.team">
+        <field name="name">Mantenimiento</field>
+    </record>
+    <record id="team_sub_man_1" model="maintenance.team">
+        <field name="name">Subequipo mantenimiento 1</field>
+        <field name="parent_id" ref="team_mantenimiento"/>
+        <field name="member_ids"
+               eval="[(4, ref('user_man_1')),(4, ref('user_man_2')),(4, ref('user_man_3'))]"
+        />
+    </record>
+    <record id="team_sub_man_2" model="maintenance.team">
+        <field name="name">Subequipo mantenimiento 2</field>
+        <field name="parent_id" ref="team_mantenimiento"/>
+        <field name="member_ids"
+               eval="[(4, ref('user_man_3')),(4, ref('user_man_1'))]"
+        />
+    </record>
+    <record id="team_informatica" model="maintenance.team">
+        <field name="name">Informatica</field>
+    </record>
+    <record id="team_sistemas" model="maintenance.team">
+        <field name="name">Sistemas</field>
+        <field name="parent_id" ref="team_informatica"/>
+        <field name="member_ids"
+               eval="[(4, ref('user_man_5')),(4, ref('user_man_6'))]"
+        />
+    </record>
+    <record id="team_desarrollo" model="maintenance.team">
+        <field name="name">Desarrollo</field>
+        <field name="parent_id" ref="team_informatica"/>
+        <field name="member_ids"
+               eval="[(4, ref('base.user_root')),(4, ref('user_man_4'))]"
+        />
+    </record>
+</odoo>
