@@ -6,11 +6,13 @@ from odoo import api, fields, models
 
 class WizardLinkMaintenancePo(models.TransientModel):
 
-    _name = 'wizard.link.maintenance.po'
+    _name = "wizard.link.maintenance.po"
 
-    maintenance_request_id = fields.Many2one('maintenance.request')
+    maintenance_request_id = fields.Many2one(
+        "maintenance.request", required=True
+    )
     purchase_order_ids = fields.Many2many(
-        'purchase.order', string='Purchase Orders'
+        "purchase.order", string="Purchase Orders"
     )
 
     @api.multi
@@ -19,18 +21,22 @@ class WizardLinkMaintenancePo(models.TransientModel):
         new_purchase_orders = [
             (4, po_id) for po_id in self.purchase_order_ids.ids
         ]
-        self.maintenance_request_id.write({
-            'purchase_order_ids': new_purchase_orders
-        })
-        return {'type': 'ir.actions.act_window_close'}
+        self.maintenance_request_id.write(
+            {"purchase_order_ids": new_purchase_orders}
+        )
+        return {"type": "ir.actions.act_window_close"}
 
     @api.multi
     def create_po(self):
         self.ensure_one()
         return {
-            'type': 'ir.actions.act_window',
-            'name': 'New',
-            'res_model': 'purchase.order',
-            'view_mode': 'form,tree',
-            'context': {'maintenance_request': self.maintenance_request_id.id}
+            "type": "ir.actions.act_window",
+            "name": "New",
+            "res_model": "purchase.order",
+            "view_mode": "form,tree",
+            "context": {
+                "default_maintenance_request_ids": [
+                    (4, self.maintenance_request_id.id)
+                ]
+            },
         }
