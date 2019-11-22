@@ -13,15 +13,20 @@
                 <button string="Link to PO" name="%(maintenance_request_purchase.wizard_link_maintenance_po_act_window)d" class="oe_highlight"
                         type="action" attrs="{'invisible': [('archive', '=', True)]}" context="{'default_maintenance_request_id': active_id}"/>
             </button>
-            <xpath expr="//div[hasclass('oe_right')]" position="before">
-                <div class="oe_button_box" name="button_box">
-                    <field name="purchase_order_ids" invisible="1"/>
-                    <button name="action_view_purchase" class="oe_stat_button"
-                            icon="fa-truck" type="object" attrs="{'invisible': [('purchase_order_ids', '=', [])]}">
-                        <field name="purchases_count" widget="statinfo" string="Purchases"/>
-                    </button>
-                </div>
-            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_request_view_form_button_box">
+        <field name="name">maintenance.request.form (in maintenance_equipment_purchase)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="base_maintenance.equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <field name="purchase_order_ids" invisible="1"/>
+                <button name="action_view_purchase" class="oe_stat_button"
+                        icon="fa-truck" type="object" attrs="{'invisible': [('purchase_order_ids', '=', [])]}">
+                    <field name="purchases_count" widget="statinfo" string="Purchases"/>
+                </button>
+            </div>
         </field>
     </record>
 
