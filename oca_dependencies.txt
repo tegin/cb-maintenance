@@ -1,3 +1,3 @@
-maintenance
+maintenance https://github.com/tegin/maintenance 11.0-add-team_hierarchy
 web_hierarchy https://github.com/etobella/web 11.0-add-web_widget_child_selector
 purchase-workflow https://github.com/etobella/purchase-workflow 11.0-mig-pwa
