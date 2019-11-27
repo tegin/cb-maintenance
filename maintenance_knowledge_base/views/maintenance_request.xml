@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="hr_equipment_request_view_form">
+        <field name="name">maintenance.request.form (in maintenance_knowledge_base)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <field name="stage_id" position="before">
+                <field name="is_knowledge" invisible="1"/>
+                <button string="Mark as Knowledge" name="mark_as_knowledge" type="object" attrs="{'invisible': [('is_knowledge', '=', True)]}"/>
+                <button string="Unmark as Knowledge" name="unmark_as_knowledge" type="object" attrs="{'invisible': [('is_knowledge', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maintenance_request_knowledge_act_window">
+        <field name="name">Knowledge Base</field>
+        <field name="res_model">maintenance.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_knowledge', '=', True)]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="maintenance_request_menu">
+        <field name="name">Knowledge Base</field>
+        <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
+        <field name="action" ref="maintenance_request_knowledge_act_window"/>
+        <field name="sequence" eval="70"/>
+    </record>
+
+</odoo>
