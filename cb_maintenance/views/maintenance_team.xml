@@ -9,24 +9,22 @@
         <field name="model">maintenance.team</field>
         <field name="inherit_id" ref="maintenance.maintenance_team_view_form"/>
         <field name="arch" type="xml">
-            <field name="member_ids" position="after">
-                <field name="is_technical"/>
+            <field name="member_ids" position="before">
+                <field name="default_user_id" options="{'no_create': True}"/>
             </field>
             <field name="member_ids" position="attributes">
-                <attribute name="options">{'color_field': 'color', 'no_open': True, 'no_create': True}</attribute>
+                <attribute name="options">{'no_create': True}</attribute>
             </field>
         </field>
     </record>
 
-
-    <record model="ir.ui.view" id="maintenance_team_tree_view">
-        <field name="name">maintenance.team.tree (in cb_maintenance)</field>
+    <record model="ir.ui.view" id="base_maintenance_team_view_form">
+        <field name="name">maintenance.team.form (in cb_maintenance)</field>
         <field name="model">maintenance.team</field>
-        <field name="inherit_id" ref="maintenance.maintenance_team_view_tree"/>
+        <field name="inherit_id" ref="base_maintenance.maintenance_team_view_form"/>
         <field name="arch" type="xml">
-            <field name="name" position="after">
-                <field name="member_ids" widget="many2many_tags"/>
-                <field name="is_technical"/>
+            <field name="user_id" position="attributes">
+                <attribute name="options">{'no_create': True}</attribute>
             </field>
         </field>
     </record>

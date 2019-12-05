@@ -12,7 +12,13 @@
             <form position="attributes">
                 <attribute name="create">false</attribute>
                 <attribute name="delete">false</attribute>
+                <attribute name="edit">false</attribute>
             </form>
+
+            <field name="name" position="before">
+                <i class="fa fa-home" attrs="{'invisible': [('maintenance_type', '!=', 'preventive')]}" style="margin-right: 10px"/>
+                <i class="fa fa-tools" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}" style="margin-right: 10px"/>
+            </field>
 
             <button name="archive_equipment_request" position="before">
                 <button string="Assign to another Team" name="%(cb_maintenance.wizard_change_maintenance_team_act_window)d" class="oe_highlight"
@@ -27,11 +33,13 @@
             </xpath>
 
             <field name="technician_user_id" position="after">
+                <field name="manager_id" options="{'no_open': True, 'no_create': True}"/>
+                <field name="technician_id" options="{'no_open': True, 'no_create': True}"/>
                 <field name="write_date" readonly="1"/>
                 <field name="maintenance_team_id_member_ids" invisible="1"/>
             </field>
             <field name="technician_user_id" position="attributes">
-                <attribute name="options">{'no_open': True, 'no_create': True}</attribute>
+                <attribute name="invisible">1</attribute>
             </field>
 
             <xpath expr="//div[hasclass('oe_right')]" position="attributes">
@@ -46,7 +54,13 @@
             <field name="description" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
+            <field name="close_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
 
+            <field name="close_date" position="after">
+                <field name="close_datetime"/>
+            </field>
             <button name="archive_equipment_request" position="attributes">
                 <attribute name="invisible">1</attribute>
             </button>
@@ -61,21 +75,46 @@
                 <field name="create_date" string="Request Date" readonly="1"/>
             </field>
 
-            <field name="technician_user_id" position="after">
-                <field name="manager_id" options="{'no_open': True, 'no_create': True}"/>
-            </field>
+        </field>
+    </record>
 
+    <record model="ir.ui.view" id="hr_equipment_request_manager_view_form">
+        <field name="name">maintenance.request.form (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="hr_equipment_request_view_form"/>
+        <field name="groups_id" eval="[(4, ref('maintenance.group_equipment_manager'))]"/>
+        <field name="arch" type="xml">
+            <form position="attributes">
+                <attribute name="create">true</attribute>
+                <attribute name="edit">true</attribute>
+            </form>
         </field>
     </record>
 
     <record model="ir.ui.view" id="maintenance_request_tree_view">
-        <field name="name">maintenance.request.kanban (in cb_maintenance)</field>
+        <field name="name">maintenance.request.tree (in cb_maintenance)</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
         <field name="arch" type="xml">
             <tree position="attributes">
                 <attribute name="create">false</attribute>
                 <attribute name="delete">false</attribute>
+            </tree>
+            <field name="name" position="after">
+                <field name="maintenance_type" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="maintenance_request_manager_tree_view">
+        <field name="name">maintenance.request.tree (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance_request_tree_view"/>
+        <field name="groups_id" eval="[(4, ref('maintenance.group_equipment_manager'))]"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">true</attribute>
             </tree>
         </field>
     </record>
@@ -90,6 +129,37 @@
                 <attribute name="create">false</attribute>
                 <attribute name="delete">false</attribute>
             </kanban>
+            <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="attributes">
+                <attribute name="t-if">1==0</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_request_manager_kanban_view">
+        <field name="name">maintenance.request.kanban (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance_request_kanban_view"/>
+        <field name="groups_id" eval="[(4, ref('maintenance.group_equipment_manager'))]"/>
+        <field name="arch" type="xml">
+            <kanban position="attributes">
+                <attribute name="create">true</attribute>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_equipment_request_view_search">
+        <field name="name">maintenance.request.kanban (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+        <field name="arch" type="xml">
+            <filter name="my_requests" position="attributes">
+                <attribute name="domain">[('follower_id', '=', uid)]</attribute>
+                <attribute name="string">On my hands</attribute>
+            </filter>
+            <filter name="my_requests" position="after">
+                <filter name="managed_by_me" string="Managed by me" domain="[('manager_id', '=', uid)]"/>
+                <filter name="created_by_me" string="Created by me" domain="[('owner_user_id', '=', uid)]"/>
+            </filter>
         </field>
     </record>
 

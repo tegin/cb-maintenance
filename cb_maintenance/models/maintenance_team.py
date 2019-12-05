@@ -6,6 +6,6 @@ from odoo import fields, models
 
 class MaintenanceTeam(models.Model):
 
-    _inherit = 'maintenance.team'
+    _inherit = "maintenance.team"
 
-    is_technical = fields.Boolean('Technical Service')
+    default_user_id = fields.Many2one("res.users")
