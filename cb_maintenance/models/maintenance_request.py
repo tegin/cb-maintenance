@@ -50,6 +50,10 @@ class MaintenanceRequest(models.Model):
     color = fields.Integer(compute="_compute_color", store=True)
     solved = fields.Boolean(related="stage_id.done", readonly=True)
 
+    sub_category_id = fields.Many2one(
+        "maintenance.equipment.category", string="Sub-Category"
+    )
+
     @api.depends("maintenance_type")
     def _compute_color(self):
         for record in self:
