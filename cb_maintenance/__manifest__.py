@@ -16,8 +16,10 @@
         "maintenance_location",
         "web_widget_child_selector",
         "maintenance_team_hierarchy",
+        "maintenance_equipment_category_hierarchy",
     ],
     "data": [
+        "views/maintenance_equipment_category.xml",
         "views/maintenance_team.xml",
         "wizards/wizard_change_maintenance_team.xml",
         "views/maintenance_request.xml",

@@ -59,7 +59,7 @@
             </field>
 
             <field name="close_date" position="after">
-                <field name="close_datetime"/>
+                <field name="close_datetime" attrs="{'invisible': [('close_datetime', '=', False)]}"/>
             </field>
             <button name="archive_equipment_request" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -73,6 +73,16 @@
 
             <field name="request_date" position="replace">
                 <field name="create_date" string="Request Date" readonly="1"/>
+            </field>
+
+            <field name="category_id" position="attributes">
+                <attribute name="attrs"/>
+            </field>
+            <field name="category_id" position="after">
+                <field name="sub_category_id" options="{'no_open': True, 'no_create': True}"
+                       attrs="{'invisible': [('category_id', '=', False)]}"
+                       domain="[('id', 'child_of', category_id)]"
+                />
             </field>
 
         </field>
