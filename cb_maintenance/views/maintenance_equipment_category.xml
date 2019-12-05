@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="hr_equipment_category_view_form">
+        <field name="name">maintenance.equipment.category.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment.category</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_category_view_form"/>
+        <field name="arch" type="xml">
+            <field name="technician_user_id" position="before">
+                <field name="maintenance_team_id" attrs="{'required': [('parent_id', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
