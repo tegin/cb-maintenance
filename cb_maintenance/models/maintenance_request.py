@@ -61,6 +61,8 @@ class MaintenanceRequest(models.Model):
         selection=REQUEST_STATES, related="stage_id.state", readonly=True
     )
 
+    stage_id = fields.Many2one(readonly=True)
+
     @api.depends("maintenance_type")
     def _compute_color(self):
         for record in self:
