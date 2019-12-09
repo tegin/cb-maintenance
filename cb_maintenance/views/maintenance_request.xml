@@ -15,6 +15,9 @@
                 <attribute name="edit">false</attribute>
             </form>
 
+            <xpath expr="//label[@for='name']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
             <field name="name" position="before">
                 <i class="fa fa-home" attrs="{'invisible': [('maintenance_type', '!=', 'preventive')]}" style="margin-right: 10px"/>
                 <i class="fa fa-tools" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}" style="margin-right: 10px"/>
@@ -84,6 +87,7 @@
 
             <field name="category_id" position="attributes">
                 <attribute name="attrs"/>
+                <attribute name="options">{'no_open': True, 'no_create': True}</attribute>
             </field>
             <field name="category_id" position="after">
                 <field name="sub_category_id" options="{'no_open': True, 'no_create': True}"

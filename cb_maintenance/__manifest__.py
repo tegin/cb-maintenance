@@ -17,7 +17,6 @@
         "web_widget_child_selector",
         "maintenance_team_hierarchy",
         "maintenance_equipment_category_hierarchy",
-        "maintenance_request_stage_transition",
     ],
     "data": [
         "views/maintenance_stage.xml",
