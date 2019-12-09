@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="hr_equipment_view_form">
+        <field name="name">maintenance.equipment.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <field name="migrated" invisible="1"/>
+                <page name="migration" string="Migration Info" attrs="{'invisible': [('migrated', '=', False)]}">
+                    <group>
+                        <field name="migration_link" widget="url"/>
+                        <field name="migration_notes"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_equipment_view_search">
+        <field name="name">maintenance.equipment.search (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_search"/>
+        <field name="arch" type="xml">
+            <field name="owner_user_id" position="after">
+                <field name="migrated"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
