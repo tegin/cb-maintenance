@@ -11,7 +11,7 @@
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">7</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -23,7 +23,7 @@
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">13</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -34,7 +34,7 @@
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">14</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -44,7 +44,7 @@
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">2</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="priority">1</field>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
@@ -55,7 +55,7 @@
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">15</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="priority">1</field>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
@@ -67,7 +67,7 @@
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">8</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -78,7 +78,7 @@
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">7</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -89,7 +89,7 @@
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">6</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -99,7 +99,7 @@
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="color">5</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -109,7 +109,7 @@
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="color">4</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -119,7 +119,7 @@
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">3</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -130,7 +130,7 @@
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">2</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -142,7 +142,7 @@
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">1</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -153,7 +153,7 @@
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">2</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -164,7 +164,7 @@
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">3</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -175,7 +175,7 @@
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">4</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -186,7 +186,7 @@
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">5</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -197,7 +197,7 @@
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">6</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -207,7 +207,7 @@
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="color">7</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -217,7 +217,7 @@
         <field name="owner_user_id" ref="user_man_3"/>
         <field name="color">8</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -228,7 +228,7 @@
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">9</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -239,7 +239,7 @@
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">10</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -250,7 +250,7 @@
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">11</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
 
@@ -261,7 +261,7 @@
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">0</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -272,7 +272,7 @@
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">2</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -283,7 +283,7 @@
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">13</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -294,7 +294,7 @@
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">8</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -305,7 +305,7 @@
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">7</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -315,7 +315,7 @@
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="color">7</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -325,7 +325,7 @@
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="color">6</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -336,7 +336,7 @@
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">10</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -347,7 +347,7 @@
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">11</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -358,7 +358,7 @@
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">14</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -369,7 +369,7 @@
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">7</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
@@ -380,7 +380,7 @@
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">7</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -391,7 +391,7 @@
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">5</field>
         <field name="priority">3</field>
-        <field name="stage_id" ref="maintenance.stage_4"/>
+        <field name="stage_id" ref="stage_4"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>
@@ -401,7 +401,7 @@
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">4</field>
-        <field name="stage_id" ref="maintenance.stage_3"/>
+        <field name="stage_id" ref="stage_3"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sub_man_1"/>
     </record>
@@ -412,7 +412,7 @@
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">3</field>
         <field name="priority">2</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="maintenance_team_id" ref="team_sub_man_2"/>
     </record>
     <record id="m_request_39" model="maintenance.request">
@@ -420,7 +420,7 @@
         <field name="technician_user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="color">2</field>
-        <field name="stage_id" ref="maintenance.stage_1"/>
+        <field name="stage_id" ref="stage_1"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_sistemas"/>
     </record>
@@ -430,7 +430,7 @@
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="color">1</field>
         <field name="priority">1</field>
-        <field name="stage_id" ref="maintenance.stage_0"/>
+        <field name="stage_id" ref="stage_0"/>
         <field name="location_id" ref="location_reina_planta_2"/>
         <field name="maintenance_team_id" ref="team_desarrollo"/>
     </record>

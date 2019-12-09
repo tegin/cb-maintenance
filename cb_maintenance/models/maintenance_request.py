@@ -25,7 +25,9 @@ class MaintenanceRequest(models.Model):
         required=True,
     )
     follower_id = fields.Many2one("res.users", readonly=True)
-    category_id = fields.Many2one(related=False, track_visibility="onchange")
+    category_id = fields.Many2one(
+        readonly=False, related=False, track_visibility="onchange"
+    )
     close_datetime = fields.Datetime(
         "Close Date", readonly=True, track_visibility="onchange"
     )
@@ -81,6 +83,10 @@ class MaintenanceRequest(models.Model):
                 .mapped("member_ids")
             )
             record.maintenance_team_id_member_ids = [(6, 0, users.ids)]
+
+    @api.onchange("category_id")
+    def onchange_category_id(self):
+        self.sub_category_id = False
 
     @api.onchange("equipment_id")
     def onchange_equipment_id(self):

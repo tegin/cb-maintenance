@@ -20,6 +20,19 @@
         <field name="name">Aire Acondicionado</field>
     </record>
 
+    <record id="categ_1" model="maintenance.equipment.category">
+        <field name="name">Hardware</field>
+        <field name="maintenance_team_id" ref="team_informatica"/>
+    </record>
+    <record id="categ_2" model="maintenance.equipment.category">
+        <field name="name">Aires</field>
+        <field name="maintenance_team_id" ref="team_mantenimiento"/>
+    </record>
+    <record id="categ_3" model="maintenance.equipment.category">
+        <field name="name">Mobiliario</field>
+        <field name="maintenance_team_id" ref="team_mantenimiento"/>
+    </record>
+
     <!-- Equipments -->
     <record id="equipment_monitor1" model="maintenance.equipment">
         <field name="name">Samsung Monitor 15"</field>
@@ -27,6 +40,7 @@
                eval="[(4, ref('tag_equip_samsung')),(4, ref('tag_equip_monitor'))]"
         />
         <field name="maintenance_team_id" ref="team_informatica"/>
+        <field name="category_id" ref="categ_1"/>
         <field name="owner_user_id" ref="base.user_root"/>
         <field name="technician_user_id" ref="base.user_root"/>
         <field name="assign_date" eval="time.strftime('%Y-%m-10')"/>
@@ -40,7 +54,8 @@
         />
         <field name="owner_user_id" ref="base.user_root"/>
         <field name="technician_user_id" ref="base.user_root"/>
-         <field name="maintenance_team_id" ref="team_informatica"/>
+        <field name="maintenance_team_id" ref="team_informatica"/>
+        <field name="category_id" ref="categ_1"/>
         <field name="assign_date" eval="time.strftime('%Y-05-01')"/>
         <field name="serial_no">LP/373405/17281718</field>
      </record>
@@ -51,6 +66,7 @@
         />
         <field name="technician_user_id" ref="base.user_root"/>
         <field name="maintenance_team_id" ref="team_informatica"/>
+         <field name="category_id" ref="categ_1"/>
         <field name="serial_no">PR/017431/2928191889</field>
      </record>
 
@@ -61,6 +77,7 @@
         />
         <field name="technician_user_id" ref="base.user_root"/>
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
+        <field name="category_id" ref="categ_2"/>
         <field name="serial_no">PR/0175341/2928191889</field>
      </record>
 
@@ -70,42 +87,37 @@
                eval="[(4, ref('tag_equip_aire'))]"
         />
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
+        <field name="category_id" ref="categ_2"/>
         <field name="technician_user_id" ref="base.user_root"/>
         <field name="serial_no">PR/011/252367928196341889</field>
      </record>
-
-    <record id="equipment_aire2" model="maintenance.equipment">
-        <field name="name">Aire Acondicionado 2</field>
-        <field name="tag_ids"
-               eval="[(4, ref('tag_equip_aire'))]"
-        />
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="serial_no">PR/011/2928195236341889</field>
-    </record>
 
     <record id="equipment_ascensor" model="maintenance.equipment">
         <field name="name">Ascensor</field>
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
         <field name="technician_user_id" ref="base.user_root"/>
+        <field name="category_id" ref="categ_3"/>
     </record>
 
     <record id="equipment_lavabo" model="maintenance.equipment">
         <field name="name">Lavabo</field>
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
         <field name="technician_user_id" ref="base.user_root"/>
+        <field name="category_id" ref="categ_3"/>
     </record>
 
     <record id="equipment_lampara" model="maintenance.equipment">
         <field name="name">Lampara</field>
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
         <field name="technician_user_id" ref="base.user_root"/>
+        <field name="category_id" ref="categ_3"/>
     </record>
 
     <record id="equipment_puerta" model="maintenance.equipment">
         <field name="name">Puerta</field>
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
         <field name="technician_user_id" ref="base.user_root"/>
+        <field name="category_id" ref="categ_3"/>
     </record>
 
     <!-- Plans -->

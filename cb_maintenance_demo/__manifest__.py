@@ -10,11 +10,17 @@
     "author": "Creu Blanca",
     "website": "www.creublanca.es",
     "depends": [
-        "maintenance_location",
         "cb_maintenance",
-        "base_maintenance",
+        "cb_maintenance_migration",
+        # "cb_maintenance_project",
         "maintenance_equipment_tags",
+        "maintenance_equipment_sequence",
+        # "maintenance_knowledge_base",
         "maintenance_equipment_purchase",
+        "maintenance_request_sequence",
+        # "maintenance_request_consume",
+        "maintenance_request_stage_transition",
+        "web_responsive",
     ],
     "data": [
         "data/res_users_demo.xml",
@@ -22,6 +28,7 @@
         "data/maintenance_location_demo.xml",
         "data/product_product_demo.xml",
         "data/maintenance_equipment_demo.xml",
+        "data/maintenance_stage_demo.xml",
         "data/maintenance_request_demo.xml",
     ],
 }
