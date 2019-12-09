@@ -153,8 +153,11 @@
         <field name="arch" type="xml">
             <kanban position="attributes">
                 <attribute name="group_create">false</attribute>
+                <attribute name="group_edit">false</attribute>
+                <attribute name="group_delete">false</attribute>
                 <attribute name="create">false</attribute>
                 <attribute name="delete">false</attribute>
+                <attribute name="quick_create">false</attribute>
             </kanban>
             <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="attributes">
                 <attribute name="t-if">1==0</attribute>
@@ -187,11 +190,18 @@
                 <filter name="managed_by_me" string="Managed by me" domain="[('manager_id', '=', uid)]"/>
                 <filter name="created_by_me" string="Created by me" domain="[('owner_user_id', '=', uid)]"/>
             </filter>
+            <filter name="kanban_state_block" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="progress" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
         </field>
     </record>
 
     <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
         <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_todo': 1}</field>
     </record>
 
     <menuitem

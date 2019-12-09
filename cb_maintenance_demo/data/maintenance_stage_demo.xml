@@ -29,7 +29,7 @@
     </record>
 
     <record id="stage_0" model="maintenance.stage">
-        <field name="name">New Request</field>
+        <field name="name">New</field>
         <field name="sequence">0</field>
         <field name="state">new</field>
         <field name="next_stage_ids"
