@@ -21,14 +21,21 @@
             </field>
 
             <button name="archive_equipment_request" position="before">
-                <button string="Assign to another Team" name="%(cb_maintenance.wizard_change_maintenance_team_act_window)d" class="oe_highlight"
+                <button string="Assign to another Team" name="%(cb_maintenance.wizard_change_maintenance_team_act_window)d"
                         type="action" attrs="{'invisible': [('archive', '=', True)]}"/>
             </button>
 
             <xpath expr="//span[hasclass('label')]/.." position="after">
-                <field name="solved" invisible="1"/>
-                <div attrs="{'invisible': [('solved', '=', False)]}">
-                    <span class="label label-success pull-right">Solved</span>
+                <div>
+                    <span class="label label-info pull-right" attrs="{'invisible': [('state', '!=', 'new')]}">
+                        <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
+                    </span>
+                    <span class="label label-success pull-right" attrs="{'invisible': [('state', '!=', 'open')]}">
+                        <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
+                    </span>
+                    <span class="label label-danger pull-right" attrs="{'invisible': [('state', '!=', 'closed')]}">
+                        <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
+                    </span>
                 </div>
             </xpath>
 
@@ -81,10 +88,16 @@
             <field name="category_id" position="after">
                 <field name="sub_category_id" options="{'no_open': True, 'no_create': True}"
                        attrs="{'invisible': [('category_id', '=', False)]}"
-                       domain="[('id', 'child_of', category_id)]"
-                />
+                       domain="[('id', 'child_of', category_id)]"/>
             </field>
 
+            <field name="stage_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <field name="stage_id" position="after">
+                <field name="state" widget="statusbar"/>
+            </field>
         </field>
     </record>
 

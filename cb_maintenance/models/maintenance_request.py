@@ -3,6 +3,8 @@
 
 from odoo import api, fields, models
 
+REQUEST_STATES = [("new", "New"), ("open", "Open"), ("closed", "Closed")]
+
 
 class MaintenanceRequest(models.Model):
 
@@ -48,10 +50,13 @@ class MaintenanceRequest(models.Model):
         track_visibility="onchange",
     )
     color = fields.Integer(compute="_compute_color", store=True)
-    solved = fields.Boolean(related="stage_id.done", readonly=True)
 
     sub_category_id = fields.Many2one(
         "maintenance.equipment.category", string="Sub-Category"
+    )
+
+    state = fields.Selection(
+        selection=REQUEST_STATES, related="stage_id.state", readonly=True
     )
 
     @api.depends("maintenance_type")
