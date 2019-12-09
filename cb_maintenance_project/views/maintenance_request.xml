@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="maintenance_project_form_view">
+        <field name="name">maintenance.request.form (in cb_maintenance_project)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="is_project" invisible="1"/>
+                <field name="parent_id" invisible="1"/>
+                <i class="fa fa-project-diagram" attrs="{'invisible': [('is_project', '=', False)]}" style="margin-right: 10px"/>
+            </field>
+            <field name="owner_user_id" position="before">
+                <field name="parent_id" attrs="{'invisible': ['|', ('is_project', '=', False), ('parent_id', '=', False)]}"/>
+            </field>
+            <field name="priority" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
+            </field>
+            <field name="equipment_id" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
+            </field>
+            <field name="maintenance_type" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
+            </field>
+            <xpath expr="//field[@name='schedule_date']/.." position="attributes">
+                <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
+            </xpath>
+            <button name="archive_equipment_request" position="before">
+                <button string="Add Issue" name="%(cb_maintenance_project.wizard_create_project_issue_act_window)d"
+                        type="action" attrs="{'invisible': ['|', ('is_project', '=', False), ('parent_id', '!=', False)]}" context="{'default_request_id': active_id}"/>
+            </button>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_equipment_request_view_form_button_box">
+        <field name="name">maintenance.request.form (in maintenance_equipment_purchase)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="base_maintenance.equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <field name="child_ids" invisible="1"/>
+                <button name="action_view_children_requests" class="oe_stat_button"
+                        icon="fa-wrench" type="object" attrs="{'invisible': [('child_ids', '=', [])]}">
+                    <field name="children_count" widget="statinfo" string="Issues"/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maintenance_project_act_window">
+        <field name="name">Maintenance Project</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">maintenance.request</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_project', '=', True), ('parent_id', '=', False)]</field>
+        <field name="context">{'default_is_project': 1, 'default_maintenance_type': 0}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="maintenance.hr_equipment_request_action">
+        <field name="domain">['|', ('is_project', '=', False), ('parent_id', '!=', False)]</field>
+    </record>
+
+    <record model="ir.ui.menu" id="maintenance_project_menu">
+        <field name="name">Maintenance Projects</field>
+        <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
+        <field name="sequence" eval="20"/>
+        <field name="action" ref="maintenance_project_act_window"/>
+    </record>
+
+</odoo>
