@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="stage_4" model="maintenance.stage">
+        <field name="name">Solved</field>
+        <field name="sequence">5</field>
+        <field name="state">closed</field>
+    </record>
+
+    <record id="stage_3" model="maintenance.stage">
+        <field name="name">Scrap</field>
+        <field name="sequence">4</field>
+        <field name="state">closed</field>
+    </record>
+    <record id="stage_2" model="maintenance.stage">
+        <field name="name">Posponed</field>
+        <field name="sequence">3</field>
+        <field name="state">open</field>
+    </record>
+    <record id="stage_1" model="maintenance.stage">
+        <field name="name">In Progress</field>
+        <field name="sequence">2</field>
+        <field name="state">open</field>
+        <field name="next_stage_ids"
+               eval="[(4, ref('stage_3')), (4, ref('stage_2')), (4, ref('stage_4'))]"
+        />
+    </record>
+
+    <record id="stage_0" model="maintenance.stage">
+        <field name="name">New Request</field>
+        <field name="sequence">0</field>
+        <field name="state">new</field>
+        <field name="next_stage_ids"
+               eval="[(4, ref('stage_1')), (4, ref('stage_2'))]"
+        />
+    </record>
+
+    <record id="stage_2" model="maintenance.stage">
+        <field name="next_stage_ids" eval="[(4, ref('stage_1')), (4, ref('stage_3')), (4, ref('stage_4'))]"/>
+    </record>
+
+    <record id="stage_3" model="maintenance.stage">
+        <field name="next_stage_ids" eval="[(4, ref('stage_0'))]"/>
+    </record>
+
+    <record id="stage_4" model="maintenance.stage">
+        <field name="next_stage_ids" eval="[(4, ref('stage_0'))]"/>
+    </record>
+
+</odoo>
