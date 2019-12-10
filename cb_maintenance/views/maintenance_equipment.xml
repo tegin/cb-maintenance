@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="hr_equipment_view_form">
+        <field name="name">maintenance.equipment.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <field name="technician_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+                <field name="owner_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_equipment_view_tree">
+        <field name="name">maintenance.equipment.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="technician_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="owner_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_equipment_view_search">
+        <field name="name">maintenance.equipment.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_search"/>
+        <field name="arch" type="xml">
+            <filter name="assigned" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="available" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="my" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

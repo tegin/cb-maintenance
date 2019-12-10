@@ -18,14 +18,12 @@
             <xpath expr="//label[@for='name']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <field name="name" position="before">
-                <i class="fa fa-home" attrs="{'invisible': [('maintenance_type', '!=', 'preventive')]}" style="margin-right: 10px"/>
-                <i class="fa fa-tools" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}" style="margin-right: 10px"/>
-            </field>
 
             <button name="archive_equipment_request" position="before">
                 <button string="Assign to another Team" name="%(cb_maintenance.wizard_change_maintenance_team_act_window)d"
                         type="action" attrs="{'invisible': [('archive', '=', True)]}"/>
+                <button string="Split Request" name="split_request"
+                        type="object" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}"/>
             </button>
 
             <xpath expr="//span[hasclass('label')]/.." position="after">
@@ -55,11 +53,6 @@
             <xpath expr="//div[hasclass('oe_right')]" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-
-            <field name="name" position="after">
-                <span style="margin-left: 0.5em"/>
-                <field name="kanban_state" class="oe_inline" widget="state_selection"/>
-            </field>
 
             <field name="description" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -102,6 +95,20 @@
             <field name="stage_id" position="after">
                 <field name="state" widget="statusbar"/>
             </field>
+
+            <xpath expr="//label[@for='schedule_date']" position="attributes">
+                <attribute name="class">oe_edit_only</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('o_row')]" position="attributes">
+                <attribute name="class">o_row oe_edit_only</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('o_row')]" position="after">
+                <label for="schedule_info" class="oe_read_only" string="Schedule Date"/>
+                <div class="oe_read_only o_row">
+                    <field name="schedule_info"/>
+                </div>
+            </xpath>
+
         </field>
     </record>
 
@@ -153,8 +160,11 @@
         <field name="arch" type="xml">
             <kanban position="attributes">
                 <attribute name="group_create">false</attribute>
+                <attribute name="group_edit">false</attribute>
+                <attribute name="group_delete">false</attribute>
                 <attribute name="create">false</attribute>
                 <attribute name="delete">false</attribute>
+                <attribute name="quick_create">false</attribute>
             </kanban>
             <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="attributes">
                 <attribute name="t-if">1==0</attribute>
@@ -187,11 +197,18 @@
                 <filter name="managed_by_me" string="Managed by me" domain="[('manager_id', '=', uid)]"/>
                 <filter name="created_by_me" string="Created by me" domain="[('owner_user_id', '=', uid)]"/>
             </filter>
+            <filter name="kanban_state_block" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="progress" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
         </field>
     </record>
 
     <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
         <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_todo': 1}</field>
     </record>
 
     <menuitem

@@ -17,8 +17,11 @@
         "web_widget_child_selector",
         "maintenance_team_hierarchy",
         "maintenance_equipment_category_hierarchy",
+        "maintenance_request_sequence",
     ],
     "data": [
+        "views/maintenance_equipment.xml",
+        "views/res_partner.xml",
         "views/maintenance_stage.xml",
         "views/maintenance_equipment_category.xml",
         "views/maintenance_team.xml",
