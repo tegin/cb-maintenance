@@ -9,11 +9,15 @@
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
+
             <field name="name" position="before">
                 <field name="is_project" invisible="1"/>
                 <field name="parent_id" invisible="1"/>
+                <i class="fa fa-home" attrs="{'invisible': ['|', ('is_project', '=', True), ('maintenance_type', '!=', 'preventive')]}" style="margin-right: 10px"/>
+                <i class="fa fa-tools" attrs="{'invisible': ['|', ('is_project', '=', True), ('maintenance_type', '!=', 'corrective')]}" style="margin-right: 10px"/>
                 <i class="fa fa-project-diagram" attrs="{'invisible': [('is_project', '=', False)]}" style="margin-right: 10px"/>
             </field>
+
             <field name="owner_user_id" position="before">
                 <field name="parent_id" attrs="{'invisible': ['|', ('is_project', '=', False), ('parent_id', '=', False)]}"/>
             </field>
@@ -33,6 +37,21 @@
                 <button string="Add Issue" name="%(cb_maintenance_project.wizard_create_project_issue_act_window)d"
                         type="action" attrs="{'invisible': ['|', ('is_project', '=', False), ('parent_id', '!=', False)]}" context="{'default_request_id': active_id}"/>
             </button>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_request_kanban_view">
+        <field name="name">maintenance.request.kanban (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="maintenance_type" t-if="1==0"/>
+                <field name="is_project" t-if="1==0"/>
+                <i class="fa fa-home" t-if="record.maintenance_type.raw_value == 'preventive' and !record.is_project.raw_value"/>
+                <i class="fa fa-tools" t-if="record.maintenance_type.raw_value == 'corrective' and !record.is_project.raw_value"/>
+                <i class="fa fa-project-diagram" t-if="record.is_project.raw_value"/>
+            </field>
         </field>
     </record>
 
