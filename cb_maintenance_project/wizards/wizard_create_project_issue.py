@@ -22,6 +22,15 @@ class WizardCreateProjectIssue(models.TransientModel):
 
     location_id = fields.Many2one("maintenance.location", required=True)
 
+    @api.model
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
+        active_id = self.env.context.get("active_id", False)
+        if active_id:
+            request_id = self.env["maintenance.request"].browse(active_id)
+            res["location_id"] = request_id.location_id.id
+        return res
+
     @api.multi
     def create_request(self):
         self.ensure_one()
@@ -32,7 +41,7 @@ class WizardCreateProjectIssue(models.TransientModel):
                 "description": self.description or self.name,
                 "location_id": self.location_id.id,
                 "priority": self.priority,
-                "maintenance_type": False,
+                "maintenance_type": "preventive",
                 "is_project": True,
                 "parent_id": self.request_id.id,
             }
