@@ -11,21 +11,19 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
     name = fields.Char(string="Title", required=True)
     description = fields.Text()
 
-    severity = fields.Selection(
-        [
-            ("unspecified", "Unspecified"),
-            ("low", "Low"),
-            ("medium", "Medium"),
-            ("high", "High"),
-        ],
-        default="unspecified",
-        required=True,
+    priority = fields.Selection(
+        [("0", "Normal"), ("1", "Low"), ("2", "High"), ("3", "Very High")],
+        string="Priority",
+        default="0",
     )
 
     equipment_category = fields.Many2one(
         comodel_name="maintenance.equipment.category",
         string="Category",
-        domain=[("maintenance_team_id", "!=", False)],
+        domain=[
+            ("maintenance_team_id", "!=", False),
+            ("selectable", "=", True),
+        ],
         required=True,
     )
 
@@ -42,9 +40,22 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
                 "description": self.description or self.name,
                 "location_id": self.location_id.id,
                 "category_id": self.equipment_category.id,
-                "manager_id": maintenance_team_id.default_user_id.id or False,
+                "manager_id": (
+                    self.equipment_category.technician_user_id.id or False
+                ),
+                "priority": self.priority,
             }
         )
+        original_request = self.env.context.get("original_request", False)
+        if original_request:
+            original_request = self.env["maintenance.request"].browse(
+                original_request
+            )
+            request.message_post_with_view(
+                "mail.message_origin_link",
+                values={"self": request, "origin": original_request},
+                subtype_id=self.env.ref("mail.mt_note").id,
+            )
         action = {
             "type": "ir.actions.act_window",
             "name": "Maintenance Request",
