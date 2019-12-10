@@ -118,3 +118,17 @@ class MaintenanceRequest(models.Model):
                 if user:
                     record.message_subscribe_users(user.ids)
                 record.follower_id = user
+
+    @api.multi
+    def split_request(self):
+        self.ensure_one()
+        action = self.env.ref(
+            "cb_maintenance.wizard_create_maintenance_request_act_window"
+        ).read()[0]
+        action["name"] = "Split Request %s" % self.code
+        action["context"] = {
+            "default_equipment_category": self.category_id.id,
+            "default_location_id": self.location_id.id,
+            "default_description": self.description,
+        }
+        return action
