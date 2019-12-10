@@ -13,10 +13,10 @@
                     <group>
                         <field name="request_id"/>
                         <field name="name"/>
-                        <field name="priority" widget="priority"/>
                     </group>
                     <group>
                         <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name'}"/>
+                        <field name="priority" widget="priority"/>
                     </group>
                 </group>
                 <group>

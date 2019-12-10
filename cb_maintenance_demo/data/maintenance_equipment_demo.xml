@@ -23,14 +23,17 @@
     <record id="categ_1" model="maintenance.equipment.category">
         <field name="name">Hardware</field>
         <field name="maintenance_team_id" ref="team_informatica"/>
+        <field name="selectable" eval="True"/>
     </record>
     <record id="categ_2" model="maintenance.equipment.category">
         <field name="name">Aires</field>
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
+        <field name="selectable" eval="True"/>
     </record>
     <record id="categ_3" model="maintenance.equipment.category">
         <field name="name">Mobiliario</field>
         <field name="maintenance_team_id" ref="team_mantenimiento"/>
+        <field name="selectable" eval="True"/>
     </record>
 
     <!-- Equipments -->
