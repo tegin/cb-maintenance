@@ -12,6 +12,9 @@
             <field name="technician_user_id" position="before">
                 <field name="maintenance_team_id" attrs="{'required': [('parent_id', '=', False)]}"/>
             </field>
+            <field name="technician_user_id" position="after">
+                <field name="selectable"/>
+            </field>
         </field>
     </record>
 

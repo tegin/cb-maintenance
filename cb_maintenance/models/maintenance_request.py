@@ -39,9 +39,12 @@ class MaintenanceRequest(models.Model):
     technician_user_id = fields.Many2one(
         compute="_compute_technician_user_id", store=True
     )
+
+    schedule_info = fields.Char(compute="_compute_schedule_info", store=True)
+
     technician_id = fields.Many2one(
         "res.partner",
-        domain="[('user_ids', 'in', maintenance_team_id_member_ids)]",
+        domain="[('is_maintenance_technician', '=', True)]",
         track_visibility="onchange",
     )
     manager_id = fields.Many2one(
@@ -62,6 +65,19 @@ class MaintenanceRequest(models.Model):
     )
 
     stage_id = fields.Many2one(readonly=True)
+
+    @api.depends("schedule_date", "duration")
+    def _compute_schedule_info(self):
+        for record in self:
+            if not record.schedule_date:
+                record.schedule_info = "Unscheduled"
+            else:
+                record.schedule_info = "%s for %s hour(s)" % (
+                    fields.Datetime.from_string(record.schedule_date).strftime(
+                        "%d/%m/%Y %H:%M:%S"
+                    ),
+                    record.duration,
+                )
 
     @api.depends("maintenance_type")
     def _compute_color(self):
@@ -130,5 +146,7 @@ class MaintenanceRequest(models.Model):
             "default_equipment_category": self.category_id.id,
             "default_location_id": self.location_id.id,
             "default_description": self.description,
+            "default_name": self.name,
+            "original_request": self.id,
         }
         return action

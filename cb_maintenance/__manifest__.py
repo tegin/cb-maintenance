@@ -20,6 +20,8 @@
         "maintenance_request_sequence",
     ],
     "data": [
+        "views/maintenance_equipment.xml",
+        "views/res_partner.xml",
         "views/maintenance_stage.xml",
         "views/maintenance_equipment_category.xml",
         "views/maintenance_team.xml",
