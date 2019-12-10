@@ -17,7 +17,6 @@
         "maintenance_equipment_sequence",
         # "maintenance_knowledge_base",
         "maintenance_equipment_purchase",
-        "maintenance_request_sequence",
         # "maintenance_request_consume",
         # "maintenance_request_duplicated",
         "maintenance_request_stage_transition",

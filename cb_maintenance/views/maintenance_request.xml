@@ -26,6 +26,8 @@
             <button name="archive_equipment_request" position="before">
                 <button string="Assign to another Team" name="%(cb_maintenance.wizard_change_maintenance_team_act_window)d"
                         type="action" attrs="{'invisible': [('archive', '=', True)]}"/>
+                <button string="Split Request" name="split_request"
+                        type="object" attrs="{'invisible': [('archive', '=', True)]}"/>
             </button>
 
             <xpath expr="//span[hasclass('label')]/.." position="after">
