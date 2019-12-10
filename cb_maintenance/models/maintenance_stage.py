@@ -17,3 +17,8 @@ class MaintenanceStage(models.Model):
     def _compute_stage_done(self):
         for record in self:
             record.done = record.state == "closed"
+
+    def _get_stage_node(self):
+        node = super()._get_stage_node()
+        node.attrib["groups"] = "maintenance.group_equipment_manager"
+        return node
