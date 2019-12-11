@@ -13,6 +13,12 @@ class TestCbMaintenance(TransactionCase):
         self.technician_2 = self.env["res.partner"].create(
             {"name": "External Technician", "is_maintenance_technician": True}
         )
+        self.technician_3 = self.env["res.partner"].create(
+            {
+                "name": "Internal Technician 3",
+                "is_maintenance_technician": True,
+            }
+        )
         self.user_id = self.env["res.users"].create(
             {
                 "name": "test user",
@@ -21,7 +27,20 @@ class TestCbMaintenance(TransactionCase):
                 "partner_id": self.technician_1.id,
             }
         )
-        self.team_id = self.env["maintenance.team"].create({"name": "Team"})
+        self.user_id_2 = self.env["res.users"].create(
+            {
+                "name": "test user",
+                "login": "test_2",
+                "groups_id": [4, self.ref("base.group_user")],
+                "partner_id": self.technician_3.id,
+            }
+        )
+        self.team_id = self.env["maintenance.team"].create(
+            {
+                "name": "Team",
+                "member_ids": [(6, 0, [self.user_id.id, self.user_id_2.id])],
+            }
+        )
         self.location_id = self.env["maintenance.location"].create(
             {"name": "Location"}
         )
@@ -55,30 +74,39 @@ class TestCbMaintenance(TransactionCase):
                 "maintenance_team_id": self.team_id.id,
                 "stage_id": self.stage_id.id,
                 "category_id": self.categ_id.id,
+                "manager_id": self.user_id.id,
+                "follower_id": self.user_id.id,
                 "maintenance_type": "corrective",
-                "technician_id": self.technician_2.id,
+                "technician_id": self.technician_1.id,
             }
         )
 
     def test_cb_maintenance(self):
         self.assertFalse(self.stage_id.done)
-        self.assertFalse(self.request_id.technician_user_id)
+        self.assertTrue(self.request_id.technician_user_id)
         self.assertEqual(self.request_id.color, 1)
         self.assertEqual(self.request_id.schedule_info, "Unscheduled")
-
+        self.assertEqual(
+            len(self.request_id.maintenance_team_id_member_ids), 2
+        )
         self.request_id.write(
             {
                 "maintenance_type": "preventive",
                 "schedule_date": "2019-01-01 12:00:00",
-                "technician_id": self.technician_1.id,
+                "technician_id": self.technician_2.id,
                 "equipment_id": self.equipment_id.id,
                 "stage_id": self.stage_final_id.id,
+                "manager_id": self.user_id_2.id,
             }
         )
+        self.assertFalse(self.request_id.technician_user_id)
+        self.request_id.with_context(
+            use_old_onchange_equipment=True
+        ).onchange_equipment_id()
         self.request_id.onchange_equipment_id()
 
         self.assertEqual(self.request_id.category_id, self.categ_2_id)
-        self.assertTrue(self.request_id.technician_user_id)
+        self.assertEqual(self.request_id.follower_id, self.user_id_2)
         self.assertTrue(self.request_id.close_datetime)
         self.assertEqual(self.request_id.color, 10)
         self.assertEqual(
@@ -102,3 +130,6 @@ class TestCbMaintenance(TransactionCase):
         ).create_request()
         split = self.env["maintenance.request"].browse(action["res_id"])
         self.assertEqual(split.name, "Split Request")
+
+        node = self.stage_id.sudo(user=self.user_id)._get_stage_node()
+        self.assertEqual(node.attrib["invisible"], "1")

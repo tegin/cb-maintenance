@@ -19,7 +19,6 @@
         "maintenance_request_purchase",
         # "maintenance_request_consume",
         # "maintenance_request_duplicated",
-        "maintenance_request_stage_transition",
         "web_responsive",
     ],
     "data": [
