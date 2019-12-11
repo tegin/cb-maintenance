@@ -3,64 +3,92 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <odoo>
+    <record id="partner_externo_1" model="res.partner">
+        <field name="name">Mantenimiento Externo 1</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="partner_externo_2" model="res.partner">
+        <field name="name">Mantenimiento Externo 2</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
     <record id="partner_1" model="res.partner">
         <field name="name">Usuario Mantenimiento 1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
     </record>
     <record id="user_man_1" model="res.users">
         <field name="partner_id" ref="partner_1"/>
         <field name="login">user_1</field>
         <field name="password">user_1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="notification_type">inbox</field>
+        <field name="email">mantenimiento@test.com</field>
     </record>
-        <record id="partner_2" model="res.partner">
+    <record id="partner_2" model="res.partner">
         <field name="name">Usuario Mantenimiento 2</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
+        <field name="notification_type">inbox</field>
+        <field name="email">mantenimiento@test.com</field>
     </record>
     <record id="user_man_2" model="res.users">
         <field name="partner_id" ref="partner_2"/>
         <field name="login">user_2</field>
         <field name="password">user_1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="notification_type">inbox</field>
+        <field name="email">mantenimiento@test.com</field>
     </record>
-        <record id="partner_3" model="res.partner">
+    <record id="partner_3" model="res.partner">
         <field name="name">Usuario Mantenimiento 3</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
     </record>
     <record id="user_man_3" model="res.users">
         <field name="partner_id" ref="partner_3"/>
         <field name="login">user_3</field>
         <field name="password">user_1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="notification_type">inbox</field>
+        <field name="email">mantenimiento@test.com</field>
     </record>
-        <record id="partner_4" model="res.partner">
+    <record id="partner_4" model="res.partner">
         <field name="name">Usuario Mantenimiento 4</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
     </record>
     <record id="user_man_4" model="res.users">
         <field name="partner_id" ref="partner_4"/>
         <field name="login">user_4</field>
         <field name="password">user_1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="notification_type">inbox</field>
+        <field name="email">mantenimiento@test.com</field>
     </record>
-        <record id="partner_5" model="res.partner">
+    <record id="partner_5" model="res.partner">
         <field name="name">Usuario Mantenimiento 5</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
     </record>
     <record id="user_man_5" model="res.users">
         <field name="partner_id" ref="partner_5"/>
         <field name="login">user_5</field>
         <field name="password">user_1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="notification_type">inbox</field>
+        <field name="email">mantenimiento@test.com</field>
     </record>
-        <record id="partner_6" model="res.partner">
+    <record id="partner_6" model="res.partner">
         <field name="name">Usuario Mantenimiento 6</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
     </record>
     <record id="user_man_6" model="res.users">
         <field name="partner_id" ref="partner_6"/>
         <field name="login">user_6</field>
         <field name="password">user_1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="notification_type">inbox</field>
+        <field name="email">mantenimiento@test.com</field>
     </record>
 </odoo>

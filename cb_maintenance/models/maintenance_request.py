@@ -50,7 +50,6 @@ class MaintenanceRequest(models.Model):
     manager_id = fields.Many2one(
         "res.users",
         string="Manager",
-        domain="[('id', 'in', maintenance_team_id_member_ids)]",
         default=False,
         track_visibility="onchange",
     )

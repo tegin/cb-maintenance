@@ -18,6 +18,7 @@
         "maintenance_team_hierarchy",
         "maintenance_equipment_category_hierarchy",
         "maintenance_request_sequence",
+        "maintenance_request_stage_transition",
     ],
     "data": [
         "views/maintenance_equipment.xml",
