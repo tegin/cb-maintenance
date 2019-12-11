@@ -22,12 +22,16 @@ class TestMaintenanceProject(TransactionCase):
 
     def test_maintenance_project(self):
         self.assertEqual(self.project_id.color, 4)
-        wizz_issue = self.env["wizard.create.project.issue"].create(
-            {
-                "name": "Issue 1",
-                "request_id": self.project_id.id,
-                "location_id": self.location_id.id,
-            }
+        wizz_issue = (
+            self.env["wizard.create.project.issue"]
+            .with_context(active_id=self.project_id.id)
+            .create(
+                {
+                    "name": "Issue 1",
+                    "request_id": self.project_id.id,
+                    "location_id": self.location_id.id,
+                }
+            )
         )
         wizz_issue.create_request()
         issue = self.env["maintenance.request"].search(
