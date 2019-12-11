@@ -55,11 +55,6 @@ class MaintenanceRequest(models.Model):
         track_visibility="onchange",
     )
     color = fields.Integer(compute="_compute_color", store=True)
-
-    sub_category_id = fields.Many2one(
-        "maintenance.equipment.category", string="Sub-Category"
-    )
-
     state = fields.Selection(
         selection=REQUEST_STATES, related="stage_id.state", readonly=True
     )
@@ -101,10 +96,6 @@ class MaintenanceRequest(models.Model):
                 .mapped("member_ids")
             )
             record.maintenance_team_id_member_ids = [(6, 0, users.ids)]
-
-    @api.onchange("category_id")
-    def onchange_category_id(self):
-        self.sub_category_id = False
 
     @api.onchange("equipment_id")
     def onchange_equipment_id(self):
