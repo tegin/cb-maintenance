@@ -80,14 +80,9 @@
 
             <field name="category_id" position="attributes">
                 <attribute name="attrs"/>
-                <attribute name="options">{'no_open': True, 'no_create': True}</attribute>
+                <attribute name="widget">child_selector</attribute>
+                <attribute name="options">{'no_open': True, 'no_create': True, 'child_selection_field': 'name'}</attribute>
             </field>
-            <field name="category_id" position="after">
-                <field name="sub_category_id" options="{'no_open': True, 'no_create': True}"
-                       attrs="{'invisible': [('category_id', '=', False)]}"
-                       domain="[('id', 'child_of', category_id)]"/>
-            </field>
-
             <field name="stage_id" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
