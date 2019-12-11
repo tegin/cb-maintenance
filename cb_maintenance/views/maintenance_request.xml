@@ -41,7 +41,8 @@
             </xpath>
 
             <field name="technician_user_id" position="after">
-                <field name="manager_id" options="{'no_open': True, 'no_create': True}"/>
+                <field name="maintenance_team_id_member_ids" invisible="1"/>
+                <field name="manager_id" options="{'no_open': True, 'no_create': True}" domain="[('id', 'in', maintenance_team_id_member_ids)]"/>
                 <field name="technician_id" options="{'no_open': True, 'no_create': True}"/>
                 <field name="write_date" readonly="1"/>
                 <field name="maintenance_team_id_member_ids" invisible="1"/>
