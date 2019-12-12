@@ -57,6 +57,7 @@ class PurchaseOrderLine(models.Model):
             "purchase_line_id": self.id,
             "partner_id": self.order_id.partner_id.id,
             "tag_ids": [(6, 0, tags.ids)],
+            "company_id": self.order_id.company_id.id,
         }
 
     def _get_equipment_purchase_vals(self, tags):

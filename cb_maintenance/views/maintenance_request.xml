@@ -20,8 +20,6 @@
             </xpath>
 
             <button name="archive_equipment_request" position="before">
-                <button string="Assign to another Team" name="%(cb_maintenance.wizard_change_maintenance_team_act_window)d"
-                        type="action" attrs="{'invisible': [('archive', '=', True)]}"/>
                 <button string="Split Request" name="split_request"
                         type="object" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}"/>
             </button>
@@ -198,6 +196,18 @@
             </filter>
             <filter name="progress" position="attributes">
                 <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="unscheduled" position="before">
+                <filter name="preventive" string="Preventive Requests" domain="[('maintenance_type', '=', 'preventive')]"/>
+                <filter name="corrective" string="Corrective Requests" domain="[('maintenance_type', '=', 'corrective')]"/>
+                <filter name="project" string="Project Issues" domain="[('maintenance_type', '=', 'project')]"/>
+                <separator/>
+                <filter name="scheduled_past" string="Scheduled Overdue" domain="[('schedule_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="scheduled_today" string="Scheduled for Today" domain="[('schedule_date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="scheduled_7" string="Scheduled for the next 7 days"
+                        domain="[('schedule_date', '&gt;', context_today().strftime('%Y-%m-%d')),
+                         ('schedule_date', '&lt;', (context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"
+                />
             </filter>
         </field>
     </record>
