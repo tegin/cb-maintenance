@@ -17,6 +17,7 @@
         # "maintenance_knowledge_base",
         "maintenance_equipment_purchase",
         "maintenance_request_purchase",
+        "maintenance_request_tags",
         # "maintenance_request_consume",
         # "maintenance_request_duplicated",
         "web_responsive",
