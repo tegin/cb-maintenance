@@ -11,7 +11,7 @@
     "website": "www.creublanca.es",
     "depends": [
         "cb_maintenance_migration",
-        "cb_maintenance_project",
+        "cb_maintenance_report",
         "maintenance_equipment_tags",
         "maintenance_equipment_sequence",
         # "maintenance_knowledge_base",
