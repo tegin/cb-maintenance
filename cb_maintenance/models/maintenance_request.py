@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 REQUEST_STATES = [("new", "New"), ("open", "Open"), ("closed", "Closed")]
 
@@ -14,16 +14,6 @@ class MaintenanceRequest(models.Model):
         readonly=True, track_visibility="onchange"
     )
     owner_user_id = fields.Many2one(readonly=True)
-    severity = fields.Selection(
-        [
-            ("unspecified", "Unspecified"),
-            ("low", "Low"),
-            ("medium", "Medium"),
-            ("high", "High"),
-        ],
-        default="unspecified",
-        required=True,
-    )
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
         readonly=False, related=False, track_visibility="onchange"
@@ -64,9 +54,9 @@ class MaintenanceRequest(models.Model):
     def _compute_schedule_info(self):
         for record in self:
             if not record.schedule_date:
-                record.schedule_info = "Unscheduled"
+                record.schedule_info = _("Unscheduled")
             else:
-                record.schedule_info = "%s for %s hour(s)" % (
+                record.schedule_info = _("%s for %s hour(s)") % (
                     fields.Datetime.from_string(record.schedule_date).strftime(
                         "%d/%m/%Y %H:%M:%S"
                     ),
