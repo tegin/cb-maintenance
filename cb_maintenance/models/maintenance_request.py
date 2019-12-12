@@ -96,6 +96,11 @@ class MaintenanceRequest(models.Model):
             )
             record.maintenance_team_id_member_ids = [(6, 0, users.ids)]
 
+    @api.onchange("maintenance_team_id")
+    def onchange_maintenance_team_id(self):
+        for record in self:
+            record.manager_id = False
+
     @api.onchange("equipment_id")
     def onchange_equipment_id(self):
         if self.env.context.get("use_old_onchange_equipment", False):

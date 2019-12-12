@@ -12,8 +12,14 @@
             <field name="technician_user_id" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
-                <field name="owner_user_id" position="attributes">
+            <field name="owner_user_id" position="attributes">
                 <attribute name="invisible">1</attribute>
+            </field>
+            <field name="partner_id" position="before">
+                <field name="company_id" attrs="{'invisible': [('company_id', '=', False)]}"/>
+            </field>
+            <field name="partner_ref" position="after">
+                <field name="partner_technician_id"/>
             </field>
         </field>
     </record>
