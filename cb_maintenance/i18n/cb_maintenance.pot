@@ -1,0 +1,310 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cb_maintenance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-12 12:48+0000\n"
+"PO-Revision-Date: 2019-12-12 12:48+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cb_maintenance
+#: code:addons/cb_maintenance/models/maintenance_request.py:59
+#, python-format
+msgid "%s for %s hour(s)"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_maintenance_equipment_category
+msgid "Asset Category"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+msgid "Cancel"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_equipment_category
+msgid "Category"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_close_datetime
+msgid "Close Date"
+msgstr ""
+
+#. module: cb_maintenance
+#: selection:maintenance.stage,state:0
+msgid "Closed"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_company_id
+msgid "Company"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Corrective Requests"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.actions.act_window,name:cb_maintenance.wizard_create_maintenance_request_act_window
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+msgid "Create Maintenance Request"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.menu,name:cb_maintenance.menu_m_request_wizard_create
+msgid "Create Maintenance Requests"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+msgid "Create Request"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Created by me"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_description
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Description"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_maintenance_equipment
+msgid "Equipment"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_follower_id
+msgid "Follower"
+msgstr ""
+
+#. module: cb_maintenance
+#: selection:wizard.create.maintenance.request,priority:0
+msgid "High"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_id
+msgid "ID"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Issue description..."
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_location_id
+msgid "Location"
+msgstr ""
+
+#. module: cb_maintenance
+#: selection:wizard.create.maintenance.request,priority:0
+msgid "Low"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.view_partner_form
+msgid "Maintenance"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_maintenance_request
+#: model:ir.ui.menu,name:cb_maintenance.menu_m_request_label
+msgid "Maintenance Requests"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_maintenance_stage
+msgid "Maintenance Stage"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category_maintenance_team_id
+msgid "Maintenance Team"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category_maintenance_team_id_member_ids
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_maintenance_team_id_member_ids
+msgid "Maintenance Team Id Member"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_res_partner_is_maintenance_technician
+#: model:ir.model.fields,field_description:cb_maintenance.field_res_users_is_maintenance_technician
+msgid "Maintenance Technician"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Managed by me"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_manager_id
+msgid "Manager"
+msgstr ""
+
+#. module: cb_maintenance
+#: selection:maintenance.stage,state:0
+msgid "New"
+msgstr ""
+
+#. module: cb_maintenance
+#: selection:wizard.create.maintenance.request,priority:0
+msgid "Normal"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "On my hands"
+msgstr ""
+
+#. module: cb_maintenance
+#: selection:maintenance.stage,state:0
+msgid "Open"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Preventive Requests"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_priority
+msgid "Priority"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Project Issues"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Request Date"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Schedule Date"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_schedule_info
+msgid "Schedule Info"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Scheduled Overdue"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Scheduled for Today"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Scheduled for the next 7 days"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category_selectable
+msgid "Selectable by users"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Split Request"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_state
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_stage_state
+msgid "State"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_technician_id
+msgid "Technician"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_partner_technician_id
+msgid "Technician Contact"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_name
+msgid "Title"
+msgstr ""
+
+#. module: cb_maintenance
+#: code:addons/cb_maintenance/models/maintenance_request.py:57
+#, python-format
+msgid "Unscheduled"
+msgstr ""
+
+#. module: cb_maintenance
+#: selection:wizard.create.maintenance.request,priority:0
+msgid "Very High"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_wizard_create_maintenance_request
+msgid "wizard.create.maintenance.request"
+msgstr ""
+
