@@ -12,6 +12,7 @@
     "depends": [
         "base_maintenance",
         "base_fontawesome",
+        "hr_maintenance",
         "maintenance_equipment_category_hierarchy",
         "maintenance_plan",
         "maintenance_location",
@@ -21,6 +22,7 @@
         "web_widget_child_selector",
     ],
     "data": [
+        "security/equipment.xml",
         "views/maintenance_equipment.xml",
         "views/maintenance_equipment_category.xml",
         "views/maintenance_request.xml",
