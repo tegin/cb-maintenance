@@ -83,6 +83,15 @@
         <field name="domain">['|', ('is_project', '=', False), ('parent_id', '!=', False)]</field>
     </record>
 
+    <record id="maintenance.hr_equipment_todo_request_action_from_dashboard" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[
+            '|', ('is_project', '=', False), ('parent_id', '!=', False),
+            ('maintenance_team_id', 'child_of', active_id),
+            ('maintenance_type', 'in', context.get('maintenance_type', ['preventive', 'corrective']))]
+        </field>
+    </record>
+
     <record model="ir.ui.menu" id="maintenance_project_menu">
         <field name="name">Maintenance Projects</field>
         <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
