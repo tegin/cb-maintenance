@@ -89,6 +89,7 @@ class TestCbMaintenance(TransactionCase):
         self.assertEqual(
             len(self.request_id.maintenance_team_id_member_ids), 2
         )
+        self.assertEqual(len(self.categ_id.maintenance_team_id_member_ids), 2)
         self.request_id.write(
             {
                 "maintenance_type": "preventive",
@@ -113,6 +114,8 @@ class TestCbMaintenance(TransactionCase):
             self.request_id.schedule_info,
             "01/01/2019 12:00:00 for 0.0 hour(s)",
         )
+        self.request_id.onchange_maintenance_team_id()
+        self.assertFalse(self.request_id.manager_id)
 
         action = self.request_id.split_request()
         original_request = action["context"]["original_request"]

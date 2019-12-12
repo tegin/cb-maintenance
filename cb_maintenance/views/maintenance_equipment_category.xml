@@ -11,6 +11,10 @@
         <field name="arch" type="xml">
             <field name="technician_user_id" position="before">
                 <field name="maintenance_team_id" attrs="{'required': [('parent_id', '=', False)]}"/>
+                <field name="maintenance_team_id_member_ids" invisible="1"/>
+            </field>
+            <field name="technician_user_id" position="attributes">
+                <attribute name="domain">[('id', 'in', maintenance_team_id_member_ids)]</attribute>
             </field>
             <field name="technician_user_id" position="after">
                 <field name="selectable"/>
