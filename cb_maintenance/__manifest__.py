@@ -13,12 +13,12 @@
         "base_maintenance",
         "base_fontawesome",
         "maintenance_equipment_category_hierarchy",
+        "maintenance_equipment_sequence",
         "maintenance_plan",
         "maintenance_location",
         "maintenance_request_sequence",
         "maintenance_request_stage_transition",
         "maintenance_team_hierarchy",
-        "web_widget_child_selector",
     ],
     "data": [
         "views/maintenance_equipment.xml",

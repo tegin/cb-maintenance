@@ -15,8 +15,8 @@
                         <field name="priority" widget="priority"/>
                     </group>
                     <group>
-                        <field name="equipment_category" options="{'no_create': True, 'no_open': True}"/>
-                        <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name'}"/>
+                        <field name="equipment_category" options="{'no_create': True}"/>
+                        <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name', 'no_open': True}"/>
                     </group>
                 </group>
                 <group>
