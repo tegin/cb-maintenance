@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "www.creublanca.es",
-    "depends": ["maintenance"],
+    "depends": ["maintenance", "web_widget_child_selector"],
     "data": [
         "views/maintenance_equipment.xml",
         "security/ir.model.access.csv",
