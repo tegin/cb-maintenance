@@ -95,7 +95,7 @@
     <record model="ir.ui.menu" id="maintenance_project_menu">
         <field name="name">Maintenance Projects</field>
         <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
-        <field name="sequence" eval="20"/>
+        <field name="sequence" eval="15"/>
         <field name="action" ref="maintenance_project_act_window"/>
     </record>
 
