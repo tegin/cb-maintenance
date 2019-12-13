@@ -22,4 +22,21 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="hr_equipment_category_view_form_sequence">
+        <field name="name">maintenance.equipment.category.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment.category</field>
+        <field name="inherit_id" ref="maintenance_equipment_sequence.hr_equipment_category_view_form"/>
+        <field name="arch" type="xml">
+            <field name="sequence_prefix" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="sequence_number_next" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="sequence_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
 </odoo>
