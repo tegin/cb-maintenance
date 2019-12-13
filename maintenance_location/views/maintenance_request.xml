@@ -10,7 +10,7 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
             <field name="owner_user_id" position="after">
-                <field name="location_id" options='{"no_open": True, "no_create": True}'/>
+                <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name'}"/>
             </field>
         </field>
     </record>
@@ -21,7 +21,7 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="location_id"/>
+                <field name="location_id"  filter_domain="[('location_id', 'child_of', raw_value)]"/>
             </field>
         </field>
     </record>

@@ -271,7 +271,7 @@ msgstr "Seleccionable por los usuarios"
 #. module: cb_maintenance
 #: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
 msgid "Split Request"
-msgstr "Dividid Petición"
+msgstr "Dividir Petición"
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_state
