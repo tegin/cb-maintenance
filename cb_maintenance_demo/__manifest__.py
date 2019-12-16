@@ -13,7 +13,6 @@
         "cb_maintenance_migration",
         "cb_maintenance_report",
         "maintenance_equipment_tags",
-        "maintenance_equipment_sequence",
         # "maintenance_knowledge_base",
         "maintenance_equipment_purchase",
         "maintenance_request_purchase",

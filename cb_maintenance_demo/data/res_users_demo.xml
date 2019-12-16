@@ -6,10 +6,12 @@
     <record id="partner_externo_1" model="res.partner">
         <field name="name">Mantenimiento Externo 1</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
     </record>
     <record id="partner_externo_2" model="res.partner">
         <field name="name">Mantenimiento Externo 2</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="is_maintenance_technician" eval="True"/>
     </record>
     <record id="partner_1" model="res.partner">
         <field name="name">Usuario Mantenimiento 1</field>
