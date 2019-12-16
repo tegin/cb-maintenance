@@ -12,6 +12,7 @@
     "depends": [
         "cb_maintenance_migration",
         "cb_maintenance_report",
+        "cb_maintenance_security",
         "maintenance_equipment_tags",
         # "maintenance_knowledge_base",
         "maintenance_equipment_purchase",

@@ -59,4 +59,26 @@
         </field>
     </record>
 
+    <menuitem
+        id="menu_equipment_label"
+        name="Equipment"
+        parent="maintenance.menu_maintenance_title"
+        groups="maintenance.group_equipment_manager"
+        sequence="2"/>
+
+    <menuitem
+        id="maintenance.menu_equipment_form"
+        name="View Equipments"
+        parent="menu_equipment_label"
+        groups="maintenance.group_equipment_manager"
+        sequence="1"/>
+
+    <menuitem
+        id="maintenance_plan.menu_m_plan_form"
+        name="Maintenance Plans"
+        parent="menu_equipment_label"
+        groups="maintenance.group_equipment_manager"
+        sequence="2"
+    />
+
 </odoo>

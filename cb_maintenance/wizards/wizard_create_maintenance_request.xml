@@ -48,6 +48,6 @@
         name="Create Maintenance Requests"
         action="wizard_create_maintenance_request_act_window"
         parent="cb_maintenance.menu_m_request_label"
-        sequence="5"/>
+        sequence="50"/>
 
 </odoo>

@@ -30,7 +30,6 @@
         <field name="name">Usuario Mantenimiento 2</field>
         <field name="company_id" ref="base.main_company"/>
         <field name="is_maintenance_technician" eval="True"/>
-        <field name="notification_type">inbox</field>
         <field name="email">mantenimiento@test.com</field>
     </record>
     <record id="user_man_2" model="res.users">
