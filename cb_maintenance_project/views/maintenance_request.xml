@@ -96,6 +96,7 @@
         <field name="name">Maintenance Projects</field>
         <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
         <field name="sequence" eval="15"/>
+        <field name="groups_id" eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]"/>
         <field name="action" ref="maintenance_project_act_window"/>
     </record>
 
