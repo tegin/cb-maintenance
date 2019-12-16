@@ -12,7 +12,7 @@
             <xpath expr="//div[hasclass('oe_title')]" position="after">
                 <field name="selectable_tags_ids" invisible="1"/>
                 <field name="tag_ids" widget="many2many_tags"
-                       options="{'color_field': 'color', 'no_create_edit': True}"
+                       options="{'color_field': 'color', 'no_edit': True, 'no_create': True}"
                        placeholder="e.g. Computers" domain="['|', ('id', 'in', selectable_tags_ids), ('selectable_team_count', '=', 0)]"
                 />
             </xpath>
