@@ -11,7 +11,8 @@
         <field name="arch" type="xml">
             <button name="archive_equipment_request" position="before">
                 <button string="Mark as Duplicated" name="%(maintenance_request_duplicated.wizard_request_duplicated_act_window)d"
-                        type="action" attrs="{'invisible': ['|', ('duplicated_parent_id', '!=', False), ('is_project', '=', True)]}"/>
+                        type="action" group="maintenance.group_equipment_manager"
+                        attrs="{'invisible': ['|', ('duplicated_parent_id', '!=', False), ('is_project', '=', True)]}"/>
             </button>
             <field name="owner_user_id" position="before">
                 <field name="duplicated_parent_id" attrs="{'invisible': [('duplicated_parent_id', '=', False)]}"/>
