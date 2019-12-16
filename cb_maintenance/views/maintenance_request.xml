@@ -20,7 +20,7 @@
             </xpath>
 
             <button name="archive_equipment_request" position="before">
-                <button string="Split Request" name="split_request"
+                <button string="Split Request" name="split_request" group="maintenance.group_equipment_manager"
                         type="object" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}"/>
             </button>
 
@@ -237,4 +237,13 @@
     <record model="ir.ui.view" id="maintenance_plan.hr_equipment_request_view_form">
         <field name="active" eval="False"/>
     </record>
+
+    <record id="maintenance.maintenance_reporting" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="maintenance.menu_m_dashboard" model="ir.ui.menu">
+        <field eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]" name="groups_id"/>
+    </record>
+
 </odoo>
