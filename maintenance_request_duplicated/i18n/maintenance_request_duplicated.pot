@@ -1,0 +1,115 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* maintenance_request_duplicated
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-17 11:40+0000\n"
+"PO-Revision-Date: 2019-12-17 11:40+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: maintenance_request_duplicated
+#: code:addons/maintenance_request_duplicated/wizards/wizard_request_duplicated.py:21
+#, python-format
+msgid "Active Request not found"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.ui.view,arch_db:maintenance_request_duplicated.wizard_request_duplicated_form_view
+msgid "Cancel"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.ui.view,arch_db:maintenance_request_duplicated.hr_equipment_request_view_form
+msgid "Deduplicate"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_duplicated_request
+#: model:maintenance.stage,name:maintenance_request_duplicated.duplicated_stage
+msgid "Duplicated Request"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_maintenance_request_duplicated_ids
+msgid "Duplicated Requests"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_id
+msgid "ID"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model,name:maintenance_request_duplicated.model_maintenance_request
+msgid "Maintenance Requests"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.actions.act_window,name:maintenance_request_duplicated.wizard_request_duplicated_act_window
+#: model:ir.ui.view,arch_db:maintenance_request_duplicated.wizard_request_duplicated_form_view
+msgid "Mark Request as Duplicated"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.ui.view,arch_db:maintenance_request_duplicated.hr_equipment_request_view_form
+msgid "Mark as Duplicated"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.ui.view,arch_db:maintenance_request_duplicated.wizard_request_duplicated_form_view
+msgid "Mark as duplicated"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_wizard_request_duplicated_original_request
+msgid "Original Request"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model.fields,field_description:maintenance_request_duplicated.field_maintenance_request_duplicated_parent_id
+msgid "Same as"
+msgstr ""
+
+#. module: maintenance_request_duplicated
+#: model:ir.model,name:maintenance_request_duplicated.model_wizard_request_duplicated
+msgid "wizard.request.duplicated"
+msgstr ""
+
