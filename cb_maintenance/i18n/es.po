@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 12:49+0000\n"
-"PO-Revision-Date: 2019-12-12 13:52+0100\n"
+"POT-Creation-Date: 2019-12-17 12:10+0000\n"
+"PO-Revision-Date: 2019-12-17 13:11+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -67,17 +67,12 @@ msgstr "Corrective Requests"
 #: model:ir.actions.act_window,name:cb_maintenance.wizard_create_maintenance_request_act_window
 #: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
 msgid "Create Maintenance Request"
-msgstr "Nueva Petición"
-
-#. module: cb_maintenance
-#: model:ir.ui.menu,name:cb_maintenance.menu_m_request_wizard_create
-msgid "Create Maintenance Requests"
-msgstr "Nueva Petición"
+msgstr "Nueva Petición de Mantenimiento"
 
 #. module: cb_maintenance
 #: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
 msgid "Create Request"
-msgstr "Nueva Petición"
+msgstr "Nueva Petición de Mantenimiento"
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_create_uid
@@ -107,6 +102,7 @@ msgstr "Nombre mostrado"
 
 #. module: cb_maintenance
 #: model:ir.model,name:cb_maintenance.model_maintenance_equipment
+#: model:ir.ui.menu,name:cb_maintenance.menu_equipment_label
 msgid "Equipment"
 msgstr "Equipamiento"
 
@@ -114,6 +110,11 @@ msgstr "Equipamiento"
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_follower_id
 msgid "Follower"
 msgstr "Seguidor"
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_view_search
+msgid "Has Maintenance Plans"
+msgstr "Tiene Mantenimiento"
 
 #. module: cb_maintenance
 #: selection:wizard.create.maintenance.request,priority:0
@@ -162,7 +163,6 @@ msgstr "Mantenimiento"
 
 #. module: cb_maintenance
 #: model:ir.model,name:cb_maintenance.model_maintenance_request
-#: model:ir.ui.menu,name:cb_maintenance.menu_m_request_label
 msgid "Maintenance Requests"
 msgstr "Peticiones de mantenimiento"
 
@@ -202,6 +202,11 @@ msgstr "Gestor"
 #: selection:maintenance.stage,state:0
 msgid "New"
 msgstr "Nueva"
+
+#. module: cb_maintenance
+#: model:ir.ui.menu,name:cb_maintenance.menu_m_request_wizard_create
+msgid "New Maintenance Requests"
+msgstr "Nueva Petición"
 
 #. module: cb_maintenance
 #: selection:wizard.create.maintenance.request,priority:0
