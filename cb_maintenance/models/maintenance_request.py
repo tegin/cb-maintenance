@@ -10,9 +10,7 @@ class MaintenanceRequest(models.Model):
 
     _inherit = "maintenance.request"
 
-    maintenance_team_id = fields.Many2one(
-        readonly=True, track_visibility="onchange"
-    )
+    maintenance_team_id = fields.Many2one(track_visibility="onchange")
     owner_user_id = fields.Many2one(readonly=True)
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
@@ -132,6 +130,7 @@ class MaintenanceRequest(models.Model):
             "default_location_id": self.location_id.id,
             "default_description": self.description,
             "default_name": self.name,
+            "default_priority": self.priority,
             "original_request": self.id,
         }
         return action
