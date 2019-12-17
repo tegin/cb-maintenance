@@ -11,7 +11,9 @@
         <field name="arch" type="xml">
             <button name="archive_equipment_request" position="before">
                 <button string="Link to PO" name="%(maintenance_request_purchase.wizard_link_maintenance_po_act_window)d"
-                        type="action" attrs="{'invisible': [('archive', '=', True)]}" context="{'default_maintenance_request_id': active_id}"/>
+                        type="action" groups="maintenance.group_equipment_manager"
+                        attrs="{'invisible': [('archive', '=', True)]}"
+                        context="{'default_maintenance_request_id': active_id}"/>
             </button>
         </field>
     </record>

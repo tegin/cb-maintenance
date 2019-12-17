@@ -45,9 +45,9 @@
 
     <menuitem
         id="menu_m_request_wizard_create"
-        name="Create Maintenance Requests"
+        name="New Maintenance Requests"
         action="wizard_create_maintenance_request_act_window"
-        parent="cb_maintenance.menu_m_request_label"
-        sequence="5"/>
+        parent="maintenance.menu_maintenance_title"
+        sequence="4"/>
 
 </odoo>

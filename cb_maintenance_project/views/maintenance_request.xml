@@ -30,6 +30,12 @@
             <field name="maintenance_type" position="attributes">
                 <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
             </field>
+            <field name="technician_id" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
+            </field>
+            <field name="owner_user_id" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
+            </field>
             <xpath expr="//field[@name='schedule_date']/.." position="attributes">
                 <attribute name="attrs">{'invisible': [('is_project', '=', True), ('parent_id', '=', False)]}</attribute>
             </xpath>
@@ -96,6 +102,7 @@
         <field name="name">Maintenance Projects</field>
         <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
         <field name="sequence" eval="15"/>
+        <field name="groups_id" eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]"/>
         <field name="action" ref="maintenance_project_act_window"/>
     </record>
 

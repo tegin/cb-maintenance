@@ -95,7 +95,7 @@ class MaintenanceRequest(models.Model):
     def onchange_equipment_id(self):
         if self.env.context.get("use_old_onchange_equipment", False):
             return super().onchange_equipment_id()
-        if self.equipment_id:
+        if self.equipment_id and self.equipment_id.category_id:
             self.category_id = self.equipment_id.category_id
 
     @api.multi
