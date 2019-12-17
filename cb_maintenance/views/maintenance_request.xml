@@ -20,7 +20,7 @@
             </xpath>
 
             <button name="archive_equipment_request" position="before">
-                <button string="Split Request" name="split_request" group="maintenance.group_equipment_manager"
+                <button string="Split Request" name="split_request" groups="maintenance.group_equipment_manager"
                         type="object" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}"/>
             </button>
 
@@ -217,17 +217,9 @@
         <field name="context">{'search_default_todo': 1}</field>
     </record>
 
-    <menuitem
-        id="menu_m_request_label"
-        name="Maintenance Requests"
-        parent="maintenance.menu_m_request"
-        groups="maintenance.group_equipment_manager,base.group_user"
-        sequence="1"/>
-
     <record model="ir.ui.menu" id="maintenance.menu_m_request_form">
-        <field name="name">View Maintenance Requests</field>
-        <field name="parent_id" ref="menu_m_request_label"/>
-        <field name="sequence" eval="10"/>
+        <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
+        <field name="sequence" eval="2"/>
     </record>
 
     <record model="ir.ui.menu" id="maintenance.menu_m_request_calendar">
