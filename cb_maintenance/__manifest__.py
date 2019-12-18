@@ -10,8 +10,8 @@
     "author": "Creu Blanca",
     "website": "www.creublanca.es",
     "depends": [
-        "base_maintenance",
         "base_fontawesome",
+        "base_maintenance",
         "maintenance_equipment_category_hierarchy",
         "maintenance_equipment_sequence",
         "maintenance_plan",

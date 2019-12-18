@@ -10,7 +10,6 @@ class MaintenanceRequest(models.Model):
 
     _inherit = "maintenance.request"
 
-    maintenance_team_id = fields.Many2one(track_visibility="onchange")
     owner_user_id = fields.Many2one(readonly=True)
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
@@ -47,6 +46,8 @@ class MaintenanceRequest(models.Model):
     )
 
     stage_id = fields.Many2one(readonly=True)
+
+    # link_ocs = fields.Char(string="Link OCS") # TODO: Not sure if necessary
 
     @api.depends("schedule_date", "duration")
     def _compute_schedule_info(self):
@@ -86,8 +87,8 @@ class MaintenanceRequest(models.Model):
 
     @api.onchange("maintenance_team_id")
     def onchange_maintenance_team_id(self):
-        for record in self:
-            record.manager_id = False
+        for record in self.filtered("maintenance_team_id"):
+            record.manager_id = record.maintenance_team_id.user_id
 
     @api.onchange("equipment_id")
     def onchange_equipment_id(self):
@@ -97,13 +98,26 @@ class MaintenanceRequest(models.Model):
             self.category_id = self.equipment_id.category_id
 
     @api.multi
+    def post_team_change_message(self, team_id):
+        team = self.env["maintenance.team"].browse(team_id)
+        for rec in self:
+            rec.message_post(
+                message_type="notification",
+                subtype="mail.mt_comment",
+                body=_("Request reassigned to %s.") % team.name,
+            )
+
+    @api.multi
     def write(self, vals):
         if "stage_id" in vals:
             stage = self.env["maintenance.stage"].browse(vals["stage_id"])
             vals["close_datetime"] = (
                 fields.Datetime.now() if stage.done else False
             )
-        return super().write(vals)
+        res = super().write(vals)
+        if "maintenance_team_id" in vals:
+            self.post_team_change_message(vals["maintenance_team_id"])
+        return res
 
     @api.constrains("technician_id", "manager_id")
     def _check_follower(self):
