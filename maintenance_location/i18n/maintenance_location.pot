@@ -17,7 +17,7 @@ msgstr ""
 
 #. module: maintenance_location
 #: model:ir.ui.view,arch_db:maintenance_location.maintenance_location_form_view
-msgid "Category name"
+msgid "Location name"
 msgstr ""
 
 #. module: maintenance_location
