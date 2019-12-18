@@ -38,6 +38,7 @@ class TestCbMaintenance(TransactionCase):
         self.team_id = self.env["maintenance.team"].create(
             {
                 "name": "Team",
+                "user_id": self.user_id_2.id,
                 "member_ids": [(6, 0, [self.user_id.id, self.user_id_2.id])],
             }
         )
@@ -71,7 +72,6 @@ class TestCbMaintenance(TransactionCase):
         self.request_id = self.env["maintenance.request"].create(
             {
                 "name": "Project",
-                "maintenance_team_id": self.team_id.id,
                 "stage_id": self.stage_id.id,
                 "category_id": self.categ_id.id,
                 "manager_id": self.user_id.id,
@@ -82,6 +82,7 @@ class TestCbMaintenance(TransactionCase):
         )
 
     def test_cb_maintenance(self):
+        self.request_id.write({"maintenance_team_id": self.team_id.id})
         self.assertFalse(self.stage_id.done)
         self.assertTrue(self.request_id.technician_user_id)
         self.assertEqual(self.request_id.color, 1)
@@ -115,7 +116,7 @@ class TestCbMaintenance(TransactionCase):
             "01/01/2019 12:00:00 for 0.0 hour(s)",
         )
         self.request_id.onchange_maintenance_team_id()
-        self.assertFalse(self.request_id.manager_id)
+        self.assertEqual(self.request_id.manager_id.id, self.user_id_2.id)
 
         action = self.request_id.split_request()
         original_request = action["context"]["original_request"]

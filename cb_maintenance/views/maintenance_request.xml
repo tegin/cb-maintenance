@@ -103,6 +103,12 @@
                 </div>
             </xpath>
 
+            <!--
+            <field name="remote_id" position="after">
+                <field name="link_ocs" widget="url"/>
+            </field>
+            -->
+
         </field>
     </record>
 
