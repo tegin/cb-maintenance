@@ -44,8 +44,8 @@ class ResRemote(models.Model):
 
         # Updating all the remotes that had not this id
         self.search(
-            [("id", "not in", remotes.ids), ("ocs_id", "!=", False)]
-        ).write({"ocs_id": False})
+            [("id", "not in", remotes.ids), ("ocs_id", "!=", 0)]
+        ).write({"ocs_id": 0})
         return True
 
     def _fill_ocs_computer(self, url, computer_id):
