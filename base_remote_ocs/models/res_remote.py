@@ -41,7 +41,11 @@ class ResRemote(models.Model):
         remotes = self.browse()
         for [computer_id] in computers:
             remotes |= self._fill_ocs_computer(url, computer_id)
-        self.search([("id", "not in", remotes.ids)]).write({"ocs_id": False})
+
+        # Updating all the remotes that had not this id
+        self.search(
+            [("id", "not in", remotes.ids), ("ocs_id", "!=", False)]
+        ).write({"ocs_id": False})
         return True
 
     def _fill_ocs_computer(self, url, computer_id):
@@ -53,6 +57,6 @@ class ResRemote(models.Model):
         hardware = computer_data[str(computer_id)]["hardware"]
         computer_name = "%s.%s" % (hardware["NAME"], hardware["WORKGROUP"])
         remote = self.search([("name", "=ilike", computer_name)], limit=1)
-        if remote:
+        if remote and (not remote.ocs_id or remote.ocs_id != computer_id):
             remote.write({"ocs_id": computer_id})
         return remote
