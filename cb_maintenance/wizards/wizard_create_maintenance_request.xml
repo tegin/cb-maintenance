@@ -9,19 +9,25 @@
         <field name="model">wizard.create.maintenance.request</field>
         <field name="arch" type="xml">
             <form string="Create Maintenance Request">
-                <group>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Title..."/>
+                        </h1>
+                    </div>
                     <group>
-                        <field name="name"/>
-                        <field name="priority" widget="priority"/>
+                        <group>
+                            <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name', 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="equipment_category" widget="radio" options="{'no_create': True}"/>
+                            <field name="priority" widget="priority"/>
+                        </group>
                     </group>
                     <group>
-                        <field name="equipment_category" options="{'no_create': True}"/>
-                        <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name', 'no_open': True}"/>
+                        <field name="description"/>
                     </group>
-                </group>
-                <group>
-                    <field name="description"/>
-                </group>
+                </sheet>
                 <footer>
                     <button name="create_request"
                             string="Create Request"

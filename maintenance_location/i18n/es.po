@@ -19,8 +19,8 @@ msgstr ""
 
 #. module: maintenance_location
 #: model:ir.ui.view,arch_db:maintenance_location.maintenance_location_form_view
-msgid "Category name"
-msgstr "Nombre de categoría"
+msgid "Location name"
+msgstr "Nombre de la ubicación"
 
 #. module: maintenance_location
 #: model:ir.model.fields,field_description:maintenance_location.field_maintenance_location_child_id
