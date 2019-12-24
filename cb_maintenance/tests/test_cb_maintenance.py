@@ -67,7 +67,11 @@ class TestCbMaintenance(TransactionCase):
             {"name": "Initial Stage", "state": "closed"}
         )
         self.equipment_id = self.env["maintenance.equipment"].create(
-            {"name": "Equipment", "category_id": self.categ_2_id.id}
+            {
+                "name": "Equipment",
+                "category_id": self.categ_2_id.id,
+                "code": "MQ01",
+            }
         )
         self.request_id = self.env["maintenance.request"].create(
             {
@@ -106,6 +110,13 @@ class TestCbMaintenance(TransactionCase):
             use_old_onchange_equipment=True
         ).onchange_equipment_id()
         self.request_id.onchange_equipment_id()
+
+        name = self.equipment_id.with_context(
+            use_old_name_equipment=True
+        ).name_get()
+        self.assertEqual(name[0][1], "Equipment")
+        name = self.equipment_id.name_get()
+        self.assertEqual(name[0][1], "[MQ01] Equipment")
 
         self.assertEqual(self.request_id.category_id, self.categ_2_id)
         self.assertEqual(self.request_id.follower_id, self.user_id_2)
