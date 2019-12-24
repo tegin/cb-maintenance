@@ -133,9 +133,11 @@
             <tree position="attributes">
                 <attribute name="create">false</attribute>
                 <attribute name="delete">false</attribute>
+                <attribute name="colors">background_color_field: tree_color</attribute>
             </tree>
             <field name="name" position="after">
                 <field name="maintenance_type" invisible="1"/>
+                <field name="tree_color" invisible="1"/>
             </field>
         </field>
     </record>
@@ -215,12 +217,20 @@
                          ('schedule_date', '&lt;', (context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"
                 />
             </filter>
+            <xpath expr="//group/filter[3]" position="attributes">
+                <attribute name="name">group_stages</attribute>
+            </xpath>
         </field>
     </record>
 
     <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
         <field name="view_mode">tree,kanban,form</field>
-        <field name="context">{'search_default_todo': 1}</field>
+        <field name="context">
+            {
+                'search_default_todo': 1,
+                'search_default_group_stages': 1,
+            }
+        </field>
     </record>
 
     <record model="ir.ui.menu" id="maintenance.menu_m_request_form">
