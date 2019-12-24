@@ -7,7 +7,6 @@ from odoo import api, fields, models
 class MaintenanceEquipment(models.Model):
 
     _inherit = "maintenance.equipment"
-    _rec_name = "complete_name"
 
     company_id = fields.Many2one("res.company", readonly=True)
 
