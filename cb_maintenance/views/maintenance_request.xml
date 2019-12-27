@@ -135,6 +135,9 @@
                 <attribute name="delete">false</attribute>
                 <attribute name="colors">background_color_field: tree_color</attribute>
             </tree>
+            <field name="name" position="before">
+                <field name="create_date"/>
+            </field>
             <field name="name" position="after">
                 <field name="maintenance_type" invisible="1"/>
                 <field name="tree_color" invisible="1"/>
