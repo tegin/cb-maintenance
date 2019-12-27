@@ -21,6 +21,9 @@
             <field name="partner_ref" position="after">
                 <field name="partner_technician_id"/>
             </field>
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <field name="image" widget="image" class="oe_avatar" options='{"preview_image": "image_medium"}'/>
+            </xpath>
         </field>
     </record>
 
@@ -37,6 +40,12 @@
             </xpath>
             <xpath expr="//img[hasclass('oe_kanban_avatar')]" position="attributes">
                 <attribute name="t-if">1==0</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="after">
+                <div class="o_kanban_image">
+                    <field name="id" t-if="1==0"/>
+                    <img t-att-src="kanban_image('maintenance.equipment', 'image_medium', record.id.raw_value)"/>
+                </div>
             </xpath>
         </field>
     </record>
