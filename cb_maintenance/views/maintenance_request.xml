@@ -225,10 +225,23 @@
 
     <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
         <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" eval="False"/>
         <field name="context">
             {
                 'search_default_todo': 1,
                 'search_default_group_stages': 1,
+            }
+        </field>
+    </record>
+
+    <record id="maintenance.hr_equipment_todo_request_action_from_dashboard" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="context">
+            {
+                'search_default_todo': 1,
+                'search_default_group_stages': 1,
+                'default_maintenance_team_id': active_id,
             }
         </field>
     </record>
