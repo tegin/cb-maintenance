@@ -10,7 +10,6 @@ class MaintenanceRequest(models.Model):
     _parent_name = "parent_id"
     _parent_store = True
     _parent_order = "name"
-    _order = "parent_left"
 
     is_project = fields.Boolean()
 
