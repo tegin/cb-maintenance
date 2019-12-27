@@ -41,6 +41,7 @@ class MaintenanceRequest(models.Model):
         track_visibility="onchange",
     )
     color = fields.Integer(compute="_compute_color", store=True)
+    tree_color = fields.Char(compute="_compute_color", store=True)
     state = fields.Selection(
         selection=REQUEST_STATES, related="stage_id.state", readonly=True
     )
@@ -65,7 +66,12 @@ class MaintenanceRequest(models.Model):
     @api.depends("maintenance_type")
     def _compute_color(self):
         for record in self:
-            record.color = 10 if self.maintenance_type == "preventive" else 1
+            record.color = 10 if record.maintenance_type == "preventive" else 1
+            record.tree_color = (
+                "#e2ffe6"
+                if (record.maintenance_type == "preventive")
+                else "#ffefef"
+            )
 
     @api.depends("technician_id")
     def _compute_technician_user_id(self):
