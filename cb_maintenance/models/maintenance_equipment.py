@@ -45,5 +45,5 @@ class MaintenanceEquipment(models.Model):
 
     @api.depends("image")
     def _compute_image_medium(self):
-        for record in self.filtered("image"):
+        for record in self:
             record.image_medium = tools.image_resize_image_medium(record.image)

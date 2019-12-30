@@ -58,13 +58,13 @@ class MaintenanceRequest(models.Model):
                 record.schedule_info = _("Unscheduled")
             else:
                 tz_name = self.env.user.tz
-                schedule_date = (
-                    fields.Datetime.from_string(record.schedule_date)
-                    .replace(tzinfo=tz.tzutc())
-                    .astimezone(tz.gettz(tz_name))
-                )
+                sd = fields.Datetime.from_string(record.schedule_date)
+                if not self.env.context.get("no_tz", False):
+                    sd = sd.replace(tzinfo=tz.tzutc()).astimezone(
+                        tz.gettz(tz_name)
+                    )
                 record.schedule_info = _("%s for %s hour(s)") % (
-                    schedule_date.strftime("%d/%m/%Y %H:%M:%S"),
+                    sd.strftime("%d/%m/%Y %H:%M:%S"),
                     record.duration,
                 )
 
