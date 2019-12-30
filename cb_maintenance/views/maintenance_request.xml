@@ -155,6 +155,12 @@
             <tree position="attributes">
                 <attribute name="create">true</attribute>
             </tree>
+            <field name="technician_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="technician_user_id" position="after">
+                 <field name="technician_id"/>
+            </field>
         </field>
     </record>
 
@@ -192,6 +198,19 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="maintenance_request_calendar_view">
+        <field name="name">maintenance.request.calendar (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="priority" eval="2"/>
+        <field name="arch" type="xml">
+            <calendar string="Calendar View" date_start="schedule_date" mode="month" date_delay="duration" color="maintenance_type">
+                <field name="name"/>
+                <field name="owner_user_id"/>
+                <field name="maintenance_team_id"/>
+            </calendar>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="hr_equipment_request_view_search">
         <field name="name">maintenance.request.kanban (in cb_maintenance for manager)</field>
         <field name="model">maintenance.request</field>
@@ -214,7 +233,6 @@
             <filter name="unscheduled" position="before">
                 <filter name="preventive" string="Preventive Requests" domain="[('maintenance_type', '=', 'preventive')]"/>
                 <filter name="corrective" string="Corrective Requests" domain="[('maintenance_type', '=', 'corrective')]"/>
-                <filter name="project" string="Project Issues" domain="[('maintenance_type', '=', 'project')]"/>
                 <separator/>
                 <filter name="scheduled_past" string="Scheduled Overdue" domain="[('schedule_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
                 <filter name="scheduled_today" string="Scheduled for Today" domain="[('schedule_date', '=', context_today().strftime('%Y-%m-%d'))]"/>
@@ -230,7 +248,7 @@
     </record>
 
     <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">tree,kanban,calendar,form</field>
         <field name="view_id" eval="False"/>
         <field name="context">
             {
