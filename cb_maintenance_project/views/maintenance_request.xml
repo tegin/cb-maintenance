@@ -76,6 +76,17 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="hr_equipment_request_view_search">
+        <field name="name">maintenance.request.form (in maintenance_equipment_purchase)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="cb_maintenance.hr_equipment_request_view_search"/>
+        <field name="arch" type="xml">
+            <filter name="corrective">
+                <filter name="project" string="Project Issues" domain="[('is_project', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+
     <record model="ir.actions.act_window" id="maintenance_project_act_window">
         <field name="name">Maintenance Project</field>
         <field name="type">ir.actions.act_window</field>
