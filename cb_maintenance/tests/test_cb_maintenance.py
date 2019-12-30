@@ -82,6 +82,7 @@ class TestCbMaintenance(TransactionCase):
                 "follower_id": self.user_id.id,
                 "maintenance_type": "corrective",
                 "technician_id": self.technician_1.id,
+                "schedule_date": "2019-01-01 10:00:00",
             }
         )
 
@@ -90,12 +91,13 @@ class TestCbMaintenance(TransactionCase):
         self.assertFalse(self.stage_id.done)
         self.assertTrue(self.request_id.technician_user_id)
         self.assertEqual(self.request_id.color, 1)
+        self.request_id.write({"schedule_date": False})
         self.assertEqual(self.request_id.schedule_info, "Unscheduled")
         self.assertEqual(
             len(self.request_id.maintenance_team_id_member_ids), 2
         )
         self.assertEqual(len(self.categ_id.maintenance_team_id_member_ids), 2)
-        self.request_id.write(
+        self.request_id.with_context(no_tz=True).write(
             {
                 "maintenance_type": "preventive",
                 "schedule_date": "2019-01-01 12:00:00",
