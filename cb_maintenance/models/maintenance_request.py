@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models, _
+from dateutil import tz
 
 REQUEST_STATES = [("new", "New"), ("open", "Open"), ("closed", "Closed")]
 
@@ -56,10 +57,14 @@ class MaintenanceRequest(models.Model):
             if not record.schedule_date:
                 record.schedule_info = _("Unscheduled")
             else:
+                tz_name = self.env.user.tz
+                schedule_date = (
+                    fields.Datetime.from_string(record.schedule_date)
+                    .replace(tzinfo=tz.tzutc())
+                    .astimezone(tz.gettz(tz_name))
+                )
                 record.schedule_info = _("%s for %s hour(s)") % (
-                    fields.Datetime.from_string(record.schedule_date).strftime(
-                        "%d/%m/%Y %H:%M:%S"
-                    ),
+                    schedule_date.strftime("%d/%m/%Y %H:%M:%S"),
                     record.duration,
                 )
 
