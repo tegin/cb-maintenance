@@ -87,6 +87,10 @@ class TestCbMaintenance(TransactionCase):
         )
 
     def test_cb_maintenance(self):
+        res = self.env["maintenance.equipment"].name_search(
+            self.equipment_id.code
+        )
+        self.assertTrue(res)
         self.request_id.write({"maintenance_team_id": self.team_id.id})
         self.assertFalse(self.stage_id.done)
         self.assertTrue(self.request_id.technician_user_id)

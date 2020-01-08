@@ -22,6 +22,12 @@
                 <field name="partner_technician_id"/>
             </field>
             <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="code" class="oe_edit_only"/>
+                        <h3><field name="code"/></h3>
+                    </div>
+                </div>
                 <field name="image" widget="image" class="oe_avatar" options='{"preview_image": "image_medium"}'/>
             </xpath>
         </field>
@@ -41,6 +47,9 @@
             <xpath expr="//img[hasclass('oe_kanban_avatar')]" position="attributes">
                 <attribute name="t-if">1==0</attribute>
             </xpath>
+            <xpath expr="//field[@name='name']/../.." position="before">
+                <strong><field name="code" nolabel="1" attrs="{'invisible': [('code', '=', '/')]}"/></strong>
+            </xpath>
             <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="after">
                 <div class="o_kanban_image">
                     <field name="id" t-if="1==0"/>
@@ -51,7 +60,7 @@
     </record>
 
     <record model="ir.ui.view" id="hr_equipment_view_tree">
-        <field name="name">maintenance.equipment.form (in cb_maintenance)</field>
+        <field name="name">maintenance.equipment.tree (in cb_maintenance)</field>
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_tree"/>
         <field name="arch" type="xml">
@@ -61,14 +70,20 @@
             <field name="owner_user_id" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
+            <field name="name" position="before">
+                <field name="code"/>
+            </field>
         </field>
     </record>
 
     <record model="ir.ui.view" id="hr_equipment_view_search">
-        <field name="name">maintenance.equipment.form (in cb_maintenance)</field>
+        <field name="name">maintenance.equipment.search (in cb_maintenance)</field>
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_search"/>
         <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="code"/>
+            </field>
             <filter name="assigned" position="attributes">
                 <attribute name="invisible">1</attribute>
             </filter>
