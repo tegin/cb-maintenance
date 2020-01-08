@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="1">
+    <record id="seq_maintenance_equipment" model="ir.sequence">
+        <field name="name">Maintenance Equipment Sequence</field>
+        <field name="code">maintenance.equipment.sequence</field>
+        <field eval="4" name="padding"/>
+        <field name="prefix">MQ-</field>
+    </record>
+</odoo>
