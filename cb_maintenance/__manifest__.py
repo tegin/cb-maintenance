@@ -13,7 +13,7 @@
         "base_fontawesome",
         "base_maintenance",
         "maintenance_equipment_category_hierarchy",
-        "maintenance_equipment_sequence",
+        # "maintenance_equipment_sequence",
         "maintenance_plan",
         "maintenance_location",
         "maintenance_request_sequence",
@@ -21,6 +21,7 @@
         "maintenance_team_hierarchy",
     ],
     "data": [
+        "data/equipment_sequence_data.xml",
         "views/maintenance_equipment.xml",
         "views/maintenance_equipment_category.xml",
         "views/maintenance_request.xml",

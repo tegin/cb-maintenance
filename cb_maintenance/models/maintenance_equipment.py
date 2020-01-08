@@ -34,12 +34,19 @@ class MaintenanceEquipment(models.Model):
         store=True,
     )
 
+    code = fields.Char(help="Equipment Code", readonly=True, default="/")
+
     @api.multi
     def name_get(self):
         if self.env.context.get("use_old_name_equipment", False):
             return super().name_get()
         return [
-            (me.id, "[%s] %s" % (me.code, me.name) if me.code else me.name)
+            (
+                me.id,
+                "[%s] %s" % (me.code, me.name)
+                if (me.code != "/")
+                else me.name,
+            )
             for me in self
         ]
 
@@ -47,3 +54,29 @@ class MaintenanceEquipment(models.Model):
     def _compute_image_medium(self):
         for record in self:
             record.image_medium = tools.image_resize_image_medium(record.image)
+
+    @api.model
+    def create(self, vals):
+        if vals.get("code", "/") == "/":
+            code = (
+                self.env["ir.sequence"].next_by_code(
+                    "maintenance.equipment.sequence"
+                )
+                or "/"
+            )
+            vals.update({"code": code})
+        return super().create(vals)
+
+    @api.model
+    def name_search(self, name="", args=None, operator="ilike", limit=100):
+        # Make a search with default criteria
+        names1 = super().name_search(
+            name=name, args=args, operator=operator, limit=limit
+        )
+        # Make the other search
+        names2 = []
+        if name:
+            domain = [("code", "=ilike", name + "%")]
+            names2 = self.search(domain, limit=limit).name_get()
+        # Merge both results
+        return list(set(names1) | set(names2))[:limit]
