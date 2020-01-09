@@ -18,6 +18,7 @@
             </field>
             <field name="technician_user_id" position="after">
                 <field name="selectable"/>
+                <field name="requires_equipment"/>
             </field>
         </field>
     </record>
