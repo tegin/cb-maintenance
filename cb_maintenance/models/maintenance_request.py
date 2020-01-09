@@ -49,6 +49,10 @@ class MaintenanceRequest(models.Model):
 
     stage_id = fields.Many2one(readonly=True)
 
+    original_categ_id = fields.Many2one(
+        comodel_name="maintenance.equipment.category"
+    )
+
     # link_ocs = fields.Char(string="Link OCS") # TODO: Not sure if necessary
 
     @api.depends("schedule_date", "duration")

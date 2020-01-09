@@ -10,6 +10,7 @@ class MaintenanceEquipmentCategory(models.Model):
 
     maintenance_team_id = fields.Many2one("maintenance.team")
     selectable = fields.Boolean(string="Selectable by users")
+    requires_equipment = fields.Boolean(string="Requires Equipment")
 
     maintenance_team_id_member_ids = fields.Many2many(
         "res.users",
