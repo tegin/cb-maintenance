@@ -47,6 +47,7 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
                 "location_id": self.location_id.id,
                 "equipment_id": equipment,
                 "category_id": self.equipment_category.id,
+                "original_categ_id": self.equipment_category.id,
                 "manager_id": (
                     self.equipment_category.technician_user_id.id or False
                 ),
