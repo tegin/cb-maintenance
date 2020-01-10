@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class MaintenanceEquipmentCategory(models.Model):
 
     _inherit = "maintenance.equipment.category"
+    _order = "sequence, id"
 
     maintenance_team_id = fields.Many2one("maintenance.team")
     selectable = fields.Boolean(string="Selectable by users")
@@ -17,6 +18,7 @@ class MaintenanceEquipmentCategory(models.Model):
         relation="selectable_maintenance_members",
         compute="_compute_maintenance_team_id_member_ids",
     )
+    sequence = fields.Integer(string="Sequence", default=10)
 
     @api.depends("maintenance_team_id")
     def _compute_maintenance_team_id_member_ids(self):

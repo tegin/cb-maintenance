@@ -23,4 +23,15 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="hr_equipment_category_view_tree">
+        <field name="name">maintenance.equipment.category.tree (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment.category</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_category_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="sequence" widget="handle"/>
+            </field>
+        </field>
+    </record>
+
 </odoo>
