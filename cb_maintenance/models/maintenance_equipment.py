@@ -34,7 +34,9 @@ class MaintenanceEquipment(models.Model):
         store=True,
     )
 
-    code = fields.Char(help="Equipment Code", readonly=True, default="/")
+    code = fields.Char(
+        help="Equipment Code", readonly=True, default="/", copy=False
+    )
 
     @api.multi
     def name_get(self):
