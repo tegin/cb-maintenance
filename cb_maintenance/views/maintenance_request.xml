@@ -142,6 +142,13 @@
                 <field name="maintenance_type" invisible="1"/>
                 <field name="tree_color" invisible="1"/>
             </field>
+            <field name="technician_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="technician_user_id" position="after">
+                 <field name="manager_id"/>
+                 <field name="technician_id" groups="maintenance.group_equipment_manager"/>
+            </field>
         </field>
     </record>
 
@@ -155,12 +162,6 @@
             <tree position="attributes">
                 <attribute name="create">true</attribute>
             </tree>
-            <field name="technician_user_id" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <field name="technician_user_id" position="after">
-                 <field name="technician_id"/>
-            </field>
         </field>
     </record>
 
@@ -216,6 +217,13 @@
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
         <field name="arch" type="xml">
+            <field name="technician_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="technician_user_id" position="after">
+                 <field name="manager_id"/>
+                 <field name="technician_id"/>
+            </field>
             <filter name="my_requests" position="attributes">
                 <attribute name="domain">[('follower_id', '=', uid)]</attribute>
                 <attribute name="string">On my hands</attribute>
