@@ -163,3 +163,9 @@ class MaintenanceRequest(models.Model):
             "original_request": self.id,
         }
         return action
+
+    @api.multi
+    def _set_maintenance_stage(self, stage_id):
+        res = super()._set_maintenance_stage(stage_id)
+        # TODO: Execute stage function
+        return res
