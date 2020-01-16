@@ -10,13 +10,19 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
 
     name = fields.Char(string="Title", required=True)
     description = fields.Text()
+    attachment_ids = fields.Many2many(
+        "ir.attachment",
+        "create_request_ir_attachments_rel",
+        "wizard_id",
+        "attachment_id",
+        "Attachments",
+    )
 
     priority = fields.Selection(
         [("0", "Normal"), ("1", "Low"), ("2", "High"), ("3", "Very High")],
         string="Priority",
         default="0",
     )
-
     equipment_category = fields.Many2one(
         comodel_name="maintenance.equipment.category",
         string="Category",
@@ -26,9 +32,7 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
         ],
         required=True,
     )
-
     location_id = fields.Many2one("maintenance.location", required=True)
-
     requires_equipment = fields.Boolean(
         related="equipment_category.requires_equipment"
     )
@@ -64,6 +68,9 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
                 values={"self": request, "origin": original_request},
                 subtype_id=self.env.ref("mail.mt_note").id,
             )
+        self.attachment_ids.write(
+            {"res_model": "maintenance.request", "res_id": request.id}
+        )
         action = {
             "type": "ir.actions.act_window",
             "name": "Maintenance Request",
