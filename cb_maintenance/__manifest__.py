@@ -12,6 +12,7 @@
     "depends": [
         "base_fontawesome",
         "base_maintenance",
+        "document",
         "maintenance_equipment_category_hierarchy",
         # "maintenance_equipment_sequence",
         "maintenance_plan",
