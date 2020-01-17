@@ -10,8 +10,8 @@ class MaintenanceStage(models.Model):
     _inherit = "maintenance.stage"
 
     state = fields.Selection(selection=REQUEST_STATES)
-
     done = fields.Boolean(compute="_compute_stage_done", store=True)
+    function = fields.Char()
 
     @api.depends("state")
     def _compute_stage_done(self):

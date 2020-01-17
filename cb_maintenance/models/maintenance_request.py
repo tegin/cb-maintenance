@@ -163,3 +163,12 @@ class MaintenanceRequest(models.Model):
             "original_request": self.id,
         }
         return action
+
+    @api.multi
+    def _set_maintenance_stage(self, stage_id):
+        res = super()._set_maintenance_stage(stage_id)
+        f = self[0].stage_id.function
+        if f and hasattr(self, f):
+            # Should we check if f is callable?
+            getattr(self, f)()
+        return res
