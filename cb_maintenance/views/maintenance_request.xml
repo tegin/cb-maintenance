@@ -223,6 +223,7 @@
             <field name="technician_user_id" position="after">
                  <field name="manager_id"/>
                  <field name="technician_id"/>
+                 <field name="message_ids" string="Chatter" filter_domain="[('message_ids.body','ilike',self)]"/>
             </field>
             <field name="name" position="after">
                 <field name="description"/>
