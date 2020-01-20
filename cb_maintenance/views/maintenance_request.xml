@@ -224,6 +224,9 @@
                  <field name="manager_id"/>
                  <field name="technician_id"/>
             </field>
+            <field name="name" position="after">
+                <field name="description"/>
+            </field>
             <filter name="my_requests" position="attributes">
                 <attribute name="domain">[('follower_id', '=', uid)]</attribute>
                 <attribute name="string">On my hands</attribute>
