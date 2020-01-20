@@ -11,7 +11,6 @@ class MaintenanceRequest(models.Model):
 
     _inherit = "maintenance.request"
 
-    owner_user_id = fields.Many2one(readonly=True)
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
         readonly=False, related=False, track_visibility="onchange"
@@ -41,6 +40,7 @@ class MaintenanceRequest(models.Model):
         default=False,
         track_visibility="onchange",
     )
+    kanban_state = fields.Selection(track_visibility=False)
     color = fields.Integer(compute="_compute_color", store=True)
     tree_color = fields.Char(compute="_compute_color", store=True)
     state = fields.Selection(
