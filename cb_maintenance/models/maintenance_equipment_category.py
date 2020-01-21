@@ -29,3 +29,13 @@ class MaintenanceEquipmentCategory(models.Model):
                 .mapped("member_ids")
             )
             record.maintenance_team_id_member_ids = [(6, 0, users.ids)]
+
+    @api.model
+    def create(self, vals):
+        alias_default = False
+        if not vals.get("alias_name"):
+            alias_default = True
+        res = super().create(vals)
+        if alias_default:
+            res.write({"alias_name": False})
+        return res
