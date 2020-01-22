@@ -20,7 +20,7 @@
                 <t t-foreach="docs" t-as="record">
                     <div class="page">
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-xs-10">
                                 <h3><strong t-field="record.code"/></h3>
                                 <h1>
                                     <i class="fa fa-home" t-if="record.maintenance_type == 'preventive' and not record.is_project"/>
@@ -29,7 +29,7 @@
                                     <strong t-field="record.name"/>
                                 </h1>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-2">
                                 <span class="label label-primary pull-right">
                                     <span style="margin-top: 6px" t-field="record.stage_id"/>
                                 </span>
