@@ -38,7 +38,7 @@
     </record>
 
     <record model="ir.ui.view" id="hr_equipment_request_view_kanban">
-        <field name="name">maintenance.request.tree (in maintenance_location)</field>
+        <field name="name">maintenance.request.kanban (in maintenance_location)</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_kanban"/>
         <field name="arch" type="xml">
