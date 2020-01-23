@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17 12:10+0000\n"
-"PO-Revision-Date: 2019-12-17 12:10+0000\n"
+"POT-Creation-Date: 2020-01-23 13:18+0000\n"
+"PO-Revision-Date: 2020-01-23 13:18+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: cb_maintenance
-#: code:addons/cb_maintenance/models/maintenance_request.py:59
+#: code:addons/cb_maintenance/models/maintenance_request.py:70
 #, python-format
 msgid "%s for %s hour(s)"
 msgstr ""
@@ -28,12 +28,33 @@ msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+msgid "Attach a file"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_attachment_ids
+msgid "Attachments"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.maintenance_request_calendar_view
+msgid "Calendar View"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_mass_change_stage_form_view
 msgid "Cancel"
 msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_equipment_category
 msgid "Category"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
+msgid "Chatter"
 msgstr ""
 
 #. module: cb_maintenance
@@ -44,6 +65,11 @@ msgstr ""
 #. module: cb_maintenance
 #: selection:maintenance.stage,state:0
 msgid "Closed"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_code
+msgid "Code"
 msgstr ""
 
 #. module: cb_maintenance
@@ -74,6 +100,7 @@ msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_create_uid
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_create_uid
 msgid "Created by"
 msgstr ""
 
@@ -84,29 +111,43 @@ msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_create_date
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_create_date
 msgid "Created on"
 msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_description
 #: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
 msgid "Description"
 msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_display_name
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model,name:cb_maintenance.model_maintenance_equipment
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_equipment_id
 #: model:ir.ui.menu,name:cb_maintenance.menu_equipment_label
 msgid "Equipment"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,help:cb_maintenance.field_maintenance_equipment_code
+msgid "Equipment Code"
+msgstr ""
+
+#. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_follower_id
 msgid "Follower"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_stage_function
+msgid "Function"
 msgstr ""
 
 #. module: cb_maintenance
@@ -121,6 +162,7 @@ msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_id
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_id
 msgid "ID"
 msgstr ""
 
@@ -131,16 +173,19 @@ msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request___last_update
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage___last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_write_uid
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_write_date
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_write_date
 msgid "Last Updated on"
 msgstr ""
 
@@ -197,6 +242,16 @@ msgid "Manager"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_image_medium
+msgid "Medium-sized photo"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,help:cb_maintenance.field_maintenance_equipment_image_medium
+msgid "Medium-sized photo of the employee. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr ""
+
+#. module: cb_maintenance
 #: selection:maintenance.stage,state:0
 msgid "New"
 msgstr ""
@@ -222,6 +277,16 @@ msgid "Open"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_original_categ_id
+msgid "Original Categ"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_image
+msgid "Photo"
+msgstr ""
+
+#. module: cb_maintenance
 #: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
 msgid "Preventive Requests"
 msgstr ""
@@ -232,13 +297,20 @@ msgid "Priority"
 msgstr ""
 
 #. module: cb_maintenance
-#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
-msgid "Project Issues"
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Request Date"
 msgstr ""
 
 #. module: cb_maintenance
-#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
-msgid "Request Date"
+#: code:addons/cb_maintenance/models/maintenance_request.py:122
+#, python-format
+msgid "Request reassigned to %s."
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category_requires_equipment
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_requires_equipment
+msgid "Requires Equipment"
 msgstr ""
 
 #. module: cb_maintenance
@@ -272,8 +344,30 @@ msgid "Selectable by users"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category_sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.actions.act_window,name:cb_maintenance.wizard_mass_change_stage_act_multi
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_mass_change_stage_form_view
+msgid "Set Stage"
+msgstr ""
+
+#. module: cb_maintenance
 #: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
 msgid "Split Request"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_stage_id
+msgid "Stage"
+msgstr ""
+
+#. module: cb_maintenance
+#: code:addons/cb_maintenance/wizards/wizard_mass_change_stage.py:23
+#, python-format
+msgid "Stage of request %s is not valid. Transition from %s to %s is not allowed"
 msgstr ""
 
 #. module: cb_maintenance
@@ -293,12 +387,27 @@ msgid "Technician Contact"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,help:cb_maintenance.field_maintenance_equipment_image
+msgid "This field holds the image used as photo for the department, limited to 1024x1024px."
+msgstr ""
+
+#. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_name
 msgid "Title"
 msgstr ""
 
 #. module: cb_maintenance
-#: code:addons/cb_maintenance/models/maintenance_request.py:57
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+msgid "Title..."
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_tree_color
+msgid "Tree Color"
+msgstr ""
+
+#. module: cb_maintenance
+#: code:addons/cb_maintenance/models/maintenance_request.py:62
 #, python-format
 msgid "Unscheduled"
 msgstr ""
@@ -311,5 +420,10 @@ msgstr ""
 #. module: cb_maintenance
 #: model:ir.model,name:cb_maintenance.model_wizard_create_maintenance_request
 msgid "wizard.create.maintenance.request"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_wizard_mass_change_stage
+msgid "wizard.mass.change.stage"
 msgstr ""
 
