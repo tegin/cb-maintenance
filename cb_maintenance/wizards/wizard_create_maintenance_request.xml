@@ -30,8 +30,8 @@
                                    options="{'no_open': True, 'no_create': True}"/>
                         </group>
                     </group>
-                    <group>
-                        <field name="description"/><br/>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
                         <field name="attachment_ids" widget="many2many_binary" string="Attach a file" nolabel="1" colspan="2"/>
                     </group>
                 </sheet>
