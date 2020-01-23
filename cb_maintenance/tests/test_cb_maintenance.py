@@ -1,6 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 
@@ -64,7 +65,11 @@ class TestCbMaintenance(TransactionCase):
             {"name": "Initial Stage", "state": "new"}
         )
         self.stage_final_id = self.env["maintenance.stage"].create(
-            {"name": "Initial Stage", "state": "closed"}
+            {
+                "name": "Initial Stage",
+                "state": "closed",
+                "function": "onchange_equipment_id",
+            }
         )
         self.equipment_id = self.env["maintenance.equipment"].create(
             {
@@ -107,7 +112,6 @@ class TestCbMaintenance(TransactionCase):
                 "schedule_date": "2019-01-01 12:00:00",
                 "technician_id": self.technician_2.id,
                 "equipment_id": self.equipment_id.id,
-                "stage_id": self.stage_final_id.id,
                 "manager_id": self.user_id_2.id,
             }
         )
@@ -115,6 +119,9 @@ class TestCbMaintenance(TransactionCase):
         self.request_id.with_context(
             use_old_onchange_equipment=True
         ).onchange_equipment_id()
+        self.request_id.with_context(
+            next_stage_id=self.stage_final_id.id
+        ).set_maintenance_stage()
         self.request_id.onchange_equipment_id()
 
         name = self.equipment_id.with_context(
@@ -154,3 +161,12 @@ class TestCbMaintenance(TransactionCase):
 
         node = self.stage_id.sudo(user=self.user_id)._get_stage_node()
         self.assertEqual(node.attrib["invisible"], "1")
+        split.write({"stage_id": self.stage_id.id})
+        mass_edit = self.env["wizard.mass.change.stage"].create(
+            {"stage_id": self.stage_final_id.id}
+        )
+        with self.assertRaises(ValidationError):
+            mass_edit.with_context(active_ids=[split.id]).set_stage()
+        self.stage_id.write({"next_stage_ids": [(4, self.stage_final_id.id)]})
+        mass_edit.with_context(active_ids=[split.id]).set_stage()
+        self.assertEqual(split.stage_id.id, self.stage_final_id.id)

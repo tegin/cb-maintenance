@@ -24,7 +24,11 @@ class WizardMassChangeStage(models.TransientModel):
                         "Stage of request %s is not valid."
                         " Transition from %s to %s is not allowed"
                     )
-                    % (request.display_name, request.stage_id, self.stage_id)
+                    % (
+                        request.display_name,
+                        request.stage_id.name,
+                        self.stage_id.name,
+                    )
                 )
         requests.with_context(
             next_stage_id=self.stage_id.id
