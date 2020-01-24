@@ -19,6 +19,7 @@
             <field name="technician_user_id" position="after">
                 <field name="selectable"/>
                 <field name="requires_equipment"/>
+                <field name="requires_location"/>
             </field>
             <group name="group_alias" position="attributes">
                 <attribute name="invisible">1</attribute>
