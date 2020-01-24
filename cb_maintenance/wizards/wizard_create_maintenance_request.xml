@@ -15,19 +15,22 @@
                             <field name="name" placeholder="Title..."/>
                         </h1>
                     </div>
+                    <field name="requires_equipment" invisible="1"/>
+                    <field name="requires_location" invisible="1"/>
                     <group>
-                        <group>
-                            <field name="location_id" widget="child_selector" options="{'child_selection_field': 'name', 'no_open': True}"/>
-                            <field name="priority" widget="priority"/>
-                        </group>
                         <group>
                             <field name="equipment_category" widget="child_selector"
                                    options="{'child_selection_field': 'name', 'no_open': True}"/>
-                            <field name="requires_equipment" invisible="1"/>
                             <field name="equipment_id"
                                    domain="[('location_id', 'child_of', location_id), ('category_id', 'child_of', equipment_category)]"
                                    attrs="{'invisible': [('requires_equipment', '=', False)], 'required': [('requires_equipment', '=', True)]}"
                                    options="{'no_open': True, 'no_create': True}"/>
+                        </group>
+                        <group>
+                            <field name="location_id" widget="child_selector"
+                                   attrs="{'invisible': [('requires_location', '=', False)], 'required': [('requires_location', '=', True)]}"
+                                   options="{'child_selection_field': 'name', 'no_open': True}"/>
+                            <field name="priority" widget="priority"/>
                         </group>
                     </group>
                     <group string="Description">

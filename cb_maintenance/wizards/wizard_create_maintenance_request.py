@@ -32,9 +32,12 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
         ],
         required=True,
     )
-    location_id = fields.Many2one("maintenance.location", required=True)
+    location_id = fields.Many2one("maintenance.location")
     requires_equipment = fields.Boolean(
-        related="equipment_category.requires_equipment"
+        related="equipment_category.requires_equipment", readonly=True
+    )
+    requires_location = fields.Boolean(
+        related="equipment_category.requires_location", readonly=True
     )
     equipment_id = fields.Many2one("maintenance.equipment")
 
