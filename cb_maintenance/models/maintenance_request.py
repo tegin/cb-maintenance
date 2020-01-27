@@ -19,6 +19,9 @@ class MaintenanceRequest(models.Model):
     close_datetime = fields.Datetime(
         "Close Date", readonly=True, track_visibility="onchange"
     )
+    request_date = fields.Date(track_visibility=False)
+    create_date = fields.Datetime(track_visibility="onchange")
+
     maintenance_team_id_member_ids = fields.Many2many(
         "res.users",
         relation="selectable_maintenance_members",
