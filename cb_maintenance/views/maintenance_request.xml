@@ -15,6 +15,10 @@
                 <attribute name="edit">false</attribute>
             </form>
 
+            <field name="owner_user_id" position="after">
+                <field name="solved_id" attrs="{'invisible': [('solved_id', '=', False)]}" options="{'no_open': True}"/>
+            </field>
+
             <xpath expr="//label[@for='name']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
