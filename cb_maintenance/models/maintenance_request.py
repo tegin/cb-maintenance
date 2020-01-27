@@ -11,6 +11,7 @@ class MaintenanceRequest(models.Model):
 
     _inherit = "maintenance.request"
 
+    solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
         readonly=False, related=False, track_visibility="onchange"
@@ -129,6 +130,7 @@ class MaintenanceRequest(models.Model):
             vals["close_datetime"] = (
                 fields.Datetime.now() if stage.done else False
             )
+            vals["solved_id"] = self.env.uid if stage.done else False
         res = super().write(vals)
         if "maintenance_team_id" in vals:
             self.post_team_change_message(vals["maintenance_team_id"])
