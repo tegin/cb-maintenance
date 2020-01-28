@@ -15,10 +15,6 @@
                 <attribute name="edit">false</attribute>
             </form>
 
-            <field name="owner_user_id" position="after">
-                <field name="solved_id" attrs="{'invisible': [('solved_id', '=', False)]}" options="{'no_open': True}"/>
-            </field>
-
             <xpath expr="//label[@for='name']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -66,6 +62,7 @@
 
             <field name="close_date" position="after">
                 <field name="close_datetime" attrs="{'invisible': [('close_datetime', '=', False)]}"/>
+                <field name="solved_id" attrs="{'invisible': [('solved_id', '=', False)]}" options="{'no_open': True}"/>
             </field>
             <button name="archive_equipment_request" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -145,6 +142,9 @@
             <field name="name" position="after">
                 <field name="maintenance_type" invisible="1"/>
                 <field name="tree_color" invisible="1"/>
+            </field>
+            <field name="request_date" position="attributes">
+                <attribute name="invisible">1</attribute>
             </field>
             <field name="technician_user_id" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -259,6 +259,9 @@
             </filter>
             <xpath expr="//group/filter[3]" position="attributes">
                 <attribute name="name">group_stages</attribute>
+            </xpath>
+            <xpath expr="//group/filter[3]" position="after">
+                <filter string="Manager" domain="[]" context="{'group_by' : 'manager_id'}"/>
             </xpath>
         </field>
     </record>
