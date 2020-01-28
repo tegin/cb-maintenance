@@ -13,7 +13,7 @@ class MaintenanceLocation(models.Model):
     _parent_store = True
     _parent_order = "name"
     _rec_name = "complete_name"
-    _order = "parent_left"
+    _order = "sequence,id"
 
     name = fields.Char(required=True)
     complete_name = fields.Char(
@@ -33,6 +33,8 @@ class MaintenanceLocation(models.Model):
     )
     parent_left = fields.Integer("Left Parent", index=1)
     parent_right = fields.Integer("Right Parent", index=1)
+
+    sequence = fields.Integer(string="Sequence", default=10)
 
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
