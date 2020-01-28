@@ -37,6 +37,7 @@
         <field name="model">maintenance.location</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="complete_name"/>
             </tree>
         </field>

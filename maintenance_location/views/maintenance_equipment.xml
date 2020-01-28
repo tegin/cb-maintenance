@@ -7,13 +7,14 @@
     <record model="ir.ui.view" id="hr_equipment_view_form">
         <field name="name">maintenance.equipment.form (in maintenance_location)</field>
         <field name="model">maintenance.equipment</field>
-        <field name="inherit_id" ref="maintenance_plan.hr_equipment_view_form"/>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
         <field name="arch" type="xml">
             <field name="location" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="location" position="before">
-                <field name="location_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="location_id" widget="child_selector"
+                       options="{'child_selection_field': 'name', 'no_open': True}"/>
             </field>
             <xpath expr="//tree/field[@name='maintenance_team_id']" position="after">
                 <field name="location_id" options="{'no_create': True, 'no_open': True}"/>
