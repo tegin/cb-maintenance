@@ -15,10 +15,6 @@
                 <attribute name="edit">false</attribute>
             </form>
 
-            <field name="request_date" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-
             <xpath expr="//label[@for='name']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -147,6 +143,9 @@
                 <field name="maintenance_type" invisible="1"/>
                 <field name="tree_color" invisible="1"/>
             </field>
+            <field name="request_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
             <field name="technician_user_id" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
@@ -260,6 +259,9 @@
             </filter>
             <xpath expr="//group/filter[3]" position="attributes">
                 <attribute name="name">group_stages</attribute>
+            </xpath>
+            <xpath expr="//group/filter[3]" position="after">
+                <filter string="Manager" domain="[]" context="{'group_by' : 'manager_id'}"/>
             </xpath>
         </field>
     </record>
