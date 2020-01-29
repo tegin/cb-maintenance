@@ -38,6 +38,17 @@ class MaintenanceEquipment(models.Model):
         help="Equipment Code", readonly=True, default="/", copy=False
     )
 
+    def _prepare_request_from_plan(
+        self, maintenance_plan, next_maintenance_date
+    ):
+        res = super()._prepare_request_from_plan(
+            maintenance_plan, next_maintenance_date
+        )
+        technician_id = maintenance_plan.technician_id or False
+        if technician_id:
+            res.update({"technician_id": technician_id.id})
+        return res
+
     @api.multi
     def name_get(self):
         if self.env.context.get("use_old_name_equipment", False):

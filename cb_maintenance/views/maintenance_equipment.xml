@@ -42,6 +42,17 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="hr_equipment_view_form_plan">
+        <field name="name">maintenance.equipment.form (in maintenance_location)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance_plan.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='maintenance_team_id']" position="after">
+                <field name="technician_id" options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="hr_equipment_view_kanban">
         <field name="name">maintenance.equipment.kanban (in cb_maintenance)</field>
         <field name="model">maintenance.equipment</field>
