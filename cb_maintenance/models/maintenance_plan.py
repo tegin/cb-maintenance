@@ -11,3 +11,4 @@ class MaintenancePlan(models.Model):
     technician_id = fields.Many2one(
         "res.partner", domain="[('is_maintenance_technician', '=', True)]"
     )
+    category_id = fields.Many2one("maintenance.equipment.category")
