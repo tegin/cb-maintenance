@@ -12,7 +12,7 @@ class MaintenanceRequest(models.Model):
     _inherit = "maintenance.request"
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
-    solution = fields.Text()
+    solution = fields.Text(track_visibility="onchange")
 
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
@@ -186,7 +186,7 @@ class MaintenanceRequest(models.Model):
         stage_id = self.env["maintenance.stage"].browse(stage_id)
         if len(self) > 1:
             self.write({"stage_id": stage_id.id, "solution": stage_id.name})
-
+            return {"type": "ir.actions.act_window_close"}
         action = {
             "type": "ir.actions.act_window",
             "name": "Close Request",

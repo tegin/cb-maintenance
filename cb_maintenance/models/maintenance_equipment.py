@@ -49,8 +49,12 @@ class MaintenanceEquipment(models.Model):
             maintenance_plan, next_maintenance_date
         )
         technician_id = maintenance_plan.technician_id or False
+        category_id = self.category_id if self else False
+        category_id = maintenance_plan.category_id or category_id
         if technician_id:
             res.update({"technician_id": technician_id.id})
+        if category_id:
+            res.update({"category_id": category_id.id})
         return res
 
     @api.depends("name", "code")
