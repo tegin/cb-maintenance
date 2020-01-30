@@ -53,9 +53,6 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
 
-            <field name="description" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
             <field name="close_date" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
@@ -67,12 +64,6 @@
             <button name="archive_equipment_request" position="attributes">
                 <attribute name="invisible">1</attribute>
             </button>
-
-            <field name="description" position="after">
-                <group string="Description">
-                    <field name="description" placeholder="Issue description..." nolabel="1"/>
-                </group>
-            </field>
 
             <field name="request_date" position="replace">
                 <field name="create_date" string="Request Date" readonly="1"/>
@@ -103,6 +94,22 @@
                     <field name="schedule_info"/>
                 </div>
             </xpath>
+
+            <field name="description" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <field name="description" position="after">
+                <group>
+                    <group string="Description">
+                        <field name="description" placeholder="Request description..." nolabel="1" style="width: 90%%"/>
+                    </group>
+                    <group string="Solution" attrs="{'invisible': [('close_datetime', '=', False)]}">
+                        <field name="solution" nolabel="1" style="width: 90%%"/>
+                    </group>
+                </group>
+
+            </field>
 
             <!--
             <field name="remote_id" position="after">
