@@ -12,6 +12,8 @@ class MaintenanceRequest(models.Model):
     _inherit = "maintenance.request"
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
+    solution = fields.Text()
+
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
         readonly=False, related=False, track_visibility="onchange"
@@ -171,9 +173,29 @@ class MaintenanceRequest(models.Model):
 
     @api.multi
     def _set_maintenance_stage(self, stage_id):
-        res = super()._set_maintenance_stage(stage_id)
-        f = self[0].stage_id.function
+        stage_id = self.env["maintenance.stage"].browse(stage_id)
+        f = stage_id.function
         if f and hasattr(self, f):
             # Should we check if f is callable?
-            getattr(self, f)()
-        return res
+            return getattr(self, f)()
+        super()._set_maintenance_stage(stage_id.id)
+
+    @api.multi
+    def close_request(self):
+        stage_id = self.env.context.get("next_stage_id")
+        stage_id = self.env["maintenance.stage"].browse(stage_id)
+        if len(self) > 1:
+            self.write({"stage_id": stage_id.id, "solution": stage_id.name})
+
+        action = {
+            "type": "ir.actions.act_window",
+            "name": "Close Request",
+            "res_model": "wizard.close.request",
+            "view_mode": "form",
+            "context": {
+                "default_request_id": self.id,
+                "default_stage_id": stage_id.id,
+            },
+            "target": "new",
+        }
+        return action
