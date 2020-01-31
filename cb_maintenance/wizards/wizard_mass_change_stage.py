@@ -30,7 +30,6 @@ class WizardMassChangeStage(models.TransientModel):
                         self.stage_id.name,
                     )
                 )
-        requests.with_context(
+        return requests.with_context(
             next_stage_id=self.stage_id.id
         ).set_maintenance_stage()
-        return True
