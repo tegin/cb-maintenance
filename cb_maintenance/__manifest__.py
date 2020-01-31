@@ -14,6 +14,7 @@
         "base_maintenance",
         "document",
         "maintenance_equipment_category_hierarchy",
+        "maintenance_equipment_hierarchy",
         # "maintenance_equipment_sequence",
         "maintenance_location",
         "maintenance_request_sequence",
