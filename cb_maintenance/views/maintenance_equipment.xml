@@ -120,6 +120,17 @@
         </field>
     </record>
 
+    <record id="hr_equipment_view_search_2" model="ir.ui.view">
+        <field name="name">maintenance.equipment.search fix domain (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance_equipment_hierarchy.hr_equipment_view_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="filter_domain">['|',('complete_name','ilike',self),('model','ilike',self)]</attribute>
+            </field>
+        </field>
+    </record>
+
     <menuitem
         id="menu_equipment_label"
         name="Equipment"
