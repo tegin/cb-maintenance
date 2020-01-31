@@ -9,12 +9,16 @@ class WizardCloseRequest(models.TransientModel):
     _name = "wizard.close.request"
 
     solution = fields.Text()
-    request_id = fields.Many2one("maintenance.request")
     stage_id = fields.Many2one("maintenance.stage")
 
     @api.multi
     def close_request(self):
-        self.request_id.write(
-            {"solution": self.solution, "stage_id": self.stage_id.id}
+        requests = self.env["maintenance.request"].browse(
+            self.env.context.get("active_ids")
         )
+        requests.with_context(
+            next_stage_id=self.stage_id.id,
+            do_not_call_close_request_wizard=True,
+        ).set_maintenance_stage()
+        requests.write({"solution": self.solution})
         return {"type": "ir.actions.act_window_close"}
