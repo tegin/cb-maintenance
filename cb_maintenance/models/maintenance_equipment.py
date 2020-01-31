@@ -8,7 +8,11 @@ from odoo import tools
 class MaintenanceEquipment(models.Model):
 
     _inherit = "maintenance.equipment"
+    _rec_name = "complete_name"
 
+    complete_name = fields.Char(
+        "Complete Name", compute="_compute_complete_name", store=True
+    )
     company_id = fields.Many2one("res.company", readonly=True)
 
     partner_technician_id = fields.Many2one(
@@ -45,23 +49,20 @@ class MaintenanceEquipment(models.Model):
             maintenance_plan, next_maintenance_date
         )
         technician_id = maintenance_plan.technician_id or False
+        category_id = self.category_id if self else False
+        category_id = maintenance_plan.category_id or category_id
         if technician_id:
             res.update({"technician_id": technician_id.id})
+        if category_id:
+            res.update({"category_id": category_id.id})
         return res
 
-    @api.multi
-    def name_get(self):
-        if self.env.context.get("use_old_name_equipment", False):
-            return super().name_get()
-        return [
-            (
-                me.id,
-                "[%s] %s" % (me.code, me.name)
-                if (me.code != "/")
-                else me.name,
+    @api.depends("name", "code")
+    def _compute_complete_name(self):
+        for me in self:
+            me.complete_name = (
+                "[%s] %s" % (me.code, me.name) if (me.code != "/") else me.name
             )
-            for me in self
-        ]
 
     @api.depends("image")
     def _compute_image_medium(self):

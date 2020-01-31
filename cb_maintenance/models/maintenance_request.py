@@ -12,6 +12,8 @@ class MaintenanceRequest(models.Model):
     _inherit = "maintenance.request"
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
+    solution = fields.Text(track_visibility="onchange")
+
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(
         readonly=False, related=False, track_visibility="onchange"
@@ -127,13 +129,26 @@ class MaintenanceRequest(models.Model):
             )
 
     @api.multi
+    def on_close_request_actions(self):
+        self.ensure_one()
+
+    @api.multi
+    def on_reopen_request_actions(self):
+        self.ensure_one()
+
+    @api.multi
     def write(self, vals):
         if "stage_id" in vals:
             stage = self.env["maintenance.stage"].browse(vals["stage_id"])
-            vals["close_datetime"] = (
-                fields.Datetime.now() if stage.done else False
-            )
-            vals["solved_id"] = self.env.uid if stage.done else False
+            for record in self:
+                if not record.stage_id.done and stage.done:
+                    record.on_close_request_actions()
+                    vals["close_datetime"] = fields.Datetime.now()
+                    vals["solved_id"] = self.env.uid
+                if record.stage_id.done and not stage.done:
+                    record.on_reopen_request_actions()
+                    vals["close_datetime"] = False
+                    vals["solved_id"] = False
         res = super().write(vals)
         if "maintenance_team_id" in vals:
             self.post_team_change_message(vals["maintenance_team_id"])
@@ -171,9 +186,30 @@ class MaintenanceRequest(models.Model):
 
     @api.multi
     def _set_maintenance_stage(self, stage_id):
-        res = super()._set_maintenance_stage(stage_id)
-        f = self[0].stage_id.function
+        stage_id = self.env["maintenance.stage"].browse(stage_id)
+        f = stage_id.function
         if f and hasattr(self, f):
             # Should we check if f is callable?
-            getattr(self, f)()
-        return res
+            result = getattr(self, f)()
+            if result:
+                return result
+        super()._set_maintenance_stage(stage_id.id)
+
+    @api.multi
+    def close_request(self):
+        if self.env.context.get("do_not_call_close_request_wizard", False):
+            return False
+        stage_id = self.env.context.get("next_stage_id")
+        stage_id = self.env["maintenance.stage"].browse(stage_id)
+        action = {
+            "type": "ir.actions.act_window",
+            "name": "Close Request",
+            "res_model": "wizard.close.request",
+            "view_mode": "form",
+            "context": {
+                "active_ids": self.ids,
+                "default_stage_id": stage_id.id,
+            },
+            "target": "new",
+        }
+        return action

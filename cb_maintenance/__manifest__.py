@@ -22,6 +22,7 @@
         "maintenance_team_hierarchy",
     ],
     "data": [
+        "wizards/wizard_close_request.xml",
         "views/maintenance_plan.xml",
         "wizards/wizard_mass_change_stage.xml",
         "data/equipment_sequence_data.xml",
