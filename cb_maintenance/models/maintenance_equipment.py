@@ -9,6 +9,7 @@ class MaintenanceEquipment(models.Model):
 
     _inherit = "maintenance.equipment"
     _rec_name = "complete_name"
+    _order = "code"
 
     complete_name = fields.Char(
         "Complete Name", compute="_compute_complete_name", store=True
