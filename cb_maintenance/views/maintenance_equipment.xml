@@ -36,7 +36,7 @@
                 </button>
             </div>
             <field name="category_id" position="attributes">
-                <attribute name="widget">web_widget_child_selector</attribute>
+                <attribute name="widget">child_selector</attribute>
                 <attribute name="options">{'child_selection_field': 'name', 'no_open': True}</attribute>
             </field>
         </field>
