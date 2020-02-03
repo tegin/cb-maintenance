@@ -11,7 +11,7 @@
         <field name="arch" type="xml">
             <field name="maintenance_team_id" position="after">
                 <field name="technician_id" options="{'no_open': True, 'no_create': True}"/>
-                <field name="category_id" options="{'no_open': True, 'no_create': True}"/>
+                <field name="category_id" options="{'no_open': True, 'no_create': True, 'child_selection_field': 'name'}" widget="child_selector"/>
             </field>
         </field>
     </record>
