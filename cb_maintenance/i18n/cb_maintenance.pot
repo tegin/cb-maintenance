@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-23 13:18+0000\n"
-"PO-Revision-Date: 2020-01-23 13:18+0000\n"
+"POT-Creation-Date: 2020-02-04 11:42+0000\n"
+"PO-Revision-Date: 2020-02-04 11:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: cb_maintenance
-#: code:addons/cb_maintenance/models/maintenance_request.py:70
+#: code:addons/cb_maintenance/models/maintenance_request.py:76
 #, python-format
 msgid "%s for %s hour(s)"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_close_request_form_view
+msgid "<span>Write the reason for closing this request or leave it blank.</span>"
 msgstr ""
 
 #. module: cb_maintenance
@@ -42,12 +47,14 @@ msgid "Calendar View"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_close_request_form_view
 #: model:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
 #: model:ir.ui.view,arch_db:cb_maintenance.wizard_mass_change_stage_form_view
 msgid "Cancel"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_plan_category_id
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_equipment_category
 msgid "Category"
 msgstr ""
@@ -60,6 +67,11 @@ msgstr ""
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_close_datetime
 msgid "Close Date"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_close_request_form_view
+msgid "Close Request"
 msgstr ""
 
 #. module: cb_maintenance
@@ -99,6 +111,7 @@ msgid "Create Request"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_create_uid
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_create_uid
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_create_uid
 msgid "Created by"
@@ -110,6 +123,7 @@ msgid "Created by me"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_create_date
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_create_date
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_create_date
 msgid "Created on"
@@ -123,6 +137,7 @@ msgid "Description"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_display_name
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_display_name
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_display_name
 msgid "Display Name"
@@ -161,29 +176,28 @@ msgid "High"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_id
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_id
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_id
 msgid "ID"
 msgstr ""
 
 #. module: cb_maintenance
-#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
-msgid "Issue description..."
-msgstr ""
-
-#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request___last_update
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request___last_update
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage___last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_write_uid
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_write_uid
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_write_date
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_write_date
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_write_date
 msgid "Last Updated on"
@@ -202,6 +216,11 @@ msgstr ""
 #. module: cb_maintenance
 #: model:ir.ui.view,arch_db:cb_maintenance.view_partner_form
 msgid "Maintenance"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_maintenance_plan
+msgid "Maintenance Plan"
 msgstr ""
 
 #. module: cb_maintenance
@@ -238,6 +257,7 @@ msgstr ""
 
 #. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_manager_id
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_search
 msgid "Manager"
 msgstr ""
 
@@ -302,7 +322,12 @@ msgid "Request Date"
 msgstr ""
 
 #. module: cb_maintenance
-#: code:addons/cb_maintenance/models/maintenance_request.py:122
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Request description..."
+msgstr ""
+
+#. module: cb_maintenance
+#: code:addons/cb_maintenance/models/maintenance_request.py:128
 #, python-format
 msgid "Request reassigned to %s."
 msgstr ""
@@ -311,6 +336,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category_requires_equipment
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_requires_equipment
 msgid "Requires Equipment"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category_requires_location
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_create_maintenance_request_requires_location
+msgid "Requires Location"
 msgstr ""
 
 #. module: cb_maintenance
@@ -355,11 +386,24 @@ msgid "Set Stage"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_solution
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_solution
+#: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
+msgid "Solution"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_solved_id
+msgid "Solved by"
+msgstr ""
+
+#. module: cb_maintenance
 #: model:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
 msgid "Split Request"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_wizard_close_request_stage_id
 #: model:ir.model.fields,field_description:cb_maintenance.field_wizard_mass_change_stage_stage_id
 msgid "Stage"
 msgstr ""
@@ -377,6 +421,7 @@ msgid "State"
 msgstr ""
 
 #. module: cb_maintenance
+#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_plan_technician_id
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request_technician_id
 msgid "Technician"
 msgstr ""
@@ -407,7 +452,7 @@ msgid "Tree Color"
 msgstr ""
 
 #. module: cb_maintenance
-#: code:addons/cb_maintenance/models/maintenance_request.py:62
+#: code:addons/cb_maintenance/models/maintenance_request.py:68
 #, python-format
 msgid "Unscheduled"
 msgstr ""
@@ -415,6 +460,16 @@ msgstr ""
 #. module: cb_maintenance
 #: selection:wizard.create.maintenance.request,priority:0
 msgid "Very High"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.ui.view,arch_db:cb_maintenance.wizard_close_request_form_view
+msgid "Wizard Close Request"
+msgstr ""
+
+#. module: cb_maintenance
+#: model:ir.model,name:cb_maintenance.model_wizard_close_request
+msgid "wizard.close.request"
 msgstr ""
 
 #. module: cb_maintenance
