@@ -143,7 +143,7 @@ class MaintenanceRequest(models.Model):
         if "stage_id" in vals:
             stage = self.env["maintenance.stage"].browse(vals["stage_id"])
             vals["close_datetime"] = (
-                fields.Datetime.now() if (stage.done) else False
+                fields.Datetime.now() if stage.done else False
             )
             vals["solved_id"] = self.env.uid if stage.done else False
             for record in self:
