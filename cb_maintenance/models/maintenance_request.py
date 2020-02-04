@@ -138,18 +138,26 @@ class MaintenanceRequest(models.Model):
 
     @api.multi
     def write(self, vals):
+        on_close = self.env["maintenance.request"]
+        on_reopen = self.env["maintenance.request"]
         if "stage_id" in vals:
             stage = self.env["maintenance.stage"].browse(vals["stage_id"])
+            vals["close_datetime"] = (
+                fields.Datetime.now() if (stage.done) else False
+            )
+            vals["solved_id"] = self.env.uid if stage.done else False
             for record in self:
                 if not record.stage_id.done and stage.done:
-                    record.on_close_request_actions()
-                    vals["close_datetime"] = fields.Datetime.now()
-                    vals["solved_id"] = self.env.uid
+                    on_close |= record
                 if record.stage_id.done and not stage.done:
-                    record.on_reopen_request_actions()
-                    vals["close_datetime"] = False
-                    vals["solved_id"] = False
+                    on_reopen |= record
+
         res = super().write(vals)
+        for record in on_close:
+            record.on_close_request_actions()
+        for record in on_reopen:
+            record.on_reopen_request_actions()
+
         if "maintenance_team_id" in vals:
             self.post_team_change_message(vals["maintenance_team_id"])
         return res
