@@ -81,8 +81,14 @@
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="cb_maintenance.hr_equipment_request_view_search"/>
         <field name="arch" type="xml">
-            <filter name="corrective">
+            <filter name="corrective" position="after">
                 <filter name="project" string="Project Issues" domain="[('is_project', '=', True)]"/>
+            </filter>
+            <filter name="corrective" position="attributes">
+                <attribute name="domain">[('is_project', '=', False), ('maintenance_type', '=', 'corrective')]</attribute>
+            </filter>
+            <filter name="preventive" position="attributes">
+                <attribute name="domain">[('is_project', '=', False), ('maintenance_type', '=', 'preventive')]</attribute>
             </filter>
         </field>
     </record>
