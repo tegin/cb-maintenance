@@ -49,6 +49,7 @@ class MaintenanceEquipment(models.Model):
         res = super()._prepare_request_from_plan(
             maintenance_plan, next_maintenance_date
         )
+        res["description"] = tools.html2plaintext(maintenance_plan.note)
         technician_id = maintenance_plan.technician_id or False
         category_id = self.category_id if self else False
         category_id = maintenance_plan.category_id or category_id
