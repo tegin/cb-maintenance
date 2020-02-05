@@ -13,7 +13,7 @@ class MaintenanceLocation(models.Model):
     _parent_store = True
     _parent_order = "name"
     _rec_name = "complete_name"
-    _order = "sequence,id"
+    _order = "name,id"
 
     name = fields.Char(required=True)
     complete_name = fields.Char(
