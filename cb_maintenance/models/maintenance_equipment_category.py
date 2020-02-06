@@ -7,7 +7,7 @@ from odoo import api, fields, models
 class MaintenanceEquipmentCategory(models.Model):
 
     _inherit = "maintenance.equipment.category"
-    _order = "name,id"
+    _order = "complete_name,id"
 
     maintenance_team_id = fields.Many2one("maintenance.team")
     selectable = fields.Boolean(string="Selectable by users")
