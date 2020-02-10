@@ -71,6 +71,11 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
                 values={"self": request, "origin": original_request},
                 subtype_id=self.env.ref("mail.mt_note").id,
             )
+            original_request.message_post_with_view(
+                "cb_maintenance.message_origin_split_link",
+                values={"self": original_request, "created": request},
+                subtype_id=self.env.ref("mail.mt_note").id,
+            )
         self.attachment_ids.write(
             {"res_model": "maintenance.request", "res_id": request.id}
         )
