@@ -26,6 +26,7 @@
         "views/maintenance_plan.xml",
         "wizards/wizard_mass_change_stage.xml",
         "data/equipment_sequence_data.xml",
+        "data/mail_templates.xml",
         "views/maintenance_equipment.xml",
         "views/maintenance_equipment_category.xml",
         "views/maintenance_request.xml",
