@@ -43,6 +43,9 @@
                 <button string="Add Issue" name="%(cb_maintenance_project.wizard_create_project_issue_act_window)d"
                         type="action" attrs="{'invisible': ['|', ('is_project', '=', False), ('parent_id', '!=', False)]}" context="{'default_request_id': active_id}"/>
             </button>
+            <field name="priority" position="after">
+                <field name="cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+            </field>
         </field>
     </record>
 
