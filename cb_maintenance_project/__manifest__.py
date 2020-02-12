@@ -9,7 +9,11 @@
     "license": "AGPL-3",
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "www.creublanca.es",
-    "depends": ["base_maintenance", "cb_maintenance"],
+    "depends": [
+        "base_maintenance",
+        "cb_maintenance",
+        "maintenance_request_purchase",
+    ],
     "data": [
         "wizards/wizard_create_project_issue.xml",
         "views/maintenance_request.xml",
