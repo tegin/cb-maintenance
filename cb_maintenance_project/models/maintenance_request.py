@@ -26,6 +26,26 @@ class MaintenanceRequest(models.Model):
         compute="_compute_children_count", store=True
     )
 
+    currency_id = fields.Many2one(
+        "res.currency",
+        string="Currency",
+        default=lambda self: self.env.user.company_id.currency_id,
+    )
+    cost = fields.Monetary(
+        string="Cost", compute="_compute_cost", store=True, readonly=True
+    )
+
+    @api.depends(
+        "child_ids.cost",
+        "purchase_order_ids",
+        "purchase_order_ids.amount_total",
+    )
+    def _compute_cost(self):
+        for record in self:
+            pos = record.child_ids.mapped("purchase_order_ids")
+            pos |= record.purchase_order_ids
+            record.cost = sum([po.amount_total for po in pos])
+
     @api.depends("maintenance_type", "is_project")
     def _compute_color(self):
         super(
