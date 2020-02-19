@@ -9,7 +9,6 @@
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
-
             <field name="name" position="before">
                 <field name="is_project" invisible="1"/>
                 <field name="parent_id" invisible="1"/>
@@ -42,6 +41,8 @@
             <button name="archive_equipment_request" position="before">
                 <button string="Add Issue" name="%(cb_maintenance_project.wizard_create_project_issue_act_window)d"
                         type="action" attrs="{'invisible': ['|', ('is_project', '=', False), ('parent_id', '!=', False)]}" context="{'default_request_id': active_id}"/>
+                <button string="Assign to Project" name="%(cb_maintenance_project.wizard_group_in_project_act_window)d"
+                        type="action" attrs="{'invisible': [('is_project', '=', True)]}"/>
             </button>
             <field name="priority" position="after">
                 <field name="cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
