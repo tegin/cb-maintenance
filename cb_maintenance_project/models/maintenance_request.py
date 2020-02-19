@@ -76,4 +76,10 @@ class MaintenanceRequest(models.Model):
         elif self.child_ids:
             action["views"] = [(False, "form")]
             action["res_id"] = self.child_ids.id
+        action["context"] = {
+            "default_parent_id": self.id,
+            "default_is_project": True,
+            "search_default_group_stages": 1,
+            "search_default_todo": 1,
+        }
         return action
