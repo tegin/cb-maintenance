@@ -15,6 +15,7 @@
         "maintenance_request_purchase",
     ],
     "data": [
+        "wizards/wizard_group_in_project.xml",
         "wizards/wizard_create_project_issue.xml",
         "views/maintenance_request.xml",
     ],
