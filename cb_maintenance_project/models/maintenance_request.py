@@ -32,7 +32,13 @@ class MaintenanceRequest(models.Model):
         default=lambda self: self.env.user.company_id.currency_id,
     )
     cost = fields.Monetary(
-        string="Cost", compute="_compute_cost", store=True, readonly=True
+        string="Estimated Cost",
+        compute="_compute_cost",
+        store=True,
+        readonly=True,
+    )
+    real_cost = fields.Monetary(
+        string="Real Cost", compute="_compute_cost", store=True, readonly=True
     )
 
     @api.depends(
@@ -44,13 +50,10 @@ class MaintenanceRequest(models.Model):
         for record in self:
             pos = record.child_ids.mapped("purchase_order_ids")
             pos |= record.purchase_order_ids
-            record.cost = sum(
-                [
-                    po.amount_total
-                    for po in pos
-                    if po.state in ["purchase", "done"]
-                ]
-            )
+            pos = pos.filtered(lambda r: r.state in ["purchase", "done"])
+            record.cost = sum([po.amount_total for po in pos])
+            invoices = pos.mapped("invoice_ids")
+            record.real_cost = sum([inv.amount_total for inv in invoices])
 
     @api.depends("maintenance_type", "is_project")
     def _compute_color(self):
