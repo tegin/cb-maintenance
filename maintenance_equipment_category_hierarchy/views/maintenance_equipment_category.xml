@@ -20,9 +20,6 @@
         <field name="model">maintenance.equipment.category</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_category_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[@col='4']" position="attributes">
-                <attribute name="col"/>
-            </xpath>
             <field name="technician_user_id" position="after">
                 <field name="parent_id"/>
                 <field name="child_id" widget="many2many_tags" readonly="1"/>

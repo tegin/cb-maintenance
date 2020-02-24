@@ -8,6 +8,7 @@ from odoo.exceptions import ValidationError
 class WizardMassChangeStage(models.TransientModel):
 
     _name = "wizard.mass.change.stage"
+    _description = "wizard.mass.change.stage"
 
     stage_id = fields.Many2one("maintenance.stage", required=True)
 

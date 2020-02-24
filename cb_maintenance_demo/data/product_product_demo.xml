@@ -8,8 +8,8 @@
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">service</field>
-        <field name="uom_id" ref="product.product_uom_unit"/>
-        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="default_code">MESA</field>
     </record>
     <record id="product_silla" model="product.product">
@@ -17,8 +17,8 @@
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">service</field>
-        <field name="uom_id" ref="product.product_uom_unit"/>
-        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="default_code">SILLA</field>
     </record>
     <record id="consu_tornillos" model="product.product">
@@ -26,8 +26,8 @@
             <field name="standard_price">5</field>
             <field name="list_price">5</field>
             <field name="type">consu</field>
-            <field name="uom_id" ref="product.product_uom_unit"/>
-            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
             <field name="default_code">TORN</field>
     </record>
     <record id="consu_bombilla" model="product.product">
@@ -35,8 +35,8 @@
             <field name="standard_price">5</field>
             <field name="list_price">5</field>
             <field name="type">consu</field>
-            <field name="uom_id" ref="product.product_uom_unit"/>
-            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
             <field name="default_code">BOMBILLA</field>
     </record>
     <record id="service_air_conditioning" model="product.product">
@@ -44,8 +44,8 @@
             <field name="standard_price">200.0</field>
             <field name="list_price">180.0</field>
             <field name="type">service</field>
-            <field name="uom_id" ref="product.product_uom_unit"/>
-            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
             <field name="default_code">AIR_MAN</field>
     </record>
 
@@ -54,8 +54,8 @@
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">equipment</field>
-        <field name="uom_id" ref="product.product_uom_unit"/>
-        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="default_code">COMP</field>
     </record>
 
@@ -64,8 +64,8 @@
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">equipment</field>
-        <field name="uom_id" ref="product.product_uom_unit"/>
-        <field name="uom_po_id" ref="product.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="default_code">COMP</field>
     </record>
 

@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class WizardCreateMaintenanceRequest(models.TransientModel):
 
     _name = "wizard.create.maintenance.request"
+    _description = "Wizard used to create requests"
 
     name = fields.Char(string="Title", required=True)
     description = fields.Text()

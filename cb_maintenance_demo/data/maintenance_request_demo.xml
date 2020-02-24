@@ -6,7 +6,7 @@
 
     <record id="m_request_1" model="maintenance.request">
         <field name="name">Request 1</field>
-        <field name="technician_user_id" ref="user_man_2"/>
+        <field name="user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">7</field>
@@ -18,7 +18,7 @@
 
     <record id="m_request_2" model="maintenance.request">
         <field name="name">Request 2</field>
-        <field name="technician_user_id" ref="user_man_6"/>
+        <field name="user_id" ref="user_man_6"/>
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">13</field>
@@ -29,7 +29,7 @@
     </record>
     <record id="m_request_3" model="maintenance.request">
         <field name="name">Request 3</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">14</field>
@@ -40,7 +40,7 @@
     </record>
     <record id="m_request_4" model="maintenance.request">
         <field name="name">Request 4</field>
-        <field name="technician_user_id" ref="user_man_5"/>
+        <field name="user_id" ref="user_man_5"/>
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">2</field>
@@ -51,7 +51,7 @@
     </record>
     <record id="m_request_5" model="maintenance.request">
         <field name="name">Request 5</field>
-        <field name="technician_user_id" ref="user_man_4"/>
+        <field name="user_id" ref="user_man_4"/>
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">15</field>
@@ -62,7 +62,7 @@
     </record>
     <record id="m_request_6" model="maintenance.request">
         <field name="name">Request 6</field>
-        <field name="technician_user_id" ref="user_man_3"/>
+        <field name="user_id" ref="user_man_3"/>
         <field name="owner_user_id" ref="user_man_3"/>
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">8</field>
@@ -73,7 +73,7 @@
     </record>
     <record id="m_request_7" model="maintenance.request">
         <field name="name">Request 7</field>
-        <field name="technician_user_id" ref="user_man_2"/>
+        <field name="user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">7</field>
@@ -84,7 +84,7 @@
     </record>
     <record id="m_request_8" model="maintenance.request">
         <field name="name">Request 8</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">6</field>
@@ -95,7 +95,7 @@
     </record>
     <record id="m_request_9" model="maintenance.request">
         <field name="name">Request 9</field>
-        <field name="technician_user_id" ref="user_man_6"/>
+        <field name="user_id" ref="user_man_6"/>
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="color">5</field>
         <field name="priority">1</field>
@@ -105,7 +105,7 @@
     </record>
     <record id="m_request_10" model="maintenance.request">
         <field name="name">Request 10</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="color">4</field>
         <field name="priority">1</field>
@@ -115,7 +115,7 @@
     </record>
     <record id="m_request_11" model="maintenance.request">
         <field name="name">Request 11</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">3</field>
@@ -125,7 +125,7 @@
     </record>
     <record id="m_request_12" model="maintenance.request">
         <field name="name">Request 12</field>
-        <field name="technician_user_id" ref="user_man_5"/>
+        <field name="user_id" ref="user_man_5"/>
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">2</field>
@@ -137,7 +137,7 @@
 
     <record id="m_request_13" model="maintenance.request">
         <field name="name">Request 13</field>
-        <field name="technician_user_id" ref="user_man_4"/>
+        <field name="user_id" ref="user_man_4"/>
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">1</field>
@@ -148,7 +148,7 @@
     </record>
     <record id="m_request_14" model="maintenance.request">
         <field name="name">Request 14</field>
-        <field name="technician_user_id" ref="user_man_3"/>
+        <field name="user_id" ref="user_man_3"/>
         <field name="owner_user_id" ref="user_man_3"/>
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">2</field>
@@ -159,7 +159,7 @@
     </record>
     <record id="m_request_15" model="maintenance.request">
         <field name="name">Request 15</field>
-        <field name="technician_user_id" ref="user_man_2"/>
+        <field name="user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">3</field>
@@ -170,7 +170,7 @@
     </record>
     <record id="m_request_16" model="maintenance.request">
         <field name="name">Request 16</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">4</field>
@@ -181,7 +181,7 @@
     </record>
     <record id="m_request_17" model="maintenance.request">
         <field name="name">Request 17</field>
-        <field name="technician_user_id" ref="user_man_6"/>
+        <field name="user_id" ref="user_man_6"/>
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">5</field>
@@ -192,7 +192,7 @@
     </record>
     <record id="m_request_18" model="maintenance.request">
         <field name="name">Request 18</field>
-        <field name="technician_user_id" ref="user_man_5"/>
+        <field name="user_id" ref="user_man_5"/>
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">6</field>
@@ -203,7 +203,7 @@
     </record>
     <record id="m_request_19" model="maintenance.request">
         <field name="name">Request 19</field>
-        <field name="technician_user_id" ref="user_man_4"/>
+        <field name="user_id" ref="user_man_4"/>
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="color">7</field>
         <field name="priority">2</field>
@@ -213,7 +213,7 @@
     </record>
     <record id="m_request_20" model="maintenance.request">
         <field name="name">Request 20</field>
-        <field name="technician_user_id" ref="user_man_3"/>
+        <field name="user_id" ref="user_man_3"/>
         <field name="owner_user_id" ref="user_man_3"/>
         <field name="color">8</field>
         <field name="priority">2</field>
@@ -223,7 +223,7 @@
     </record>
     <record id="m_request_21" model="maintenance.request">
         <field name="name">Request 21</field>
-        <field name="technician_user_id" ref="user_man_2"/>
+        <field name="user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">9</field>
@@ -234,7 +234,7 @@
     </record>
     <record id="m_request_22" model="maintenance.request">
         <field name="name">Request 22</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">10</field>
@@ -245,7 +245,7 @@
     </record>
     <record id="m_request_23" model="maintenance.request">
         <field name="name">Request 23</field>
-        <field name="technician_user_id" ref="user_man_6"/>
+        <field name="user_id" ref="user_man_6"/>
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">11</field>
@@ -256,7 +256,7 @@
 
     <record id="m_request_24" model="maintenance.request">
         <field name="name">Request 24</field>
-        <field name="technician_user_id" ref="user_man_5"/>
+        <field name="user_id" ref="user_man_5"/>
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">0</field>
@@ -267,7 +267,7 @@
     </record>
     <record id="m_request_25" model="maintenance.request">
         <field name="name">Request 25</field>
-        <field name="technician_user_id" ref="user_man_4"/>
+        <field name="user_id" ref="user_man_4"/>
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">2</field>
@@ -278,7 +278,7 @@
     </record>
     <record id="m_request_26" model="maintenance.request">
         <field name="name">Request 26</field>
-        <field name="technician_user_id" ref="user_man_3"/>
+        <field name="user_id" ref="user_man_3"/>
         <field name="owner_user_id" ref="user_man_3"/>
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">13</field>
@@ -289,7 +289,7 @@
     </record>
     <record id="m_request_27" model="maintenance.request">
         <field name="name">Request 27</field>
-        <field name="technician_user_id" ref="user_man_2"/>
+        <field name="user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">8</field>
@@ -300,7 +300,7 @@
     </record>
     <record id="m_request_28" model="maintenance.request">
         <field name="name">Request 28</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">7</field>
@@ -311,7 +311,7 @@
     </record>
     <record id="m_request_29" model="maintenance.request">
         <field name="name">Request 29</field>
-        <field name="technician_user_id" ref="user_man_6"/>
+        <field name="user_id" ref="user_man_6"/>
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="color">7</field>
         <field name="priority">3</field>
@@ -321,7 +321,7 @@
     </record>
     <record id="m_request_30" model="maintenance.request">
         <field name="name">Request 30</field>
-        <field name="technician_user_id" ref="user_man_5"/>
+        <field name="user_id" ref="user_man_5"/>
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="color">6</field>
         <field name="priority">3</field>
@@ -331,7 +331,7 @@
     </record>
     <record id="m_request_31" model="maintenance.request">
         <field name="name">Request 31</field>
-        <field name="technician_user_id" ref="user_man_4"/>
+        <field name="user_id" ref="user_man_4"/>
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="equipment_id" ref="equipment_monitor1"/>
         <field name="color">10</field>
@@ -342,7 +342,7 @@
     </record>
     <record id="m_request_32" model="maintenance.request">
         <field name="name">Request 32</field>
-        <field name="technician_user_id" ref="user_man_3"/>
+        <field name="user_id" ref="user_man_3"/>
         <field name="owner_user_id" ref="user_man_3"/>
         <field name="equipment_id" ref="equipment_computer1"/>
         <field name="color">11</field>
@@ -353,7 +353,7 @@
     </record>
     <record id="m_request_33" model="maintenance.request">
         <field name="name">Request 33</field>
-        <field name="technician_user_id" ref="user_man_2"/>
+        <field name="user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="equipment_id" ref="equipment_aire1"/>
         <field name="color">14</field>
@@ -364,7 +364,7 @@
     </record>
     <record id="m_request_34" model="maintenance.request">
         <field name="name">Request 34</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_1"/>
         <field name="equipment_id" ref="equipment_aire2"/>
         <field name="color">7</field>
@@ -376,7 +376,7 @@
 
     <record id="m_request_35" model="maintenance.request">
         <field name="name">Request 35</field>
-        <field name="technician_user_id" ref="user_man_6"/>
+        <field name="user_id" ref="user_man_6"/>
         <field name="owner_user_id" ref="user_man_6"/>
         <field name="equipment_id" ref="equipment_ascensor"/>
         <field name="color">7</field>
@@ -386,7 +386,7 @@
     </record>
     <record id="m_request_36" model="maintenance.request">
         <field name="name">Request 36</field>
-        <field name="technician_user_id" ref="user_man_5"/>
+        <field name="user_id" ref="user_man_5"/>
         <field name="owner_user_id" ref="user_man_5"/>
         <field name="equipment_id" ref="equipment_lavabo"/>
         <field name="color">5</field>
@@ -397,7 +397,7 @@
     </record>
     <record id="m_request_37" model="maintenance.request">
         <field name="name">Request 37</field>
-        <field name="technician_user_id" ref="user_man_4"/>
+        <field name="user_id" ref="user_man_4"/>
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="equipment_id" ref="equipment_lampara"/>
         <field name="color">4</field>
@@ -407,7 +407,7 @@
     </record>
     <record id="m_request_38" model="maintenance.request">
         <field name="name">Request 38</field>
-        <field name="technician_user_id" ref="user_man_3"/>
+        <field name="user_id" ref="user_man_3"/>
         <field name="owner_user_id" ref="user_man_3"/>
         <field name="equipment_id" ref="equipment_puerta"/>
         <field name="color">3</field>
@@ -417,7 +417,7 @@
     </record>
     <record id="m_request_39" model="maintenance.request">
         <field name="name">Request 39</field>
-        <field name="technician_user_id" ref="user_man_2"/>
+        <field name="user_id" ref="user_man_2"/>
         <field name="owner_user_id" ref="user_man_2"/>
         <field name="color">2</field>
         <field name="stage_id" ref="stage_1"/>
@@ -426,7 +426,7 @@
     </record>
     <record id="m_request_40" model="maintenance.request">
         <field name="name">Request 40</field>
-        <field name="technician_user_id" ref="user_man_1"/>
+        <field name="user_id" ref="user_man_1"/>
         <field name="owner_user_id" ref="user_man_4"/>
         <field name="color">1</field>
         <field name="priority">1</field>

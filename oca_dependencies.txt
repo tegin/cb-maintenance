@@ -1,4 +1,4 @@
-maintenance
-purchase-workflow https://github.com/etobella/purchase-workflow 11.0-mig-pwa
-server-tools
-web_hierarchy https://github.com/etobella/web 11.0-add-web_widget_child_selector
+maintenance  https://github.com/tegin/maintenance 12.0-mig-equip_tags
+purchase-workflow
+server-tools https://github.com/tegin/server-tools 12.0-mig-base-report
+web_hierarchy https://github.com/tegin/web 12.0-mig-child_selector

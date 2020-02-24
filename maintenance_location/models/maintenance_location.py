@@ -31,8 +31,7 @@ class MaintenanceLocation(models.Model):
     child_id = fields.One2many(
         "maintenance.location", "parent_id", "Child Locations"
     )
-    parent_left = fields.Integer("Left Parent", index=1)
-    parent_right = fields.Integer("Right Parent", index=1)
+    parent_path = fields.Char(index=True)
 
     sequence = fields.Integer(string="Sequence", default=10)
 
