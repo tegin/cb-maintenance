@@ -24,29 +24,26 @@
                         type="object" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}"/>
             </button>
 
-            <xpath expr="//span[hasclass('label')]/.." position="after">
+            <xpath expr="//span[hasclass('badge')]/.." position="after">
                 <div>
-                    <span class="label label-info pull-right" attrs="{'invisible': [('state', '!=', 'new')]}">
+                    <span class="badge badge-info pull-right" attrs="{'invisible': [('state', '!=', 'new')]}">
                         <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
                     </span>
-                    <span class="label label-success pull-right" attrs="{'invisible': [('state', '!=', 'open')]}">
+                    <span class="badge badge-success pull-right" attrs="{'invisible': [('state', '!=', 'open')]}">
                         <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
                     </span>
-                    <span class="label label-danger pull-right" attrs="{'invisible': [('state', '!=', 'closed')]}">
+                    <span class="badge badge-danger pull-right" attrs="{'invisible': [('state', '!=', 'closed')]}">
                         <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
                     </span>
                 </div>
             </xpath>
 
-            <field name="technician_user_id" position="after">
+            <field name="user_id" position="after">
                 <field name="maintenance_team_id_member_ids" invisible="1"/>
                 <field name="manager_id" options="{'no_open': True, 'no_create': True}" domain="[('id', 'in', maintenance_team_id_member_ids)]"/>
                 <field name="technician_id" options="{'no_open': True, 'no_create': True}"/>
                 <field name="write_date" readonly="1"/>
                 <field name="maintenance_team_id_member_ids" invisible="1"/>
-            </field>
-            <field name="technician_user_id" position="attributes">
-                <attribute name="invisible">1</attribute>
             </field>
 
             <xpath expr="//div[hasclass('oe_right')]" position="attributes">
@@ -82,18 +79,12 @@
                 <field name="state" widget="statusbar"/>
             </field>
 
-            <xpath expr="//label[@for='schedule_date']" position="attributes">
+            <field name="schedule_date" position="attributes">
                 <attribute name="class">oe_edit_only</attribute>
-            </xpath>
-            <xpath expr="//div[hasclass('o_row')]" position="attributes">
-                <attribute name="class">o_row oe_edit_only</attribute>
-            </xpath>
-            <xpath expr="//div[hasclass('o_row')]" position="after">
-                <label for="schedule_info" class="oe_read_only" string="Schedule Date"/>
-                <div class="oe_read_only o_row">
-                    <field name="schedule_info"/>
-                </div>
-            </xpath>
+            </field>
+            <field name="schedule_date" position="after">
+                <field name="schedule_info" class="oe_read_only"/>
+            </field>
 
             <field name="description" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -153,10 +144,10 @@
             <field name="request_date" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
-            <field name="technician_user_id" position="attributes">
+            <field name="user_id" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
-            <field name="technician_user_id" position="after">
+            <field name="user_id" position="after">
                  <field name="manager_id"/>
                  <field name="technician_id" groups="maintenance.group_equipment_manager"/>
             </field>
@@ -224,14 +215,14 @@
     </record>
 
     <record model="ir.ui.view" id="hr_equipment_request_view_search">
-        <field name="name">maintenance.request.kanban (in cb_maintenance for manager)</field>
+        <field name="name">maintenance.request.search (in cb_maintenance for manager)</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
         <field name="arch" type="xml">
-            <field name="technician_user_id" position="attributes">
+            <field name="user_id" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
-            <field name="technician_user_id" position="after">
+            <field name="user_id" position="after">
                  <field name="manager_id"/>
                  <field name="technician_id"/>
                  <field name="message_ids" string="Chatter" filter_domain="[('message_ids.body','ilike',self)]"/>
@@ -268,7 +259,7 @@
                 <attribute name="name">group_stages</attribute>
             </xpath>
             <xpath expr="//group/filter[3]" position="after">
-                <filter string="Manager" domain="[]" context="{'group_by' : 'manager_id'}"/>
+                <filter string="Manager" domain="[]" name="group_by_manager" context="{'group_by' : 'manager_id'}"/>
             </xpath>
         </field>
     </record>

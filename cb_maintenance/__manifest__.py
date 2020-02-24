@@ -5,7 +5,7 @@
     "name": "Cb Maintenance",
     "summary": """
         CB maintenance base""",
-    "version": "11.0.1.0.0",
+    "version": "12.0.1.0.0",
     "license": "AGPL-3",
     "author": "Creu Blanca",
     "website": "www.creublanca.es",
@@ -15,7 +15,6 @@
         "document",
         "maintenance_equipment_category_hierarchy",
         "maintenance_equipment_hierarchy",
-        # "maintenance_equipment_sequence",
         "maintenance_location",
         "maintenance_request_sequence",
         "maintenance_request_stage_transition",
