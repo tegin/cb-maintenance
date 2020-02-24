@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class WizardLinkMaintenancePo(models.TransientModel):
 
     _name = "wizard.link.maintenance.po"
+    _description = "Wizard used to link MRs with POs"
 
     maintenance_request_id = fields.Many2one(
         "maintenance.request", required=True
