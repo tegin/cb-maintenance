@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class WizardCloseRequest(models.TransientModel):
 
     _name = "wizard.close.request"
+    _description = "Wizard used to close requests"
 
     solution = fields.Text()
     stage_id = fields.Many2one("maintenance.stage")

@@ -94,7 +94,7 @@ class TestCbMaintenance(TransactionCase):
         self.assertTrue(res)
         self.request_id.write({"maintenance_team_id": self.team_id.id})
         self.assertFalse(self.stage_id.done)
-        self.assertTrue(self.request_id.technician_user_id)
+        self.assertTrue(self.request_id.user_id)
         self.assertEqual(self.request_id.color, 1)
         self.request_id.write({"schedule_date": False})
         self.assertEqual(self.request_id.schedule_info, "Unscheduled")
@@ -111,7 +111,7 @@ class TestCbMaintenance(TransactionCase):
                 "manager_id": self.user_id_2.id,
             }
         )
-        self.assertFalse(self.request_id.technician_user_id)
+        self.assertFalse(self.request_id.user_id)
         self.request_id.with_context(
             use_old_onchange_equipment=True
         ).onchange_equipment_id()
@@ -124,10 +124,7 @@ class TestCbMaintenance(TransactionCase):
         self.assertEqual(self.request_id.follower_id, self.user_id_2)
         self.assertTrue(self.request_id.close_datetime)
         self.assertEqual(self.request_id.color, 10)
-        self.assertEqual(
-            self.request_id.schedule_info,
-            "01/01/2019 12:00:00 for 0.0 hour(s)",
-        )
+        self.assertEqual(self.request_id.schedule_info, "01/01/2019 12:00:00")
         self.request_id.onchange_maintenance_team_id()
         self.assertEqual(self.request_id.manager_id.id, self.user_id_2.id)
 
