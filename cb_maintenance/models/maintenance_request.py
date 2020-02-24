@@ -19,7 +19,7 @@ class MaintenanceRequest(models.Model):
         readonly=False, related=False, track_visibility="onchange"
     )
     close_datetime = fields.Datetime(
-        "Close Date", readonly=True, track_visibility="onchange"
+        "Closing Date", readonly=True, track_visibility="onchange"
     )
     request_date = fields.Date(track_visibility=False)
     create_date = fields.Datetime(track_visibility="onchange")
@@ -29,8 +29,10 @@ class MaintenanceRequest(models.Model):
         relation="selectable_maintenance_members",
         compute="_compute_maintenance_team_id_member_ids",
     )
-    technician_user_id = fields.Many2one(
-        compute="_compute_technician_user_id", store=True
+    user_id = fields.Many2one(
+        compute="_compute_technician_user_id",
+        store=True,
+        string="Technician User",
     )
 
     schedule_info = fields.Char(compute="_compute_schedule_info", store=True)
@@ -73,10 +75,7 @@ class MaintenanceRequest(models.Model):
                     sd = sd.replace(tzinfo=tz.tzutc()).astimezone(
                         tz.gettz(tz_name)
                     )
-                record.schedule_info = _("%s for %s hour(s)") % (
-                    sd.strftime("%d/%m/%Y %H:%M:%S"),
-                    record.duration,
-                )
+                record.schedule_info = sd.strftime("%d/%m/%Y %H:%M:%S")
 
     @api.depends("maintenance_type")
     def _compute_color(self):
@@ -92,9 +91,9 @@ class MaintenanceRequest(models.Model):
     def _compute_technician_user_id(self):
         for record in self:
             if record.technician_id.user_ids:
-                record.technician_user_id = record.technician_id.user_ids[0]
+                record.user_id = record.technician_id.user_ids[0]
             else:
-                record.technician_user_id = False
+                record.user_id = False
 
     @api.depends("maintenance_team_id")
     def _compute_maintenance_team_id_member_ids(self):
@@ -170,9 +169,11 @@ class MaintenanceRequest(models.Model):
                 user = record.technician_id.user_ids[0]
             if user != record.follower_id:
                 if record.follower_id:
-                    record.message_unsubscribe_users(record.follower_id.ids)
+                    record.message_unsubscribe(
+                        record.follower_id.partner_id.ids
+                    )
                 if user:
-                    record.message_subscribe_users(user.ids)
+                    record.message_subscribe(user.partner_id.ids)
                 record.follower_id = user
 
     @api.multi

@@ -58,12 +58,6 @@
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_kanban"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@t-if='!record.owner_user_id.raw_value']" position="attributes">
-                <attribute name="t-if">1==0</attribute>
-            </xpath>
-            <xpath expr="//div[@t-if='record.owner_user_id.raw_value']" position="attributes">
-                <attribute name="t-if">1==0</attribute>
-            </xpath>
             <xpath expr="//img[hasclass('oe_kanban_avatar')]" position="attributes">
                 <attribute name="t-if">1==0</attribute>
             </xpath>
@@ -73,7 +67,7 @@
             <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="after">
                 <div class="o_kanban_image">
                     <field name="id" t-if="1==0"/>
-                    <img t-att-src="kanban_image('maintenance.equipment', 'image_medium', record.id.raw_value)"/>
+                    <img t-att-src="kanban_image('maintenance.equipment', 'image_medium', record.id.raw_value)" alt="default_image"/>
                 </div>
             </xpath>
         </field>
