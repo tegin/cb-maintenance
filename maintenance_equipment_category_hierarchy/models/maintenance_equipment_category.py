@@ -13,7 +13,7 @@ class MaintenanceEquipmentCategory(models.Model):
     _parent_store = True
     _parent_order = "name"
     _rec_name = "complete_name"
-    _order = "parent_left"
+    _order = "parent_id"
 
     complete_name = fields.Char(
         "Complete Name", compute="_compute_complete_name", store=True
@@ -28,8 +28,7 @@ class MaintenanceEquipmentCategory(models.Model):
     child_id = fields.One2many(
         "maintenance.equipment.category", "parent_id", "Child Categories"
     )
-    parent_left = fields.Integer("Left Parent", index=1)
-    parent_right = fields.Integer("Right Parent", index=1)
+    parent_path = fields.Char(index=True)
 
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
