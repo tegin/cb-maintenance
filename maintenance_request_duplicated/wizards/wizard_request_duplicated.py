@@ -8,6 +8,7 @@ from odoo.exceptions import ValidationError
 class WizardRequestDuplicated(models.TransientModel):
 
     _name = "wizard.request.duplicated"
+    _description = "Mark As Requests as duplicated"
 
     duplicated_request = fields.Many2one(comodel_name="maintenance.request")
     original_request = fields.Many2one(
