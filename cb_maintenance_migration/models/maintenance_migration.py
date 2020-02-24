@@ -7,6 +7,7 @@ from odoo import fields, models
 class MaintenanceMigrationMixin(models.AbstractModel):
 
     _name = "maintenance.migration.mixin"
+    _description = "maintenance.migration.mixin"
 
     migrated = fields.Boolean()
     migration_link = fields.Char(readonly=True)
