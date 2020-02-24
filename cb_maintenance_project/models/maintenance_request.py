@@ -19,8 +19,7 @@ class MaintenanceRequest(models.Model):
     child_ids = fields.One2many(
         "maintenance.request", "parent_id", "Child Requests"
     )
-    parent_left = fields.Integer("Left Parent", index=1)
-    parent_right = fields.Integer("Right Parent", index=1)
+    parent_path = fields.Char(index=True)
 
     children_count = fields.Integer(
         compute="_compute_children_count", store=True
