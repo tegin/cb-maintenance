@@ -4,16 +4,16 @@
 <odoo>
 
     <record id="tag_equip_samsung" model="maintenance.equipment.tag">
-        <field name="name">Samsung</field>
+        <field name="name">Samsungs</field>
     </record>
     <record id="tag_equip_hp" model="maintenance.equipment.tag">
-        <field name="name">HP</field>
+        <field name="name">Hpp</field>
     </record>
     <record id="tag_equip_monitor" model="maintenance.equipment.tag">
-        <field name="name">Monitor</field>
+        <field name="name">monitor</field>
     </record>
     <record id="tag_equip_printer" model="maintenance.equipment.tag">
-        <field name="name">Printer</field>
+        <field name="name">printer</field>
     </record>
 
     <record id="tag_equip_aire" model="maintenance.equipment.tag">
