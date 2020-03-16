@@ -24,7 +24,11 @@
                         type="object" attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}"/>
             </button>
 
-            <xpath expr="//span[hasclass('badge')]/.." position="after">
+            <field name="kanban_state" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <field name="kanban_state" position="after">
                 <div>
                     <span class="badge badge-info pull-right" attrs="{'invisible': [('state', '!=', 'new')]}">
                         <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
@@ -36,7 +40,7 @@
                         <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
                     </span>
                 </div>
-            </xpath>
+            </field>
 
             <field name="user_id" position="after">
                 <field name="maintenance_team_id_member_ids" invisible="1"/>
@@ -45,10 +49,6 @@
                 <field name="write_date" readonly="1"/>
                 <field name="maintenance_team_id_member_ids" invisible="1"/>
             </field>
-
-            <xpath expr="//div[hasclass('oe_right')]" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
 
             <field name="close_date" position="attributes">
                 <attribute name="invisible">1</attribute>
