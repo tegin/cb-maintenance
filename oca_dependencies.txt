@@ -2,3 +2,4 @@ maintenance  https://github.com/tegin/maintenance 12.0-mig-equip_tags
 purchase-workflow
 server-tools https://github.com/tegin/server-tools 12.0-mig-base-report
 web_hierarchy https://github.com/tegin/web 12.0-mig-child_selector
+web

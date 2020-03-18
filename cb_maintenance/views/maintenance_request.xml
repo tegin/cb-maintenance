@@ -135,6 +135,7 @@
                 <attribute name="colors">background_color_field: tree_color</attribute>
             </tree>
             <field name="name" position="before">
+                <field name="id" widget="open_tab"/>
                 <field name="create_date"/>
             </field>
             <field name="name" position="after">
