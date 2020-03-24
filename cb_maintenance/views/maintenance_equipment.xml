@@ -97,6 +97,9 @@
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="code"/>
+                <field name="serial_no"/>
+                <field name="partner_technician_id"/>
+                <field name="model"/>
             </field>
             <filter name="assigned" position="attributes">
                 <attribute name="invisible">1</attribute>
