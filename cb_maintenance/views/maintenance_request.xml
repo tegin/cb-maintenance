@@ -266,7 +266,7 @@
     </record>
 
     <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
-        <field name="view_mode">tree,kanban,calendar,form</field>
+        <field name="view_mode">tree,kanban,form</field>
         <field name="view_id" eval="False"/>
         <field name="context">
             {
