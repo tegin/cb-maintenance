@@ -16,90 +16,92 @@
         />
 
         <template id="maintenance_request_template">
-            <t t-call="web.internal_layout">
-                <t t-foreach="docs" t-as="record">
-                    <div class="page">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <h3><strong t-field="record.code"/></h3>
-                                <h1>
-                                    <i class="fa fa-home" t-if="record.maintenance_type == 'preventive' and not record.is_project"/>
-                                    <i class="fa fa-tools" t-if="record.maintenance_type == 'corrective' and not record.is_project"/>
-                                    <i class="fa fa-project-diagram" t-if="record.is_project"/>
-                                    <strong t-field="record.name"/>
-                                </h1>
-                            </div>
-                            <div class="col-xs-2">
-                                <span class="label label-primary pull-right">
-                                    <span style="margin-top: 6px" t-field="record.stage_id"/>
-                                </span>
-                            </div>
-                        </div>
-                        <br/>
-                        <h2><strong>Technical Information</strong></h2>
-                        <h4>
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <t t-foreach="docs" t-as="record">
+                        <div class="page">
                             <div class="row">
-                                <div class="col-xs-6">
-                                    <b>Requested By:</b>
-                                    <span t-field="record.owner_user_id"/><br/><br/>
-                                    <b>Request Date:</b>
-                                    <span t-field="record.create_date"/><br/><br/>
-                                    <b>Location:</b>
-                                    <span t-field="record.location_id"/><br/><br/>
-                                    <b>Equipment:</b>
-                                    <span t-if="record.equipment_id" t-field="record.equipment_id"/><br/><br/>
-                                    <b>Category:</b>
-                                    <span t-field="record.category_id"/><br/><br/>
-                                    <b>Maintenance Type:</b>
-                                    <span t-if="record.maintenance_type" t-field="record.maintenance_type"/><br/><br/>
+                                <div class="col-10">
+                                    <h3><strong t-field="record.code"/></h3>
+                                    <h1>
+                                        <i class="fa fa-home" t-if="record.maintenance_type == 'preventive' and not record.is_project"/>
+                                        <i class="fa fa-tools" t-if="record.maintenance_type == 'corrective' and not record.is_project"/>
+                                        <i class="fa fa-project-diagram" t-if="record.is_project"/>
+                                        <strong t-field="record.name"/>
+                                    </h1>
                                 </div>
-
-                                <div class="col-xs-6">
-                                    <b>Team:</b>
-                                    <span t-field="record.maintenance_team_id"/><br/><br/>
-                                    <b>Manager:</b>
-                                    <span t-if="record.manager_id" t-field="record.manager_id"/><br/><br/>
-                                    <b>Technician:</b>
-                                    <span t-if="record.technician_id" t-field="record.technician_id"/><br/><br/>
-                                    <b>Last Updated on:</b>
-                                    <span t-field="record.write_date"/><br/><br/>
-                                    <b>Schedule Date:</b>
-                                    <span t-field="record.schedule_info"/><br/><br/>
-                                    <b>Priority:</b>
-                                    <span t-field="record.priority"/><br/><br/>
+                                <div class="col-2">
+                                    <span class="label label-primary pull-right">
+                                        <span style="margin-top: 6px" t-field="record.stage_id"/>
+                                    </span>
                                 </div>
                             </div>
-                            <h2><strong>Description</strong></h2>
-                            <p t-field="record.description"/>
+                            <br/>
+                            <h2><strong>Technical Information</strong></h2>
+                            <h4>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <b>Requested By:</b>
+                                        <span t-field="record.owner_user_id"/><br/><br/>
+                                        <b>Request Date:</b>
+                                        <span t-field="record.create_date"/><br/><br/>
+                                        <b>Location:</b>
+                                        <span t-field="record.location_id"/><br/><br/>
+                                        <b>Equipment:</b>
+                                        <span t-if="record.equipment_id" t-field="record.equipment_id"/><br/><br/>
+                                        <b>Category:</b>
+                                        <span t-field="record.category_id"/><br/><br/>
+                                        <b>Maintenance Type:</b>
+                                        <span t-if="record.maintenance_type" t-field="record.maintenance_type"/><br/><br/>
+                                    </div>
 
-                            <h2><strong>Chatter</strong></h2>
-                            <table>
-                                <t t-foreach="record.message_ids" t-as="msg">
-                                    <tr>
-                                        <td style="padding-right: 1cm; font-weight:bold;">
-                                            <span t-field="msg.author_id"/><br/>
-                                            <div style="font-size:75%; padding-left: 3mm;">
-                                                (<span t-field="msg.date"/>)
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div t-if="msg.subject"><span t-field="msg.subject"/>: </div>
-                                            <div t-if="msg.message_type == 'notification'">
-                                                <span t-field="msg.subtype_id.name"/>
-                                                <t t-foreach='msg.sudo().tracking_value_ids' t-as='value'>
-                                                    <li>
-                                                        <t t-esc="value.field_desc"/>:
-                                                        <span> <t t-esc="value.new_value_char"/> </span>
-                                                    </li>
-                                                </t>
-                                            </div>
-                                            <span t-field="msg.body"/>
-                                        </td>
-                                    </tr>
-                                </t>
-                            </table>
-                        </h4>
-                    </div>
+                                    <div class="col-6">
+                                        <b>Team:</b>
+                                        <span t-field="record.maintenance_team_id"/><br/><br/>
+                                        <b>Manager:</b>
+                                        <span t-if="record.manager_id" t-field="record.manager_id"/><br/><br/>
+                                        <b>Technician:</b>
+                                        <span t-if="record.technician_id" t-field="record.technician_id"/><br/><br/>
+                                        <b>Last Updated on:</b>
+                                        <span t-field="record.write_date"/><br/><br/>
+                                        <b>Schedule Date:</b>
+                                        <span t-field="record.schedule_info"/><br/><br/>
+                                        <b>Priority:</b>
+                                        <span t-field="record.priority"/><br/><br/>
+                                    </div>
+                                </div>
+                                <t t-if="record.description"><h2><strong>Description</strong></h2></t>
+                                <t t-if="record.description"><p t-field="record.description"/></t>
+
+                                <h2><strong>Chatter</strong></h2>
+                                <table>
+                                    <t t-foreach="record.message_ids" t-as="msg">
+                                        <tr>
+                                            <td style="padding-right: 1cm; font-weight:bold;">
+                                                <span t-field="msg.author_id"/><br/>
+                                                <div style="font-size:75%; padding-left: 3mm;">
+                                                    (<span t-field="msg.date"/>)
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div t-if="msg.subject"><span t-field="msg.subject"/>: </div>
+                                                <div t-if="msg.message_type == 'notification'">
+                                                    <span t-field="msg.subtype_id.name"/>
+                                                    <t t-foreach='msg.sudo().tracking_value_ids' t-as='value'>
+                                                        <li>
+                                                            <t t-esc="value.field_desc"/>:
+                                                            <span> <t t-esc="value.new_value_char"/> </span>
+                                                        </li>
+                                                    </t>
+                                                </div>
+                                                <span t-field="msg.body"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+                            </h4>
+                        </div>
+                    </t>
                 </t>
             </t>
         </template>
