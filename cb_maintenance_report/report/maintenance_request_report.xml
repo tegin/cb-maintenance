@@ -22,24 +22,24 @@
                         <div class="page">
                             <div class="row">
                                 <div class="col-10">
-                                    <h3><strong t-field="record.code"/></h3>
-                                    <h1>
+                                    <h4><strong t-field="record.code"/></h4>
+                                    <h3>
                                         <i class="fa fa-home" t-if="record.maintenance_type == 'preventive' and not record.is_project"/>
                                         <i class="fa fa-tools" t-if="record.maintenance_type == 'corrective' and not record.is_project"/>
                                         <i class="fa fa-project-diagram" t-if="record.is_project"/>
                                         <strong t-field="record.name"/>
-                                    </h1>
+                                    </h3>
                                 </div>
                                 <div class="col-2">
                                     <span class="label label-primary pull-right">
-                                        <span style="margin-top: 6px" t-field="record.stage_id"/>
+                                        <span style="font-size: 12px;margin-top: 6px" t-field="record.stage_id"/>
                                     </span>
                                 </div>
                             </div>
                             <br/>
-                            <h2><strong>Technical Information</strong></h2>
+                            <h4><strong>Technical Information</strong></h4>
                             <h4>
-                                <div class="row">
+                                <div class="row" style="font-size: 12px;">
                                     <div class="col-6">
                                         <b>Requested By:</b>
                                         <span t-field="record.owner_user_id"/><br/><br/>
@@ -70,11 +70,11 @@
                                         <span t-field="record.priority"/><br/><br/>
                                     </div>
                                 </div>
-                                <t t-if="record.description"><h2><strong>Description</strong></h2></t>
-                                <t t-if="record.description"><p t-field="record.description"/></t>
+                                <t t-if="record.description"><h4><strong>Description</strong></h4></t>
+                                <t t-if="record.description"><p style="font-size: 12px;" t-field="record.description"/></t>
 
-                                <h2><strong>Chatter</strong></h2>
-                                <table>
+                                <h4><strong>Chatter</strong></h4>
+                                <table style="font-size: 12px;">
                                     <t t-foreach="record.message_ids" t-as="msg">
                                         <tr>
                                             <td style="padding-right: 1cm; font-weight:bold;">
