@@ -2,12 +2,14 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import SavepointCase
 
 
-class TestCbMaintenance(TransactionCase):
-    def setUp(self):
-        super().setUp()
+class TestCbMaintenance(SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        self = cls
         self.technician_1 = self.env["res.partner"].create(
             {"name": "Internal Technician", "is_maintenance_technician": True}
         )
@@ -24,7 +26,7 @@ class TestCbMaintenance(TransactionCase):
             {
                 "name": "test user",
                 "login": "test",
-                "groups_id": [4, self.ref("base.group_user")],
+                "groups_id": [4, self.env.ref("base.group_user").id],
                 "partner_id": self.technician_1.id,
             }
         )
@@ -32,7 +34,7 @@ class TestCbMaintenance(TransactionCase):
             {
                 "name": "test user",
                 "login": "test_2",
-                "groups_id": [4, self.ref("base.group_user")],
+                "groups_id": [4, self.env.ref("base.group_user").id],
                 "partner_id": self.technician_3.id,
             }
         )
@@ -65,7 +67,7 @@ class TestCbMaintenance(TransactionCase):
             {"name": "Initial Stage", "state": "new"}
         )
         self.stage_final_id = self.env["maintenance.stage"].create(
-            {"name": "Initial Stage", "state": "closed"}
+            {"name": "Initial Stage", "state": "closed", "function": "func"}
         )
         self.equipment_id = self.env["maintenance.equipment"].create(
             {
@@ -156,3 +158,35 @@ class TestCbMaintenance(TransactionCase):
         self.stage_id.write({"next_stage_ids": [(4, self.stage_final_id.id)]})
         mass_edit.with_context(active_ids=[split.id]).set_stage()
         self.assertEqual(split.stage_id.id, self.stage_final_id.id)
+
+        close_action = self.request_id.close_request()
+        wizard_close = (
+            self.env[close_action["res_model"]]
+            .with_context(**close_action["context"])
+            .create({"solution": "Closed"})
+        )
+        wizard_close.close_request()
+        self.assertEqual(self.request_id.solution, "Closed")
+
+    def test_request_creation(self):
+        equipment = self.env["maintenance.equipment"].create(
+            {"name": "Laptop"}
+        )
+
+        plan = self.env["maintenance.plan"].create(
+            {
+                "equipment_id": equipment.id,
+                "interval": 1,
+                "interval_step": "month",
+                "maintenance_plan_horizon": 2,
+                "planning_step": "month",
+                "technician_id": self.technician_2.id,
+                "maintenance_team_id": self.team_id.id,
+                "note": "<span>Description</span>",
+            }
+        )
+
+        request = equipment._create_new_request(plan)
+        self.assertTrue(request)
+        for r in request:
+            self.assertEqual(r.description, "Description")
