@@ -45,6 +45,7 @@
                         type="action" attrs="{'invisible': [('is_project', '=', True)]}"/>
             </button>
             <field name="priority" position="after">
+                <field name="currency_id" invisible="1"/>
                 <field name="cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                 <field name="real_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
             </field>
