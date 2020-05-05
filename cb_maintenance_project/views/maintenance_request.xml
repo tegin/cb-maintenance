@@ -46,8 +46,10 @@
             </button>
             <field name="priority" position="after">
                 <field name="currency_id" invisible="1"/>
-                <field name="cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                <field name="real_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="cost" widget="monetary" options="{'currency_field': 'currency_id'}"
+                       attrs="{'invisible': [('is_project', '=', False), ('purchases_count', '=', 0)]}"/>
+                <field name="real_cost" widget="monetary" options="{'currency_field': 'currency_id'}"
+                       attrs="{'invisible': [('is_project', '=', False), ('purchases_count', '=', 0)]}"/>
             </field>
         </field>
     </record>
