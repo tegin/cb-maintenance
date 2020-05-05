@@ -46,3 +46,15 @@ class TestMaintenanceProject(TransactionCase):
         wizz_issue.create_request()
         action = self.project_id.action_view_children_requests()
         self.assertTrue(action["domain"])
+
+    def test_assign_to_project(self):
+        issue = self.env["maintenance.request"].create(
+            {"name": "Project", "maintenance_team_id": self.team_id.id}
+        )
+        wizz_group = (
+            self.env["wizard.group.in.project"]
+            .with_context(active_id=issue.id)
+            .create({"maintenance_project_id": self.project_id.id})
+        )
+        wizz_group.assign_to_project()
+        self.assertEqual(issue.parent_id.id, self.project_id.id)

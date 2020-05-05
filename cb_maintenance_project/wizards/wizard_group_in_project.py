@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class WizardGroupInProject(models.TransientModel):
 
     _name = "wizard.group.in.project"
+    _description = "Group Requests into Projects"
 
     maintenance_project_id = fields.Many2one(
         "maintenance.request",
