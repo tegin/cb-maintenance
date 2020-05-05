@@ -44,6 +44,7 @@ class MaintenanceRequest(models.Model):
         "child_ids.cost",
         "purchase_order_ids",
         "purchase_order_ids.amount_total",
+        "purchase_order_ids.state",
     )
     def _compute_cost(self):
         for record in self:
