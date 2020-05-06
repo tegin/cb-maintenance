@@ -81,9 +81,12 @@
 
             <field name="schedule_date" position="attributes">
                 <attribute name="class">oe_edit_only</attribute>
+                <attribute name="nolabel">1</attribute>
             </field>
-            <field name="schedule_date" position="after">
-                <field name="schedule_info" class="oe_read_only"/>
+            <field name="schedule_date" position="before">
+                <label for="schedule_info" class="oe_read_only"/>
+                <field name="schedule_info" class="oe_read_only" nolabel="1"/>
+                <label for="schedule_date" class="oe_edit_only" string="Schedule Info"/>
             </field>
 
             <field name="description" position="attributes">
