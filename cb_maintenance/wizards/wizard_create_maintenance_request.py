@@ -42,25 +42,28 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
     )
     equipment_id = fields.Many2one("maintenance.equipment")
 
+    def create_request_vals(self):
+        maintenance_team_id = self.equipment_category.maintenance_team_id
+        equipment = self.equipment_id.id if self.requires_equipment else False
+        return {
+            "name": self.name,
+            "maintenance_team_id": maintenance_team_id.id,
+            "description": self.description or self.name,
+            "location_id": self.location_id.id,
+            "equipment_id": equipment,
+            "category_id": self.equipment_category.id,
+            "original_categ_id": self.equipment_category.id,
+            "manager_id": (
+                self.equipment_category.technician_user_id.id or False
+            ),
+            "priority": self.priority,
+        }
+
     @api.multi
     def create_request(self):
         self.ensure_one()
-        maintenance_team_id = self.equipment_category.maintenance_team_id
-        equipment = self.equipment_id.id if self.requires_equipment else False
         request = self.env["maintenance.request"].create(
-            {
-                "name": self.name,
-                "maintenance_team_id": maintenance_team_id.id,
-                "description": self.description or self.name,
-                "location_id": self.location_id.id,
-                "equipment_id": equipment,
-                "category_id": self.equipment_category.id,
-                "original_categ_id": self.equipment_category.id,
-                "manager_id": (
-                    self.equipment_category.technician_user_id.id or False
-                ),
-                "priority": self.priority,
-            }
+            self.create_request_vals()
         )
         original_request = self.env.context.get("original_request", False)
         if original_request:
