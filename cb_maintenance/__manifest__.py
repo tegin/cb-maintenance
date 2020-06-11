@@ -16,6 +16,7 @@
         "maintenance_equipment_category_hierarchy",
         "maintenance_equipment_hierarchy",
         "maintenance_location",
+        "maintenance_request_custom_info",
         "maintenance_request_sequence",
         "maintenance_request_stage_transition",
         "maintenance_team_hierarchy",
