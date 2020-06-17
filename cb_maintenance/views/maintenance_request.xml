@@ -7,7 +7,7 @@
     <record model="ir.ui.view" id="hr_equipment_request_view_form">
         <field name="name">maintenance.request.form (in cb_maintenance)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="inherit_id" ref="maintenance_request_custom_info.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
             <form position="attributes">
                 <attribute name="create">false</attribute>
