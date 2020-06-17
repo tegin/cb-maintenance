@@ -20,6 +20,7 @@
                 <field name="selectable"/>
                 <field name="requires_equipment"/>
                 <field name="requires_location"/>
+                <field name="custom_info_template_id"/>
             </field>
             <group name="group_alias" position="attributes">
                 <attribute name="invisible">1</attribute>

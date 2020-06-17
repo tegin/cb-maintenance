@@ -70,6 +70,16 @@
                                         <span t-field="record.priority"/><br/><br/>
                                     </div>
                                 </div>
+
+                                <div style="font-size: 12px;">
+                                    <t t-if="record.custom_info_template_id">
+                                        <t t-foreach="record.custom_info_ids" t-as="info_line">
+                                            <b t-field="info_line.name"/><b>:</b>
+                                            <span t-field="info_line.value"/><br/><br/>
+                                        </t>
+                                    </t>
+                                </div>
+
                                 <t t-if="record.description"><h4><strong>Description</strong></h4></t>
                                 <t t-if="record.description"><p style="font-size: 12px;" t-field="record.description"/></t>
 

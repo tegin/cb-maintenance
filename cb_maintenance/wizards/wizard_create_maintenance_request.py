@@ -65,6 +65,7 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
         request = self.env["maintenance.request"].create(
             self.create_request_vals()
         )
+        request._onchange_custom_info_template_id()
         original_request = self.env.context.get("original_request", False)
         if original_request:
             original_request = self.env["maintenance.request"].browse(
