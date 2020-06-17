@@ -109,11 +109,9 @@
 
             </field>
 
-            <!--
-            <field name="remote_id" position="after">
-                <field name="link_ocs" widget="url"/>
+            <field name="custom_info_template_id" position="attributes">
+                <attribute name="invisible">1</attribute>
             </field>
-            -->
 
         </field>
     </record>

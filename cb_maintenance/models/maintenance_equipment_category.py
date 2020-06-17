@@ -21,6 +21,10 @@ class MaintenanceEquipmentCategory(models.Model):
     )
     sequence = fields.Integer(string="Sequence", default=10)
 
+    custom_info_template_id = fields.Many2one(
+        "custom.info.template", domain=[("model", "=", "maintenance.request")]
+    )
+
     @api.depends("maintenance_team_id")
     def _compute_maintenance_team_id_member_ids(self):
         for record in self.filtered("maintenance_team_id"):
