@@ -11,6 +11,10 @@ class MaintenanceRequest(models.Model):
 
     _inherit = "maintenance.request"
 
+    custom_info_template_id = fields.Many2one(
+        related="category_id.custom_info_template_id", store=True
+    )
+
     company_id = fields.Many2one(default=False)
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
