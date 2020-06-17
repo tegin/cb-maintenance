@@ -7,7 +7,7 @@
     <record model="ir.ui.view" id="hr_equipment_request_view_form">
         <field name="name">maintenance.request.form (in maintenance_request_duplicated)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="inherit_id" ref="cb_maintenance_project.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
             <button name="archive_equipment_request" position="before">
                 <button string="Mark as Duplicated" name="%(maintenance_request_duplicated.wizard_request_duplicated_act_window)d"
