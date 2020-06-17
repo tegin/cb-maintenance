@@ -7,7 +7,7 @@
     <record model="ir.ui.view" id="maintenance_project_form_view">
         <field name="name">maintenance.request.form (in cb_maintenance_project)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="inherit_id" ref="cb_maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
             <field name="name" position="before">
                 <field name="is_project" invisible="1"/>
