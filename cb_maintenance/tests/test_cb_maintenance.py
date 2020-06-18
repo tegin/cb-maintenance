@@ -190,3 +190,31 @@ class TestCbMaintenance(SavepointCase):
         self.assertTrue(request)
         for r in request:
             self.assertEqual(r.description, "Description")
+
+    def test_custom_info(self):
+        model = self.env["ir.model"].search(
+            [("model", "=", "maintenance.request")]
+        )
+        template_id = self.env["custom.info.template"].create(
+            {
+                "name": "Template",
+                "model_id": model.id,
+                "property_ids": [(0, 0, {"name": "Prop 1"})],
+            }
+        )
+        self.categ_id.write({"custom_info_template_id": template_id.id})
+        maintenance_plan = self.env["maintenance.plan"].create(
+            {
+                "equipment_id": self.equipment_id.id,
+                "category_id": self.categ_id.id,
+                "interval": 1,
+                "interval_step": "month",
+                "maintenance_plan_horizon": 1,
+                "planning_step": "week",
+            }
+        )
+        requests = self.equipment_id.env[
+            "maintenance.equipment"
+        ]._create_new_request(maintenance_plan)
+        self.assertTrue(requests.custom_info_template_id)
+        self.assertTrue(requests.custom_info_ids)
