@@ -48,12 +48,7 @@ class MaintenanceRequest(models.Model):
         domain="[('is_maintenance_technician', '=', True)]",
         track_visibility="onchange",
     )
-    manager_id = fields.Many2one(
-        "res.users",
-        string="Manager",
-        default=False,
-        track_visibility="onchange",
-    )
+    manager_id = fields.Many2one("res.users", string="Manager", default=False)
     kanban_state = fields.Selection(track_visibility=False)
     color = fields.Integer(compute="_compute_color", store=True)
     tree_color = fields.Char(compute="_compute_color", store=True)
@@ -134,6 +129,16 @@ class MaintenanceRequest(models.Model):
             )
 
     @api.multi
+    def post_manager_change_message(self, manager_id):
+        manager = self.env["res.users"].browse(manager_id)
+        for rec in self:
+            rec.message_post(
+                message_type="notification",
+                subtype="mail.mt_comment",
+                body=_("Request reassigned to %s.") % manager.name,
+            )
+
+    @api.multi
     def on_close_request_actions(self):
         self.ensure_one()
 
@@ -163,6 +168,8 @@ class MaintenanceRequest(models.Model):
         for record in on_reopen:
             record.on_reopen_request_actions()
 
+        if "manager_id" in vals:
+            self.post_manager_change_message(vals["manager_id"])
         if "maintenance_team_id" in vals:
             self.post_team_change_message(vals["maintenance_team_id"])
         return res
