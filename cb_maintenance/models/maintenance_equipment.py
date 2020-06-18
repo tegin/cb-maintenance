@@ -59,6 +59,12 @@ class MaintenanceEquipment(models.Model):
             res.update({"category_id": category_id.id})
         return res
 
+    def _create_new_request(self, maintenance_plan):
+        requests = super()._create_new_request(maintenance_plan)
+        for request in requests:
+            request._onchange_custom_info_template_id()
+        return requests
+
     @api.depends("name", "code")
     def _compute_complete_name(self):
         for me in self:
