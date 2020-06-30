@@ -62,20 +62,7 @@ class MaintenanceRequest(models.Model):
         comodel_name="maintenance.equipment.category"
     )
 
-    attachments_count = fields.Integer(compute="_compute_attachments_count")
-
     # link_ocs = fields.Char(string="Link OCS") # TODO: Not sure if necessary
-
-    def _compute_attachments_count(self):
-        for record in self:
-            record.attachments_count = len(
-                self.env["ir.attachment"].search(
-                    [
-                        ("res_model", "=", "maintenance.request"),
-                        ("res_id", "=", record.id),
-                    ]
-                )
-            )
 
     @api.depends("schedule_date", "duration")
     def _compute_schedule_info(self):
