@@ -39,9 +39,6 @@
                     <span class="badge badge-danger pull-right" attrs="{'invisible': [('state', '!=', 'closed')]}">
                         <field style="margin-top: 6px" name="stage_id" options="{'no_open': True, 'no_create': True}"/>
                     </span>
-                    <span class="badge badge-dark pull-right" attrs="{'invisible': [('attachments_count', '=', 0)]}">
-                        <field style="margin-top: 6px" name="attachments_count" /><span> attachment(s)</span>
-                    </span>
                 </div>
             </field>
 
