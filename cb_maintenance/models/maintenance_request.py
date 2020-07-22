@@ -248,3 +248,9 @@ class MaintenanceRequest(models.Model):
             "target": "new",
         }
         return action
+
+    # Was giving problems with mail_activity_team module
+    def activity_update(self):
+        return super(
+            MaintenanceRequest, self.with_context(default_team_id=False)
+        ).activity_update()
