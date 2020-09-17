@@ -37,4 +37,5 @@ class PurchaseOrder(models.Model):
         elif self.maintenance_request_ids:
             action["views"] = [(False, "form")]
             action["res_id"] = self.maintenance_request_ids.id
+        action["context"] = {}
         return action
