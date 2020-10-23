@@ -3,8 +3,7 @@
 
 {
     "name": "Cb Maintenance",
-    "summary": """
-        CB maintenance base""",
+    "summary": "CB maintenance base",
     "version": "12.0.1.0.0",
     "license": "AGPL-3",
     "author": "Creu Blanca",
