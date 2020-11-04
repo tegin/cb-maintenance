@@ -1,35 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
-
     <record model="ir.ui.view" id="hr_equipment_request_view_form">
-        <field name="name">maintenance.request.form (in maintenance_equipment_purchase)</field>
+        <field
+            name="name"
+        >maintenance.request.form (in maintenance_equipment_purchase)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
         <field name="arch" type="xml">
             <button name="archive_equipment_request" position="before">
-                <button string="Link to PO" name="%(maintenance_request_purchase.wizard_link_maintenance_po_act_window)d"
-                        type="action" groups="maintenance.group_equipment_manager"
-                        attrs="{'invisible': [('archive', '=', True)]}"
-                        context="{'default_maintenance_request_id': active_id}"/>
+                <button
+                    string="Link to PO"
+                    name="%(maintenance_request_purchase.wizard_link_maintenance_po_act_window)d"
+                    type="action"
+                    groups="maintenance.group_equipment_manager"
+                    attrs="{'invisible': [('archive', '=', True)]}"
+                    context="{'default_maintenance_request_id': active_id}"
+                />
             </button>
         </field>
     </record>
     <record model="ir.ui.view" id="hr_equipment_request_view_form_button_box">
-        <field name="name">maintenance.request.form (in maintenance_equipment_purchase)</field>
+        <field
+            name="name"
+        >maintenance.request.form (in maintenance_equipment_purchase)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="base_maintenance.equipment_request_view_form"/>
+        <field name="inherit_id" ref="base_maintenance.equipment_request_view_form" />
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
-                <field name="purchase_order_ids" invisible="1"/>
-                <button name="action_view_purchase" class="oe_stat_button"
-                        icon="fa-truck" type="object" attrs="{'invisible': [('purchase_order_ids', '=', [])]}">
-                    <field name="purchases_count" widget="statinfo" string="Purchases"/>
+                <field name="purchase_order_ids" invisible="1" />
+                <button
+                    name="action_view_purchase"
+                    class="oe_stat_button"
+                    icon="fa-truck"
+                    type="object"
+                    attrs="{'invisible': [('purchase_order_ids', '=', [])]}"
+                >
+                    <field
+                        name="purchases_count"
+                        widget="statinfo"
+                        string="Purchases"
+                    />
                 </button>
             </div>
         </field>
     </record>
-
 </odoo>

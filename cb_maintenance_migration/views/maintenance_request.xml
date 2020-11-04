@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
-
     <record model="ir.ui.view" id="hr_equipment_request_view_form">
         <field name="name">maintenance.request.form (in cb_maintenance)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
         <field name="arch" type="xml">
             <field name="description" position="after">
-                <field name="migrated" invisible="1"/>
-                <group name="migration" string="Migration Info" attrs="{'invisible': [('migrated', '=', False)]}">
+                <field name="migrated" invisible="1" />
+                <group
+                    name="migration"
+                    string="Migration Info"
+                    attrs="{'invisible': [('migrated', '=', False)]}"
+                >
                     <group>
-                        <field name="migration_link" widget="url"/>
-                        <field name="migration_notes"/>
+                        <field name="migration_link" widget="url" />
+                        <field name="migration_notes" />
                     </group>
                 </group>
             </field>
         </field>
     </record>
-
     <record model="ir.ui.view" id="hr_equipment_request_view_search">
         <field name="name">maintenance.request.search (in cb_maintenance)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search" />
         <field name="arch" type="xml">
             <field name="maintenance_team_id" position="after">
-                <field name="migrated"/>
+                <field name="migrated" />
             </field>
         </field>
     </record>
-
 </odoo>

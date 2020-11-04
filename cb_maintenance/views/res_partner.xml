@@ -1,33 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
-
     <record model="ir.ui.view" id="view_partner_form">
         <field name="name">res.partner.form (in cb_maintenance)</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <notebook position="inside">
                 <page string="Maintenance">
                     <group>
-                        <field name="is_maintenance_technician"/>
+                        <field name="is_maintenance_technician" />
                     </group>
                 </page>
             </notebook>
         </field>
     </record>
-
     <record model="ir.ui.view" id="view_partner_simple_form">
         <field name="name">res.partner.simplified.form (in cb_maintenance)</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_simple_form"/>
+        <field name="inherit_id" ref="base.view_partner_simple_form" />
         <field name="arch" type="xml">
             <field name="mobile" position="after">
-                <field name="is_maintenance_technician"/>
+                <field name="is_maintenance_technician" />
             </field>
         </field>
     </record>
-
 </odoo>

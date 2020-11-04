@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
     <record id="product_mesa" model="product.product">
         <field name="name">Mesa</field>
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">service</field>
-        <field name="uom_id" ref="uom.product_uom_unit"/>
-        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="default_code">MESA</field>
     </record>
     <record id="product_silla" model="product.product">
@@ -17,56 +16,53 @@
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">service</field>
-        <field name="uom_id" ref="uom.product_uom_unit"/>
-        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="default_code">SILLA</field>
     </record>
     <record id="consu_tornillos" model="product.product">
-            <field name="name">Tornillos</field>
-            <field name="standard_price">5</field>
-            <field name="list_price">5</field>
-            <field name="type">consu</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="default_code">TORN</field>
+        <field name="name">Tornillos</field>
+        <field name="standard_price">5</field>
+        <field name="list_price">5</field>
+        <field name="type">consu</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
+        <field name="default_code">TORN</field>
     </record>
     <record id="consu_bombilla" model="product.product">
-            <field name="name">Bombilla</field>
-            <field name="standard_price">5</field>
-            <field name="list_price">5</field>
-            <field name="type">consu</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="default_code">BOMBILLA</field>
+        <field name="name">Bombilla</field>
+        <field name="standard_price">5</field>
+        <field name="list_price">5</field>
+        <field name="type">consu</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
+        <field name="default_code">BOMBILLA</field>
     </record>
     <record id="service_air_conditioning" model="product.product">
-            <field name="name">Mantenimiento Aire Acondicionado</field>
-            <field name="standard_price">200.0</field>
-            <field name="list_price">180.0</field>
-            <field name="type">service</field>
-            <field name="uom_id" ref="uom.product_uom_unit"/>
-            <field name="uom_po_id" ref="uom.product_uom_unit"/>
-            <field name="default_code">AIR_MAN</field>
+        <field name="name">Mantenimiento Aire Acondicionado</field>
+        <field name="standard_price">200.0</field>
+        <field name="list_price">180.0</field>
+        <field name="type">service</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
+        <field name="default_code">AIR_MAN</field>
     </record>
-
     <record id="equipment_computer" model="product.product">
         <field name="name">Ordenador</field>
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">equipment</field>
-        <field name="uom_id" ref="uom.product_uom_unit"/>
-        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="default_code">COMP</field>
     </record>
-
     <record id="equipment_printer" model="product.product">
         <field name="name">Impresora</field>
         <field name="standard_price">200.0</field>
         <field name="list_price">180.0</field>
         <field name="type">equipment</field>
-        <field name="uom_id" ref="uom.product_uom_unit"/>
-        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
         <field name="default_code">COMP</field>
     </record>
-
 </odoo>
