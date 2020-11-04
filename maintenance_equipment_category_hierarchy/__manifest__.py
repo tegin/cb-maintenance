@@ -3,7 +3,7 @@
 
 {
     "name": "Maintenance Equipment Category Hierarchy",
-    "description": """
+    "summary": """
         Equipment Categories Hierarchy""",
     "version": "12.0.1.0.0",
     "license": "AGPL-3",
