@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -39,9 +39,8 @@ class MaintenanceLocation(models.Model):
     def _compute_complete_name(self):
         for location in self:
             if location.parent_id:
-                location.complete_name = "%s / %s" % (
-                    location.parent_id.complete_name,
-                    location.name,
+                location.complete_name = "{} / {}".format(
+                    location.parent_id.complete_name, location.name,
                 )
             else:
                 location.complete_name = location.name
