@@ -1,32 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2020 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
-
     <record model="ir.ui.view" id="maintenance_plan_view_form">
         <field name="name">maintenance.plan.form (in cb_maintenance)</field>
         <field name="model">maintenance.plan</field>
-        <field name="inherit_id" ref="maintenance_plan.maintenance_plan_view_form"/>
+        <field name="inherit_id" ref="maintenance_plan.maintenance_plan_view_form" />
         <field name="arch" type="xml">
             <field name="maintenance_team_id" position="after">
-                <field name="technician_id" options="{'no_open': True, 'no_create': True}"/>
-                <field name="category_id" options="{'no_open': True, 'no_create': True, 'child_selection_field': 'name'}" widget="child_selector"/>
+                <field
+                    name="technician_id"
+                    options="{'no_open': True, 'no_create': True}"
+                />
+                <field
+                    name="category_id"
+                    options="{'no_open': True, 'no_create': True, 'child_selection_field': 'name'}"
+                    widget="child_selector"
+                />
             </field>
         </field>
     </record>
-
-
     <record model="ir.ui.view" id="maintenance_plan_view_tree">
         <field name="name">maintenance.plan.tree (in cb_maintenance)</field>
         <field name="model">maintenance.plan</field>
-        <field name="inherit_id" ref="maintenance_plan.maintenance_plan_view_tree"/>
+        <field name="inherit_id" ref="maintenance_plan.maintenance_plan_view_tree" />
         <field name="arch" type="xml">
             <field name="maintenance_team_id" position="after">
-                <field name="technician_id"/>
-                <field name="category_id"/>
+                <field name="technician_id" />
+                <field name="category_id" />
             </field>
         </field>
     </record>
-
 </odoo>
