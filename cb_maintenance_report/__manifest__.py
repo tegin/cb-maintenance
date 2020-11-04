@@ -3,7 +3,7 @@
 
 {
     "name": "Cb Maintenance Report",
-    "description": """
+    "summary": """
         Maintenance Reports""",
     "version": "12.0.1.0.0",
     "license": "AGPL-3",

@@ -1,104 +1,175 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
     <data>
-
-        <record id="base_maintenance.action_report_maintenance_request" model="ir.actions.report">
-            <field name="print_report_name">'MaintenanceRequest-%s' % (object.code)</field>
+        <record
+            id="base_maintenance.action_report_maintenance_request"
+            model="ir.actions.report"
+        >
+            <field
+                name="print_report_name"
+            >'MaintenanceRequest-%s' % (object.code)</field>
             <field name="name">Print Maintenance Request</field>
-            <field name="groups_id" eval="[(4, ref('maintenance.group_equipment_manager'))]"/>
+            <field
+                name="groups_id"
+                eval="[(4, ref('maintenance.group_equipment_manager'))]"
+            />
         </record>
-
         <template id="maintenance_request_template">
             <t t-call="web.internal_layout">
                 <div class="page">
                     <div class="row">
                         <div class="col-10">
-                            <h4><strong t-field="doc.code"/></h4>
+                            <h4>
+                                <strong t-field="doc.code" />
+                            </h4>
                             <h3>
-                                <i class="fa fa-home" t-if="doc.maintenance_type == 'preventive' and not doc.is_project"/>
-                                <i class="fa fa-tools" t-if="doc.maintenance_type == 'corrective' and not doc.is_project"/>
-                                <i class="fa fa-project-diagram" t-if="doc.is_project"/>
-                                <strong t-field="doc.name"/>
+                                <i
+                                    class="fa fa-home"
+                                    t-if="doc.maintenance_type == 'preventive' and not doc.is_project"
+                                />
+                                <i
+                                    class="fa fa-tools"
+                                    t-if="doc.maintenance_type == 'corrective' and not doc.is_project"
+                                />
+                                <i
+                                    class="fa fa-project-diagram"
+                                    t-if="doc.is_project"
+                                />
+                                <strong t-field="doc.name" />
                             </h3>
                         </div>
                         <div class="col-2">
                             <span class="label label-primary pull-right">
-                                <span style="font-size: 12px;margin-top: 6px" t-field="doc.stage_id"/>
+                                <span
+                                    style="font-size: 12px;margin-top: 6px"
+                                    t-field="doc.stage_id"
+                                />
                             </span>
                         </div>
                     </div>
-                    <br/>
-                    <h4><strong>Technical Information</strong></h4>
+                    <br />
+                    <h4>
+                        <strong>Technical Information</strong>
+                    </h4>
                     <h4>
                         <div class="row" style="font-size: 12px;">
                             <div class="col-6">
                                 <b>Requested By:</b>
-                                <span t-field="doc.owner_user_id"/><br/><br/>
+                                <span t-field="doc.owner_user_id" />
+                                <br />
+                                <br />
                                 <b>Request Date:</b>
-                                <span t-field="doc.create_date"/><br/><br/>
+                                <span t-field="doc.create_date" />
+                                <br />
+                                <br />
                                 <b>Location:</b>
-                                <span t-field="doc.location_id"/><br/><br/>
+                                <span t-field="doc.location_id" />
+                                <br />
+                                <br />
                                 <b>Equipment:</b>
-                                <span t-if="doc.equipment_id" t-field="doc.equipment_id"/><br/><br/>
+                                <span
+                                    t-if="doc.equipment_id"
+                                    t-field="doc.equipment_id"
+                                />
+                                <br />
+                                <br />
                                 <b>Category:</b>
-                                <span t-field="doc.category_id"/><br/><br/>
+                                <span t-field="doc.category_id" />
+                                <br />
+                                <br />
                                 <b>Maintenance Type:</b>
-                                <span t-if="doc.maintenance_type" t-field="doc.maintenance_type"/><br/><br/>
+                                <span
+                                    t-if="doc.maintenance_type"
+                                    t-field="doc.maintenance_type"
+                                />
+                                <br />
+                                <br />
                             </div>
-
                             <div class="col-6">
                                 <b>Team:</b>
-                                <span t-field="doc.maintenance_team_id"/><br/><br/>
+                                <span t-field="doc.maintenance_team_id" />
+                                <br />
+                                <br />
                                 <b>Manager:</b>
-                                <span t-if="doc.manager_id" t-field="doc.manager_id"/><br/><br/>
+                                <span t-if="doc.manager_id" t-field="doc.manager_id" />
+                                <br />
+                                <br />
                                 <b>Technician:</b>
-                                <span t-if="doc.technician_id" t-field="doc.technician_id"/><br/><br/>
+                                <span
+                                    t-if="doc.technician_id"
+                                    t-field="doc.technician_id"
+                                />
+                                <br />
+                                <br />
                                 <b>Last Updated on:</b>
-                                <span t-field="doc.write_date"/><br/><br/>
+                                <span t-field="doc.write_date" />
+                                <br />
+                                <br />
                                 <b>Schedule Date:</b>
-                                <span t-field="doc.schedule_info"/><br/><br/>
+                                <span t-field="doc.schedule_info" />
+                                <br />
+                                <br />
                                 <b>Priority:</b>
-                                <span t-field="doc.priority"/><br/><br/>
+                                <span t-field="doc.priority" />
+                                <br />
+                                <br />
                             </div>
                         </div>
-
                         <div style="font-size: 12px;">
                             <t t-if="doc.custom_info_template_id">
                                 <t t-foreach="doc.custom_info_ids" t-as="info_line">
-                                    <b t-field="info_line.name"/><b>:</b>
-                                    <span t-field="info_line.value"/><br/><br/>
+                                    <b t-field="info_line.name" />
+                                    <b>:</b>
+                                    <span t-field="info_line.value" />
+                                    <br />
+                                    <br />
                                 </t>
                             </t>
                         </div>
-
-                        <t t-if="doc.description"><h4><strong>Description</strong></h4></t>
-                        <t t-if="doc.description"><p style="font-size: 12px;" t-field="doc.description"/></t>
-
-                        <h4><strong>Chatter</strong></h4>
+                        <t t-if="doc.description">
+                            <h4>
+                                <strong>Description</strong>
+                            </h4>
+                        </t>
+                        <t t-if="doc.description">
+                            <p style="font-size: 12px;" t-field="doc.description" />
+                        </t>
+                        <h4>
+                            <strong>Chatter</strong>
+                        </h4>
                         <table style="font-size: 12px;">
                             <t t-foreach="doc.message_ids" t-as="msg">
                                 <tr>
                                     <td style="padding-right: 1cm; font-weight:bold;">
-                                        <span t-field="msg.author_id"/><br/>
+                                        <span t-field="msg.author_id" />
+                                        <br />
                                         <div style="font-size:75%; padding-left: 3mm;">
-                                            (<span t-field="msg.date"/>)
+                                            (<span t-field="msg.date" />)
                                         </div>
                                     </td>
                                     <td>
-                                        <div t-if="msg.subject"><span t-field="msg.subject"/>: </div>
+                                        <div t-if="msg.subject"><span
+                                                t-field="msg.subject"
+                                            />: </div>
                                         <div t-if="msg.message_type == 'notification'">
-                                            <span t-field="msg.subtype_id.name"/>
-                                            <t t-foreach='msg.sudo().tracking_value_ids' t-as='value'>
+                                            <span t-field="msg.subtype_id.name" />
+                                            <t
+                                                t-foreach='msg.sudo().tracking_value_ids'
+                                                t-as='value'
+                                            >
                                                 <li>
-                                                    <t t-esc="value.field_desc"/>:
-                                                    <span> <t t-esc="value.new_value_char"/> </span>
+                                                    <t t-esc="value.field_desc" />:
+                                                    <span>
+                                                        <t
+                                                            t-esc="value.new_value_char"
+                                                        />
+                                                    </span>
                                                 </li>
                                             </t>
                                         </div>
-                                        <span t-field="msg.body"/>
+                                        <span t-field="msg.body" />
                                     </td>
                                 </tr>
                             </t>
@@ -107,12 +178,15 @@
                 </div>
             </t>
         </template>
-
-        <template id="report_maintenance_request" inherit_id="base_maintenance.report_maintenance_request">
+        <template
+            id="report_maintenance_request"
+            inherit_id="base_maintenance.report_maintenance_request"
+        >
             <xpath expr="//t/t/t" position="attributes">
-                <attribute name="t-call">cb_maintenance_report.maintenance_request_template</attribute>
+                <attribute
+                    name="t-call"
+                >cb_maintenance_report.maintenance_request_template</attribute>
             </xpath>
         </template>
-
     </data>
 </odoo>
