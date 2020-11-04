@@ -1,8 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
-from odoo import tools
+from odoo import api, fields, models, tools
 
 
 class MaintenanceEquipment(models.Model):
@@ -69,7 +68,9 @@ class MaintenanceEquipment(models.Model):
     def _compute_complete_name(self):
         for me in self:
             me.complete_name = (
-                "[%s] %s" % (me.code, me.name) if (me.code != "/") else me.name
+                "[{}] {}".format(me.code, me.name)
+                if (me.code != "/")
+                else me.name
             )
 
     @api.depends("image")

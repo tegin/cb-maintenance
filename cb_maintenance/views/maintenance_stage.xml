@@ -1,28 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
-
     <record model="ir.ui.view" id="hr_equipment_stage_view_search">
         <field name="name">maintenance.stage.search (in cb_maintenance)</field>
         <field name="model">maintenance.stage</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_stage_view_search"/>
+        <field name="inherit_id" ref="maintenance.hr_equipment_stage_view_search" />
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="state"/>
+                <field name="state" />
             </field>
         </field>
     </record>
-
     <record model="ir.ui.view" id="hr_equipment_stage_view_tree">
         <field name="name">maintenance.stage.tree (in cb_maintenance)</field>
         <field name="model">maintenance.stage</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_stage_view_tree"/>
+        <field name="inherit_id" ref="maintenance.hr_equipment_stage_view_tree" />
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="state"/>
-                <field name="function"/>
+                <field name="state" />
+                <field name="function" />
             </field>
             <field name="fold" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -32,5 +29,4 @@
             </field>
         </field>
     </record>
-
 </odoo>
