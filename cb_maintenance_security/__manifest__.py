@@ -3,7 +3,7 @@
 
 {
     "name": "Cb Maintenance Security",
-    "description": """
+    "summary": """
         Security""",
     "version": "12.0.1.0.0",
     "license": "AGPL-3",
