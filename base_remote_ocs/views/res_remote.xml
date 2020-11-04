@@ -1,20 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
-
     <record model="ir.ui.view" id="res_remote_form_view">
         <field name="name">res.remote.form (in base_remote_ocs)</field>
         <field name="model">res.remote</field>
-        <field name="inherit_id" ref="base_remote.res_remote_form"/>
+        <field name="inherit_id" ref="base_remote.res_remote_form" />
         <field name="arch" type="xml">
             <field name="in_network" position="after">
-                <field name="ocs_link" widget="url"/>
+                <field name="ocs_link" widget="url" />
             </field>
         </field>
     </record>
-
-
-
 </odoo>

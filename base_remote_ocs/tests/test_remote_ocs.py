@@ -1,8 +1,9 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import mock
 import json
+
+import mock
 from odoo.tests.common import TransactionCase
 
 
