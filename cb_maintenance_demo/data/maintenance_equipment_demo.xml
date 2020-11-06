@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record id="tag_equip_samsung" model="maintenance.equipment.tag">
         <field name="name">Samsungs</field>
     </record>
@@ -15,116 +14,101 @@
     <record id="tag_equip_printer" model="maintenance.equipment.tag">
         <field name="name">printer</field>
     </record>
-
     <record id="tag_equip_aire" model="maintenance.equipment.tag">
         <field name="name">Aire Acondicionado</field>
     </record>
-
     <record id="categ_1" model="maintenance.equipment.category">
         <field name="name">Hardware</field>
-        <field name="maintenance_team_id" ref="team_informatica"/>
-        <field name="selectable" eval="True"/>
+        <field name="maintenance_team_id" ref="team_informatica" />
+        <field name="selectable" eval="True" />
     </record>
     <record id="categ_2" model="maintenance.equipment.category">
         <field name="name">Aires</field>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="selectable" eval="True"/>
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="selectable" eval="True" />
     </record>
     <record id="categ_3" model="maintenance.equipment.category">
         <field name="name">Mobiliario</field>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="selectable" eval="True"/>
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="selectable" eval="True" />
     </record>
-
     <!-- Equipments -->
     <record id="equipment_monitor1" model="maintenance.equipment">
         <field name="name">Samsung Monitor 15"</field>
-        <field name="tag_ids"
-               eval="[(4, ref('tag_equip_samsung')),(4, ref('tag_equip_monitor'))]"
+        <field
+            name="tag_ids"
+            eval="[(4, ref('tag_equip_samsung')),(4, ref('tag_equip_monitor'))]"
         />
-        <field name="maintenance_team_id" ref="team_informatica"/>
-        <field name="category_id" ref="categ_1"/>
-        <field name="owner_user_id" ref="base.user_root"/>
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="assign_date" eval="time.strftime('%Y-%m-10')"/>
+        <field name="maintenance_team_id" ref="team_informatica" />
+        <field name="category_id" ref="categ_1" />
+        <field name="owner_user_id" ref="base.user_root" />
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="assign_date" eval="time.strftime('%Y-%m-10')" />
         <field name="serial_no">MT/122/1123112222</field>
         <field name="model">NP300E5X</field>
     </record>
-     <record id="equipment_computer1" model="maintenance.equipment">
+    <record id="equipment_computer1" model="maintenance.equipment">
         <field name="name">HP Laptop</field>
-         <field name="tag_ids"
-               eval="[(4, ref('tag_equip_hp'))]"
-        />
-        <field name="owner_user_id" ref="base.user_root"/>
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="maintenance_team_id" ref="team_informatica"/>
-        <field name="category_id" ref="categ_1"/>
-        <field name="assign_date" eval="time.strftime('%Y-05-01')"/>
+        <field name="tag_ids" eval="[(4, ref('tag_equip_hp'))]" />
+        <field name="owner_user_id" ref="base.user_root" />
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="maintenance_team_id" ref="team_informatica" />
+        <field name="category_id" ref="categ_1" />
+        <field name="assign_date" eval="time.strftime('%Y-05-01')" />
         <field name="serial_no">LP/373405/17281718</field>
-     </record>
-     <record id="equipment_printer1" model="maintenance.equipment">
+    </record>
+    <record id="equipment_printer1" model="maintenance.equipment">
         <field name="name">HP Inkjet printer</field>
-        <field name="tag_ids"
-               eval="[(4, ref('tag_equip_hp')),(4, ref('tag_equip_printer'))]"
+        <field
+            name="tag_ids"
+            eval="[(4, ref('tag_equip_hp')),(4, ref('tag_equip_printer'))]"
         />
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="maintenance_team_id" ref="team_informatica"/>
-         <field name="category_id" ref="categ_1"/>
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="maintenance_team_id" ref="team_informatica" />
+        <field name="category_id" ref="categ_1" />
         <field name="serial_no">PR/017431/2928191889</field>
-     </record>
-
+    </record>
     <record id="equipment_aire1" model="maintenance.equipment">
         <field name="name">Aire Acondicionado 1</field>
-        <field name="tag_ids"
-               eval="[(4, ref('tag_equip_aire'))]"
-        />
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="category_id" ref="categ_2"/>
+        <field name="tag_ids" eval="[(4, ref('tag_equip_aire'))]" />
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="category_id" ref="categ_2" />
         <field name="serial_no">PR/0175341/2928191889</field>
-     </record>
-
+    </record>
     <record id="equipment_aire2" model="maintenance.equipment">
         <field name="name">Aire Acondicionado 2</field>
-        <field name="tag_ids"
-               eval="[(4, ref('tag_equip_aire'))]"
-        />
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="category_id" ref="categ_2"/>
-        <field name="technician_user_id" ref="base.user_root"/>
+        <field name="tag_ids" eval="[(4, ref('tag_equip_aire'))]" />
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="category_id" ref="categ_2" />
+        <field name="technician_user_id" ref="base.user_root" />
         <field name="serial_no">PR/011/252367928196341889</field>
-     </record>
-
+    </record>
     <record id="equipment_ascensor" model="maintenance.equipment">
         <field name="name">Ascensor</field>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="category_id" ref="categ_3"/>
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="category_id" ref="categ_3" />
     </record>
-
     <record id="equipment_lavabo" model="maintenance.equipment">
         <field name="name">Lavabo</field>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="category_id" ref="categ_3"/>
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="category_id" ref="categ_3" />
     </record>
-
     <record id="equipment_lampara" model="maintenance.equipment">
         <field name="name">Lampara</field>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="category_id" ref="categ_3"/>
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="category_id" ref="categ_3" />
     </record>
-
     <record id="equipment_puerta" model="maintenance.equipment">
         <field name="name">Puerta</field>
-        <field name="maintenance_team_id" ref="team_mantenimiento"/>
-        <field name="technician_user_id" ref="base.user_root"/>
-        <field name="category_id" ref="categ_3"/>
+        <field name="maintenance_team_id" ref="team_mantenimiento" />
+        <field name="technician_user_id" ref="base.user_root" />
+        <field name="category_id" ref="categ_3" />
     </record>
-
     <!-- Plans -->
-
     <record id="maintenance_kind_planned" model="maintenance.kind">
         <field name="name">Mantenimiento Planeado</field>
         <field name="active" eval="True" />
@@ -133,37 +117,36 @@
         <field name="name">Revision</field>
         <field name="active" eval="True" />
     </record>
-
     <record id="maintenance_plan_monitor1" model="maintenance.plan">
-        <field name="equipment_id" ref="equipment_monitor1"/>
-        <field name="maintenance_kind_id" ref="maintenance_kind_planned"/>
+        <field name="equipment_id" ref="equipment_monitor1" />
+        <field name="maintenance_kind_id" ref="maintenance_kind_planned" />
         <field name="interval">1</field>
         <field name="interval_step">month</field>
         <field name="duration">2</field>
         <field name="maintenance_plan_horizon">2</field>
         <field name="planning_step">month</field>
     </record>
-        <record id="maintenance_plan_equipment_puerta" model="maintenance.plan">
-        <field name="equipment_id" ref="equipment_puerta"/>
-        <field name="maintenance_kind_id" ref="maintenance_kind_planned"/>
+    <record id="maintenance_plan_equipment_puerta" model="maintenance.plan">
+        <field name="equipment_id" ref="equipment_puerta" />
+        <field name="maintenance_kind_id" ref="maintenance_kind_planned" />
         <field name="interval">1</field>
         <field name="interval_step">month</field>
         <field name="duration">2</field>
         <field name="maintenance_plan_horizon">2</field>
         <field name="planning_step">month</field>
     </record>
-        <record id="maintenance_plan_equipment_lampara" model="maintenance.plan">
-        <field name="equipment_id" ref="equipment_lampara"/>
-        <field name="maintenance_kind_id" ref="maintenance_kind_planned"/>
+    <record id="maintenance_plan_equipment_lampara" model="maintenance.plan">
+        <field name="equipment_id" ref="equipment_lampara" />
+        <field name="maintenance_kind_id" ref="maintenance_kind_planned" />
         <field name="interval">1</field>
         <field name="interval_step">month</field>
         <field name="duration">2</field>
         <field name="maintenance_plan_horizon">2</field>
         <field name="planning_step">month</field>
     </record>
-        <record id="maintenance_plan_equipment_ascensor" model="maintenance.plan">
-        <field name="equipment_id" ref="equipment_ascensor"/>
-        <field name="maintenance_kind_id" ref="maintenance_kind_planned"/>
+    <record id="maintenance_plan_equipment_ascensor" model="maintenance.plan">
+        <field name="equipment_id" ref="equipment_ascensor" />
+        <field name="maintenance_kind_id" ref="maintenance_kind_planned" />
         <field name="interval">1</field>
         <field name="interval_step">month</field>
         <field name="duration">2</field>
@@ -171,8 +154,8 @@
         <field name="planning_step">month</field>
     </record>
     <record id="maintenance_plan_equipment_aire1" model="maintenance.plan">
-        <field name="equipment_id" ref="equipment_aire1"/>
-        <field name="maintenance_kind_id" ref="maintenance_kind_planned"/>
+        <field name="equipment_id" ref="equipment_aire1" />
+        <field name="maintenance_kind_id" ref="maintenance_kind_planned" />
         <field name="interval">1</field>
         <field name="interval_step">month</field>
         <field name="duration">2</field>
@@ -180,8 +163,8 @@
         <field name="planning_step">month</field>
     </record>
     <record id="maintenance_plan_equipment_aire2" model="maintenance.plan">
-        <field name="equipment_id" ref="equipment_aire2"/>
-        <field name="maintenance_kind_id" ref="maintenance_kind_planned"/>
+        <field name="equipment_id" ref="equipment_aire2" />
+        <field name="maintenance_kind_id" ref="maintenance_kind_planned" />
         <field name="interval">1</field>
         <field name="interval_step">month</field>
         <field name="duration">2</field>
@@ -189,14 +172,12 @@
         <field name="planning_step">month</field>
     </record>
     <record id="maintenance_plan_equipment_lavabo" model="maintenance.plan">
-        <field name="equipment_id" ref="equipment_lavabo"/>
-        <field name="maintenance_kind_id" ref="maintenance_kind_planned"/>
+        <field name="equipment_id" ref="equipment_lavabo" />
+        <field name="maintenance_kind_id" ref="maintenance_kind_planned" />
         <field name="interval">1</field>
         <field name="interval_step">month</field>
         <field name="duration">2</field>
         <field name="maintenance_plan_horizon">2</field>
         <field name="planning_step">month</field>
     </record>
-
-
 </odoo>

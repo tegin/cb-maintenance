@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
     <record id="location_reina" model="maintenance.location">
         <field name="name">Reina</field>
     </record>
     <record id="location_reina_planta_1" model="maintenance.location">
         <field name="name">Planta 1</field>
-        <field name="parent_id" ref="location_reina"/>
+        <field name="parent_id" ref="location_reina" />
     </record>
     <record id="location_reina_planta_2" model="maintenance.location">
         <field name="name">Planta 2</field>
-        <field name="parent_id" ref="location_reina"/>
+        <field name="parent_id" ref="location_reina" />
     </record>
 </odoo>
