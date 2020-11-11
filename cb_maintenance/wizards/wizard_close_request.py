@@ -17,9 +17,9 @@ class WizardCloseRequest(models.TransientModel):
         requests = self.env["maintenance.request"].browse(
             self.env.context.get("active_ids")
         )
+        requests.write({"solution": self.solution})
         requests.with_context(
             next_stage_id=self.stage_id.id,
             do_not_call_close_request_wizard=True,
         ).set_maintenance_stage()
-        requests.write({"solution": self.solution})
         return {"type": "ir.actions.act_window_close"}
