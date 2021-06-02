@@ -9,6 +9,7 @@
     "license": "AGPL-3",
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "www.creublanca.es",
+    "development_status": "Alpha",
     "depends": [
         "maintenance",
         "purchase_work_acceptance",
