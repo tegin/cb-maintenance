@@ -56,7 +56,11 @@ class TestEquipmentPurchase(TransactionCase):
         self.assertEqual(4, order.equipment_count)
         res = order.with_context(create_wa=True).action_view_wa()
         ctx = res.get("context")
-        wa = self.env["work.acceptance"].with_context(ctx).create({})
+        wa = (
+            self.env["work.acceptance"]
+            .with_context(ctx)
+            .create({"date_due": "2020-09-21"})
+        )
         self.assertEqual(wa.state, "draft")
         self.assertEqual(order.order_line.qty_received, 0)
         wa.button_accept()
