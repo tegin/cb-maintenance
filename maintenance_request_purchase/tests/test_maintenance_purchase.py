@@ -16,9 +16,7 @@ class TestMaintenancePurchase(TransactionCase):
         self.request_2 = self.env["maintenance.request"].create(
             {"name": "Req 1", "maintenance_team_id": self.team_id.id}
         )
-        self.supplier = self.env["res.partner"].create(
-            {"name": "Supplier", "supplier": True}
-        )
+        self.supplier = self.env["res.partner"].create({"name": "Supplier"})
         self.po_1 = self.env["purchase.order"].create(
             {
                 "partner_id": self.supplier.id,

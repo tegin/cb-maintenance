@@ -24,7 +24,6 @@ class MaintenanceRequest(models.Model):
         for record in self:
             record.purchases_count = len(record.purchase_order_ids.ids)
 
-    @api.multi
     def action_view_purchase(self):
         action = self.env.ref("purchase.purchase_order_action_generic").read()[
             0

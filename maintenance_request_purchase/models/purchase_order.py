@@ -27,7 +27,6 @@ class PurchaseOrder(models.Model):
                 record.maintenance_request_ids.ids
             )
 
-    @api.multi
     def action_view_maintenance_request(self):
         action = self.env.ref(
             "maintenance.hr_equipment_request_action"

@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class WizardLinkMaintenancePo(models.TransientModel):
@@ -16,7 +16,6 @@ class WizardLinkMaintenancePo(models.TransientModel):
         "purchase.order", string="Purchase Orders"
     )
 
-    @api.multi
     def link_po(self):
         self.ensure_one()
         new_purchase_orders = [
@@ -27,7 +26,6 @@ class WizardLinkMaintenancePo(models.TransientModel):
         )
         return {"type": "ir.actions.act_window_close"}
 
-    @api.multi
     def create_po(self):
         self.ensure_one()
         return {
