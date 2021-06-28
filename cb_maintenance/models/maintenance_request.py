@@ -8,27 +8,24 @@ REQUEST_STATES = [("new", "New"), ("open", "Open"), ("closed", "Closed")]
 
 
 class MaintenanceRequest(models.Model):
-
     _inherit = "maintenance.request"
 
     custom_info_template_id = fields.Many2one(
         related="category_id.custom_info_template_id", store=True
     )
-
-    company_id = fields.Many2one(default=False)
+    company_id = fields.Many2one(default=lambda r: r.env.company.id)
+    # TODO: Change for False when mcfix is migrated
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
-    solution = fields.Text(track_visibility="onchange")
+    solution = fields.Text(tracking=True)
 
     follower_id = fields.Many2one("res.users", readonly=True)
-    category_id = fields.Many2one(
-        readonly=False, related=False, track_visibility="onchange"
-    )
+    category_id = fields.Many2one(readonly=False, related=False, tracking=True)
     close_datetime = fields.Datetime(
-        "Closing Date", readonly=True, track_visibility="onchange"
+        "Closing Date", readonly=True, tracking=True
     )
-    request_date = fields.Date(track_visibility=False)
-    create_date = fields.Datetime(track_visibility="onchange")
+    request_date = fields.Date(tracking=False)
+    create_date = fields.Datetime(tracking=True)
 
     maintenance_team_id_member_ids = fields.Many2many(
         "res.users",
@@ -46,10 +43,10 @@ class MaintenanceRequest(models.Model):
     technician_id = fields.Many2one(
         "res.partner",
         domain="[('is_maintenance_technician', '=', True)]",
-        track_visibility="onchange",
+        tracking=True,
     )
     manager_id = fields.Many2one("res.users", string="Manager", default=False)
-    kanban_state = fields.Selection(track_visibility=False)
+    kanban_state = fields.Selection(tracking=False)
     color = fields.Integer(compute="_compute_color", store=True)
     tree_color = fields.Char(compute="_compute_color", store=True)
     state = fields.Selection(
@@ -131,7 +128,6 @@ class MaintenanceRequest(models.Model):
         if self.equipment_id and self.equipment_id.category_id:
             self.category_id = self.equipment_id.category_id
 
-    @api.multi
     def post_team_change_message(self, team_id):
         team = self.env["maintenance.team"].browse(team_id)
         for rec in self:
@@ -141,7 +137,6 @@ class MaintenanceRequest(models.Model):
                 body=_("Request reassigned to %s.") % team.name,
             )
 
-    @api.multi
     def post_manager_change_message(self, manager_id):
         manager = self.env["res.users"].browse(manager_id)
         for rec in self:
@@ -151,15 +146,12 @@ class MaintenanceRequest(models.Model):
                 body=_("Request reassigned to %s.") % manager.name,
             )
 
-    @api.multi
     def on_close_request_actions(self):
         self.ensure_one()
 
-    @api.multi
     def on_reopen_request_actions(self):
         self.ensure_one()
 
-    @api.multi
     def write(self, vals):
         on_close = self.env["maintenance.request"]
         on_reopen = self.env["maintenance.request"]
@@ -202,7 +194,6 @@ class MaintenanceRequest(models.Model):
                     record.message_subscribe(user.partner_id.ids)
                 record.follower_id = user
 
-    @api.multi
     def split_request(self):
         self.ensure_one()
         action = self.env.ref(
@@ -219,7 +210,6 @@ class MaintenanceRequest(models.Model):
         }
         return action
 
-    @api.multi
     def _set_maintenance_stage(self, stage_id):
         stage_id = self.env["maintenance.stage"].browse(stage_id)
         f = stage_id.function
@@ -230,7 +220,6 @@ class MaintenanceRequest(models.Model):
                 return result
         super()._set_maintenance_stage(stage_id.id)
 
-    @api.multi
     def close_request(self):
         if self.env.context.get("do_not_call_close_request_wizard", False):
             return False
