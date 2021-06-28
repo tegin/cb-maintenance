@@ -28,12 +28,9 @@
     <act_window
         id="wizard_mass_change_stage_act_multi"
         name="Set Stage"
-        src_model="maintenance.request"
+        binding_model="maintenance.request"
         res_model="wizard.mass.change.stage"
-        multi="True"
-        view_type="form"
         view_mode="form"
-        key2="client_action_multi"
         target="new"
     />
 </odoo>

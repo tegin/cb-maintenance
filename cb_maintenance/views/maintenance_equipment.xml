@@ -32,25 +32,20 @@
                     </div>
                 </div>
                 <field
-                    name="image"
+                    name="image_1024"
                     widget="image"
                     class="oe_avatar"
-                    options='{"preview_image": "image_medium"}'
+                    options='{"preview_image": "image_128"}'
                 />
             </xpath>
             <div name="button_box" position="inside">
-                <button
-                    name="toggle_active"
-                    type="object"
-                    class="oe_stat_button"
-                    icon="fa-archive"
-                >
-                    <field
-                        name="active"
-                        widget="boolean_button"
-                        options='{"terminology": "archive"}'
-                    />
-                </button>
+                <widget
+                    name="web_ribbon"
+                    text="Archived"
+                    bg_color="bg-danger"
+                    attrs="{'invisible': [('active', '=', True)]}"
+                />
+                <field name="active" invisible="1" />
             </div>
             <field name="category_id" position="attributes">
                 <attribute name="widget">child_selector</attribute>
@@ -94,7 +89,7 @@
                 <div class="o_kanban_image">
                     <field name="id" t-if="1==0" />
                     <img
-                        t-att-src="kanban_image('maintenance.equipment', 'image_medium', record.id.raw_value)"
+                        t-att-src="kanban_image('maintenance.equipment', 'image_128', record.id.raw_value)"
                         alt="default_image"
                     />
                 </div>

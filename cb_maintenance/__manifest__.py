@@ -5,14 +5,14 @@
     "name": "Cb Maintenance",
     "summary": """
         CB maintenance base""",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "license": "AGPL-3",
     "author": "Creu Blanca",
     "website": "www.creublanca.es",
     "depends": [
         "base_fontawesome",
         "base_maintenance",
-        "document",
+        "attachment_indexation",
         "maintenance_equipment_category_hierarchy",
         "maintenance_equipment_hierarchy",
         "maintenance_location",

@@ -1,7 +1,7 @@
 # Copyright 2020 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -12,7 +12,6 @@ class WizardMassChangeStage(models.TransientModel):
 
     stage_id = fields.Many2one("maintenance.stage", required=True)
 
-    @api.multi
     def set_stage(self):
         context = dict(self._context or {})
         requests = self.env["maintenance.request"].browse(
