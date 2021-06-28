@@ -1,7 +1,7 @@
 # Copyright 2020 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class WizardCloseRequest(models.TransientModel):
@@ -12,7 +12,6 @@ class WizardCloseRequest(models.TransientModel):
     solution = fields.Text()
     stage_id = fields.Many2one("maintenance.stage")
 
-    @api.multi
     def close_request(self):
         requests = self.env["maintenance.request"].browse(
             self.env.context.get("active_ids")

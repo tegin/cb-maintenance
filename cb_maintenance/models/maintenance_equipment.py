@@ -19,25 +19,28 @@ class MaintenanceEquipment(models.Model):
         "res.partner",
         string="Technician Contact",
         domain="[('is_maintenance_technician', '=', True)]",
-        track_visibility="onchange",
+        tracking=True,
     )
 
-    image = fields.Binary(
+    image_1024 = fields.Image(
         "Photo",
         attachment=True,
         help="This field holds the image used as photo for the department,"
         " limited to 1024x1024px.",
+        max_width=1024,
+        max_height=1024,
     )
-    image_medium = fields.Binary(
+    image_128 = fields.Image(
         "Medium-sized photo",
         attachment=True,
-        compute="_compute_image_medium",
+        related="image_1024",
         help="Medium-sized photo of the employee. It is automatically "
         "resized as a 128x128px image, with aspect ratio preserved. "
         "Use this field in form views or some kanban views.",
         store=True,
+        max_width=128,
+        max_height=128,
     )
-
     code = fields.Char(
         help="Equipment Code", readonly=True, default="/", copy=False
     )
@@ -72,11 +75,6 @@ class MaintenanceEquipment(models.Model):
                 if (me.code != "/")
                 else me.name
             )
-
-    @api.depends("image")
-    def _compute_image_medium(self):
-        for record in self:
-            record.image_medium = tools.image_resize_image_medium(record.image)
 
     @api.model
     def create(self, vals):

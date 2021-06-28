@@ -147,7 +147,7 @@ class TestCbMaintenance(SavepointCase):
         split = self.env["maintenance.request"].browse(action["res_id"])
         self.assertEqual(split.name, "Split Request")
 
-        node = self.stage_id.sudo(user=self.user_id)._get_stage_node()
+        node = self.stage_id.with_user(user=self.user_id)._get_stage_node()
         self.assertEqual(node.attrib["invisible"], "1")
         split.write({"stage_id": self.stage_id.id})
         mass_edit = self.env["wizard.mass.change.stage"].create(
@@ -216,5 +216,6 @@ class TestCbMaintenance(SavepointCase):
         requests = self.equipment_id.env[
             "maintenance.equipment"
         ]._create_new_request(maintenance_plan)
+        requests.custom_info_ids.invalidate_cache()
         self.assertTrue(requests.custom_info_template_id)
         self.assertTrue(requests.custom_info_ids)

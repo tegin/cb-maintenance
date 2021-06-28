@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class WizardCreateMaintenanceRequest(models.TransientModel):
@@ -59,7 +59,6 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
             "priority": self.priority,
         }
 
-    @api.multi
     def create_request(self):
         self.ensure_one()
         request = self.env["maintenance.request"].create(
