@@ -1,1 +1,2 @@
-git+https://github.com/tegin/web.git@13.0-mig-web_widget_child_selector#subdirectory=setup/web_widget_child_selector
+git+https://github.com/OCA/web.git@refs/pull/1687/merge#subdirectory=setup/web_widget_open_tab
+git+https://github.com/OCA/web.git@refs/pull/1959/merge#subdirectory=setup/web_widget_child_selector

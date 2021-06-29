@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="hr_equipment_request_view_form">
+        <field name="name">maintenance.request.form (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field
+            name="inherit_id"
+            ref="maintenance_request_custom_info.hr_equipment_request_view_form"
+        />
+        <field name="arch" type="xml">
+            <form position="attributes">
+                <attribute name="create">false</attribute>
+                <attribute name="delete">false</attribute>
+                <attribute name="edit">false</attribute>
+            </form>
+            <xpath expr="//label[@for='name']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <button name="archive_equipment_request" position="before">
+                <button
+                    string="Split Request"
+                    name="split_request"
+                    groups="maintenance.group_equipment_manager"
+                    type="object"
+                    attrs="{'invisible': [('maintenance_type', '!=', 'corrective')]}"
+                />
+            </button>
+            <field name="kanban_state" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="kanban_state" position="after">
+                <div>
+                    <span
+                        class="badge badge-info pull-right"
+                        attrs="{'invisible': [('state', '!=', 'new')]}"
+                    >
+                        <field
+                            style="margin-top: 6px"
+                            name="stage_id"
+                            options="{'no_open': True, 'no_create': True}"
+                        />
+                    </span>
+                    <span
+                        class="badge badge-success pull-right"
+                        attrs="{'invisible': [('state', '!=', 'open')]}"
+                    >
+                        <field
+                            style="margin-top: 6px"
+                            name="stage_id"
+                            options="{'no_open': True, 'no_create': True}"
+                        />
+                    </span>
+                    <span
+                        class="badge badge-danger pull-right"
+                        attrs="{'invisible': [('state', '!=', 'closed')]}"
+                    >
+                        <field
+                            style="margin-top: 6px"
+                            name="stage_id"
+                            options="{'no_open': True, 'no_create': True}"
+                        />
+                    </span>
+                    <span
+                        class="badge badge-dark pull-right"
+                        attrs="{'invisible': [('attachments_count', '=', 0)]}"
+                    >
+                        <field style="margin-top: 6px" name="attachments_count" />
+                        <span> attachment(s)</span>
+                    </span>
+                </div>
+            </field>
+            <field name="user_id" position="after">
+                <field name="maintenance_team_id_member_ids" invisible="1" />
+                <field
+                    name="manager_id"
+                    options="{'no_open': True, 'no_create': True}"
+                    domain="[('id', 'in', maintenance_team_id_member_ids)]"
+                />
+                <field
+                    name="technician_id"
+                    options="{'no_open': True, 'no_create': True}"
+                />
+                <field name="write_date" readonly="1" />
+                <field name="maintenance_team_id_member_ids" invisible="1" />
+            </field>
+            <field name="close_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="close_date" position="after">
+                <field
+                    name="close_datetime"
+                    attrs="{'invisible': [('close_datetime', '=', False)]}"
+                />
+                <field
+                    name="solved_id"
+                    attrs="{'invisible': [('solved_id', '=', False)]}"
+                    options="{'no_open': True}"
+                />
+            </field>
+            <button name="archive_equipment_request" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </button>
+            <field name="request_date" position="replace">
+                <field name="create_date" string="Request Date" readonly="1" />
+            </field>
+            <field name="category_id" position="attributes">
+                <attribute name="attrs" />
+                <attribute name="widget">child_selector</attribute>
+                <attribute
+                    name="options"
+                >{'no_open': True, 'no_create': True, 'child_selection_field': 'name'}</attribute>
+            </field>
+            <field name="stage_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="stage_id" position="after">
+                <field name="state" widget="statusbar" />
+            </field>
+            <field name="schedule_date" position="attributes">
+                <attribute name="class">oe_edit_only</attribute>
+                <attribute name="nolabel">1</attribute>
+            </field>
+            <field name="schedule_date" position="before">
+                <label for="schedule_info" class="oe_read_only" />
+                <field name="schedule_info" class="oe_read_only" nolabel="1" />
+                <label
+                    for="schedule_date"
+                    class="oe_edit_only"
+                    string="Schedule Info"
+                />
+            </field>
+            <field name="description" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="description" position="after">
+                <group>
+                    <group string="Description">
+                        <field
+                            name="description"
+                            placeholder="Request description..."
+                            nolabel="1"
+                            style="width: 90%%"
+                        />
+                    </group>
+                    <group
+                        string="Solution"
+                        attrs="{'invisible': [('close_datetime', '=', False)]}"
+                    >
+                        <field name="solution" nolabel="1" style="width: 90%%" />
+                    </group>
+                </group>
+            </field>
+            <field name="custom_info_template_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_request_manager_view_form">
+        <field
+            name="name"
+        >maintenance.request.form (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="hr_equipment_request_view_form" />
+        <field
+            name="groups_id"
+            eval="[(4, ref('maintenance.group_equipment_manager'))]"
+        />
+        <field name="arch" type="xml">
+            <form position="attributes">
+                <attribute name="create">true</attribute>
+                <attribute name="edit">true</attribute>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="maintenance_request_tree_view">
+        <field name="name">maintenance.request.tree (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree" />
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">false</attribute>
+                <attribute name="delete">false</attribute>
+            </tree>
+            <field name="name" position="before">
+                <field name="id" widget="open_tab" />
+                <field name="create_date" />
+            </field>
+            <field name="name" position="after">
+                <field name="maintenance_type" invisible="1" />
+                <field name="tree_color" invisible="1" />
+            </field>
+            <field name="request_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="user_id" position="after">
+                <field name="manager_id" />
+                <field
+                    name="technician_id"
+                    groups="maintenance.group_equipment_manager"
+                />
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="maintenance_request_manager_tree_view">
+        <field
+            name="name"
+        >maintenance.request.tree (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance_request_tree_view" />
+        <field
+            name="groups_id"
+            eval="[(4, ref('maintenance.group_equipment_manager'))]"
+        />
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">true</attribute>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="maintenance_request_kanban_view">
+        <field name="name">maintenance.request.kanban (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_kanban" />
+        <field name="arch" type="xml">
+            <kanban position="attributes">
+                <attribute name="group_create">false</attribute>
+                <attribute name="group_edit">false</attribute>
+                <attribute name="group_delete">false</attribute>
+                <attribute name="create">false</attribute>
+                <attribute name="delete">false</attribute>
+                <attribute name="quick_create">false</attribute>
+            </kanban>
+            <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="attributes">
+                <attribute name="t-if">1==0</attribute>
+            </xpath>
+            <xpath
+                expr="//div[hasclass('oe_kanban_bottom_right')]"
+                position="attributes"
+            >
+                <attribute name="t-if">1==0</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="maintenance_request_manager_kanban_view">
+        <field
+            name="name"
+        >maintenance.request.kanban (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance_request_kanban_view" />
+        <field
+            name="groups_id"
+            eval="[(4, ref('maintenance.group_equipment_manager'))]"
+        />
+        <field name="arch" type="xml">
+            <kanban position="attributes">
+                <attribute name="create">true</attribute>
+            </kanban>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="maintenance_request_calendar_view">
+        <field
+            name="name"
+        >maintenance.request.calendar (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="priority" eval="2" />
+        <field name="arch" type="xml">
+            <calendar
+                string="Calendar View"
+                date_start="schedule_date"
+                mode="month"
+                date_delay="duration"
+                color="maintenance_type"
+            >
+                <field name="name" />
+                <field name="owner_user_id" />
+                <field name="maintenance_team_id" />
+            </calendar>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_request_view_search">
+        <field
+            name="name"
+        >maintenance.request.search (in cb_maintenance for manager)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search" />
+        <field name="arch" type="xml">
+            <search>
+                <field name="user_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="manager_id" />
+                    <field name="technician_id" />
+                    <field
+                        name="message_ids"
+                        string="Chatter"
+                        filter_domain="[('message_ids.body','ilike',self)]"
+                    />
+                </field>
+                <field name="name" position="after">
+                    <field name="description" />
+                </field>
+                <filter name="my_requests" position="attributes">
+                    <attribute name="domain">[('follower_id', '=', uid)]</attribute>
+                    <attribute name="string">On my hands</attribute>
+                </filter>
+                <filter name="my_requests" position="after">
+                    <filter
+                        name="managed_by_me"
+                        string="Managed by me"
+                        domain="[('manager_id', '=', uid)]"
+                    />
+                    <filter
+                        name="created_by_me"
+                        string="Created by me"
+                        domain="[('owner_user_id', '=', uid)]"
+                    />
+                </filter>
+                <filter name="kanban_state_block" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </filter>
+                <filter name="progress" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </filter>
+                <filter name="unscheduled" position="before">
+                    <filter
+                        name="preventive"
+                        string="Preventive Requests"
+                        domain="[('maintenance_type', '=', 'preventive')]"
+                    />
+                    <filter
+                        name="corrective"
+                        string="Corrective Requests"
+                        domain="[('maintenance_type', '=', 'corrective')]"
+                    />
+                    <separator />
+                    <filter
+                        name="scheduled_past"
+                        string="Scheduled Overdue"
+                        domain="[('schedule_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                    />
+                    <filter
+                        name="scheduled_today"
+                        string="Scheduled for Today"
+                        domain="[('schedule_date', '=', context_today().strftime('%Y-%m-%d'))]"
+                    />
+                    <filter
+                        name="scheduled_7"
+                        string="Scheduled for the next 7 days"
+                        domain="[('schedule_date', '&gt;', context_today().strftime('%Y-%m-%d')),
+                             ('schedule_date', '&lt;', (context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"
+                    />
+                </filter>
+            </search>
+            <xpath expr="//group/filter[3]" position="attributes">
+                <attribute name="name">group_stages</attribute>
+            </xpath>
+            <xpath expr="//group/filter[3]" position="after">
+                <filter
+                    string="Manager"
+                    domain="[]"
+                    name="group_by_manager"
+                    context="{'group_by' : 'manager_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" eval="False" />
+        <field name="context">
+            {
+                'search_default_todo': 1,
+                'search_default_group_stages': 1,
+            }
+        </field>
+    </record>
+    <record model="ir.ui.menu" id="maintenance.menu_m_request_form">
+        <field name="parent_id" ref="maintenance.menu_maintenance_title" />
+        <field name="sequence" eval="2" />
+    </record>
+    <record model="ir.ui.menu" id="maintenance.menu_m_request_calendar">
+        <field name="active" eval="False" />
+    </record>
+    <record model="ir.ui.view" id="maintenance_plan.hr_equipment_request_view_form">
+        <field name="active" eval="False" />
+    </record>
+    <record id="maintenance.maintenance_reporting" model="ir.ui.menu">
+        <field name="active" eval="False" />
+    </record>
+    <record id="maintenance.menu_m_dashboard" model="ir.ui.menu">
+        <field
+            eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]"
+            name="groups_id"
+        />
+    </record>
+</odoo>
