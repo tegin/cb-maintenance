@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class MaintenanceRequest(models.Model):
@@ -22,7 +22,6 @@ class MaintenanceRequest(models.Model):
         readonly=True,
     )
 
-    @api.multi
     def deduplicate(self):
         self.ensure_one()
         initial_stage = self._default_stage()
