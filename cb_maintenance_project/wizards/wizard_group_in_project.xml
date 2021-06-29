@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="wizard_group_in_project_form_view">
+        <field
+            name="name"
+        >wizard.group.in.project.form (in cb_maintenance_project)</field>
+        <field name="model">wizard.group.in.project</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Group In Project">
+                <group>
+                    <field
+                        name="maintenance_project_id"
+                        options="{'no_open': True, 'no_create': True}"
+                    />
+                </group>
+                <footer>
+                    <button
+                        name="assign_to_project"
+                        string="Assign to Project"
+                        class="btn-primary"
+                        type="object"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="wizard_group_in_project_act_window">
+        <field name="name">Assign Request to Project</field>
+        <field name="res_model">wizard.group.in.project</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
