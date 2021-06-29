@@ -1,7 +1,7 @@
 # Copyright 2020 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class WizardGroupInProject(models.TransientModel):
@@ -15,7 +15,6 @@ class WizardGroupInProject(models.TransientModel):
         domain=[("parent_id", "=", False), ("is_project", "=", True)],
     )
 
-    @api.multi
     def assign_to_project(self):
         request = self.env.context.get("active_id", False)
         request = self.env["maintenance.request"].browse(request)
