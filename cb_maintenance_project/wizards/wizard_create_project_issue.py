@@ -32,7 +32,6 @@ class WizardCreateProjectIssue(models.TransientModel):
             res["location_id"] = request_id.location_id.id
         return res
 
-    @api.multi
     def create_request(self):
         self.ensure_one()
         request = self.env["maintenance.request"].create(
