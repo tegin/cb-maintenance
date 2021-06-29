@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -15,7 +15,6 @@ class WizardRequestDuplicated(models.TransientModel):
         comodel_name="maintenance.request", required=True
     )
 
-    @api.multi
     def mark_as_duplicated(self):
         self.ensure_one()
         if not self.duplicated_request:
