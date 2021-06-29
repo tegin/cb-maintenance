@@ -69,7 +69,6 @@ class MaintenanceRequest(models.Model):
         for record in self:
             record.children_count = len(record.child_ids.ids)
 
-    @api.multi
     def action_view_children_requests(self):
         action = self.env.ref(
             "maintenance.hr_equipment_request_action"
