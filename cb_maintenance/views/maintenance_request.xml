@@ -292,74 +292,69 @@
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search" />
         <field name="arch" type="xml">
-            <search>
-                <field name="user_id" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </field>
-                <field name="user_id" position="after">
-                    <field name="manager_id" />
-                    <field name="technician_id" />
-                    <field
-                        name="message_ids"
-                        string="Chatter"
-                        filter_domain="[('message_ids.body','ilike',self)]"
-                    />
-                </field>
-                <field name="name" position="after">
-                    <field name="description" />
-                </field>
-                <filter name="my_requests" position="attributes">
-                    <attribute name="domain">[('follower_id', '=', uid)]</attribute>
-                    <attribute name="string">On my hands</attribute>
-                </filter>
-                <filter name="my_requests" position="after">
-                    <filter
-                        name="managed_by_me"
-                        string="Managed by me"
-                        domain="[('manager_id', '=', uid)]"
-                    />
-                    <filter
-                        name="created_by_me"
-                        string="Created by me"
-                        domain="[('owner_user_id', '=', uid)]"
-                    />
-                </filter>
-                <filter name="kanban_state_block" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </filter>
-                <filter name="progress" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </filter>
-                <filter name="unscheduled" position="before">
-                    <filter
-                        name="preventive"
-                        string="Preventive Requests"
-                        domain="[('maintenance_type', '=', 'preventive')]"
-                    />
-                    <filter
-                        name="corrective"
-                        string="Corrective Requests"
-                        domain="[('maintenance_type', '=', 'corrective')]"
-                    />
-                    <separator />
-                    <filter
-                        name="scheduled_past"
-                        string="Scheduled Overdue"
-                        domain="[('schedule_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"
-                    />
-                    <filter
-                        name="scheduled_today"
-                        string="Scheduled for Today"
-                        domain="[('schedule_date', '=', context_today().strftime('%Y-%m-%d'))]"
-                    />
-                    <filter
-                        name="scheduled_7"
-                        string="Scheduled for the next 7 days"
-                        domain="[('schedule_date', '&gt;', context_today().strftime('%Y-%m-%d')),
+            <field name="user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="user_id" position="after">
+                <field name="manager_id" />
+                <field name="technician_id" />
+                <field
+                    name="message_ids"
+                    string="Chatter"
+                    filter_domain="[('message_ids.body','ilike',self)]"
+                />
+            </field>
+            <field name="name" position="after">
+                <field name="description" />
+            </field>
+            <filter name="my_maintenances" position="attributes">
+                <attribute name="domain">[('follower_id', '=', uid)]</attribute>
+                <attribute name="string">On my hands</attribute>
+            </filter>
+            <filter name="my_maintenances" position="after">
+                <filter
+                    name="managed_by_me"
+                    string="Managed by me"
+                    domain="[('manager_id', '=', uid)]"
+                />
+                <filter
+                    name="created_by_me"
+                    string="Created by me"
+                    domain="[('owner_user_id', '=', uid)]"
+                />
+            </filter>
+            <filter name="kanban_state_block" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="unscheduled" position="before">
+                <filter
+                    name="preventive"
+                    string="Preventive Requests"
+                    domain="[('maintenance_type', '=', 'preventive')]"
+                />
+                <filter
+                    name="corrective"
+                    string="Corrective Requests"
+                    domain="[('maintenance_type', '=', 'corrective')]"
+                />
+                <separator />
+                <filter
+                    name="scheduled_past"
+                    string="Scheduled Overdue"
+                    domain="[('schedule_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter
+                    name="scheduled_today"
+                    string="Scheduled for Today"
+                    domain="[('schedule_date', '=', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter
+                    name="scheduled_7"
+                    string="Scheduled for the next 7 days"
+                    domain="[('schedule_date', '&gt;', context_today().strftime('%Y-%m-%d')),
                              ('schedule_date', '&lt;', (context_today()+datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"
-                    />
-                </filter>
-            </search>
+                />
+            </filter>
             <xpath expr="//group/filter[3]" position="attributes">
                 <attribute name="name">group_stages</attribute>
             </xpath>
