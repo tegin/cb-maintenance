@@ -48,7 +48,6 @@ class MaintenanceRequest(models.Model):
     manager_id = fields.Many2one("res.users", string="Manager", default=False)
     kanban_state = fields.Selection(tracking=False)
     color = fields.Integer(compute="_compute_color", store=True)
-    tree_color = fields.Char(compute="_compute_color", store=True)
     state = fields.Selection(
         selection=REQUEST_STATES, related="stage_id.state", readonly=True
     )
@@ -92,11 +91,6 @@ class MaintenanceRequest(models.Model):
     def _compute_color(self):
         for record in self:
             record.color = 10 if record.maintenance_type == "preventive" else 1
-            record.tree_color = (
-                "#e2ffe6"
-                if (record.maintenance_type == "preventive")
-                else "#ffefef"
-            )
 
     @api.depends("technician_id")
     def _compute_technician_user_id(self):
