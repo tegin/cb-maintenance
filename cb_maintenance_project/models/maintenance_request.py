@@ -62,7 +62,6 @@ class MaintenanceRequest(models.Model):
         )._compute_color()
         for record in self.filtered("is_project"):
             record.color = 4
-            record.tree_color = "#e2f0ff"
 
     @api.depends("child_ids")
     def _compute_children_count(self):
