@@ -210,4 +210,24 @@
         />
         <field name="action" ref="maintenance_project_act_window" />
     </record>
+    <record model="ir.ui.view" id="maintenance_request_tree_view">
+        <field name="name">maintenance.request.tree (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="cb_maintenance.maintenance_request_tree_view" />
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute
+                    name="decoration-danger"
+                >maintenance_type == 'corrective' and parent_id == False</attribute>
+                <attribute
+                    name="decoration-success"
+                >maintenance_type == 'preventive'</attribute>
+                <attribute name="decoration-info">parent_id != False</attribute>
+                <attribute name="class">o_cb_maintenance</attribute>
+            </tree>
+            <field name="name" position="after">
+                <field name="parent_id" invisible="1" />
+            </field>
+        </field>
+    </record>
 </odoo>
