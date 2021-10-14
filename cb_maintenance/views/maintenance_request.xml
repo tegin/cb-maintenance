@@ -195,7 +195,6 @@
             </field>
             <field name="name" position="after">
                 <field name="maintenance_type" invisible="1" />
-                <field name="tree_color" invisible="1" />
             </field>
             <field name="request_date" position="attributes">
                 <attribute name="invisible">1</attribute>
