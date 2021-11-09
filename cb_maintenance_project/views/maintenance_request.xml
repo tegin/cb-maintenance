@@ -230,4 +230,14 @@
             </field>
         </field>
     </record>
+    <record model="ir.ui.view" id="hr_equipment_request_view_tree">
+        <field name="name">maintenance.request.tree</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree" />
+        <field name="arch" type="xml">
+            <field name="location_id" position="after">
+                <field name="cost" sum="Total cost" string="Cost" />
+            </field>
+        </field>
+    </record>
 </odoo>
