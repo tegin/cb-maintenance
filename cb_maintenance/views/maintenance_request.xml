@@ -208,6 +208,7 @@
                     name="technician_id"
                     groups="maintenance.group_equipment_manager"
                 />
+                <field name="schedule_info" />
             </field>
         </field>
     </record>
