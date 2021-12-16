@@ -31,6 +31,11 @@ jobs:
             - uses: actions/checkout@v2
               with:
                   persist-credentials: false
+            - run: pip install setuptools-odoo
+            - run: pip install -r cb-requirements.txt
+            - run:
+                  pip install
+                  git+https://github.com/tegin/cb-addons.git@13.0#subdirectory=setup
             - run: oca_install_addons
             - run: oca_init_test_database
             - name: licenses check
