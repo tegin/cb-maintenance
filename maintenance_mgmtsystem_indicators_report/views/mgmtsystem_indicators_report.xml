@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="mgmtsystem_indicators_report_form_view">
+        <field
+            name="name"
+        >mgmtsystem.indicators.report.form (in maintenance_mgmtsystem_indicators_report)</field>
+        <field name="model">mgmtsystem.indicators.report</field>
+        <field
+            name="inherit_id"
+            ref="mgmtsystem_indicators_report.mgmtsystem_indicators_report_form_view"
+        />
+        <field name="arch" type="xml">
+            <field name="validation_partner_id" position="after">
+                <field name="maintenance_request_id" />
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="mgmtsystem_indicators_report_search_view">
+        <field
+            name="name"
+        >mgmtsystem.indicators.report.search (in maintenance_mgmtsystem_indicators_report)</field>
+        <field name="model">mgmtsystem.indicators.report</field>
+        <field
+            name="inherit_id"
+            ref="mgmtsystem_indicators_report.mgmtsystem_indicators_report_search_view"
+        />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="maintenance_request_id" />
+            </field>
+        </field>
+    </record>
+</odoo>
