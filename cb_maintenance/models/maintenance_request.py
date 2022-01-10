@@ -13,8 +13,7 @@ class MaintenanceRequest(models.Model):
     custom_info_template_id = fields.Many2one(
         related="category_id.custom_info_template_id", store=True
     )
-    company_id = fields.Many2one(default=lambda r: r.env.company.id)
-    # TODO: Change for False when mcfix is migrated
+    company_id = fields.Many2one(default=lambda r: False)
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
     solution = fields.Text(tracking=True)

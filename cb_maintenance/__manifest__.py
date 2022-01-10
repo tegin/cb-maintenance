@@ -20,6 +20,7 @@
         "maintenance_request_sequence",
         "maintenance_request_stage_transition",
         "maintenance_team_hierarchy",
+        "mcfix_base",
         "web_widget_open_tab",
     ],
     "data": [
