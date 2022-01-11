@@ -27,13 +27,18 @@ class MaintenanceEquipmentCategory(models.Model):
 
     @api.depends("maintenance_team_id")
     def _compute_maintenance_team_id_member_ids(self):
-        for record in self.filtered("maintenance_team_id"):
-            users = (
-                self.env["maintenance.team"]
-                .search([("id", "child_of", record.maintenance_team_id.id)])
-                .mapped("member_ids")
-            )
-            record.maintenance_team_id_member_ids = [(6, 0, users.ids)]
+        for record in self:
+            if record.maintenance_team_id:
+                users = (
+                    self.env["maintenance.team"]
+                    .search(
+                        [("id", "child_of", record.maintenance_team_id.id)]
+                    )
+                    .mapped("member_ids")
+                )
+                record.maintenance_team_id_member_ids = [(6, 0, users.ids)]
+            else:
+                record.maintenance_team_id_member_ids = False
 
     @api.model
     def create(self, vals):
