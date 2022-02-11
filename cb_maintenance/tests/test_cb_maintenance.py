@@ -81,11 +81,8 @@ class TestCbMaintenance(SavepointCase):
                 "name": "Project",
                 "stage_id": self.stage_id.id,
                 "category_id": self.categ_id.id,
-                "manager_id": self.user_id.id,
                 "follower_id": self.user_id.id,
                 "maintenance_type": "corrective",
-                "technician_id": self.technician_1.id,
-                "schedule_date": "2019-01-01 10:00:00",
             }
         )
 
@@ -96,7 +93,6 @@ class TestCbMaintenance(SavepointCase):
         self.assertTrue(res)
         self.request_id.write({"maintenance_team_id": self.team_id.id})
         self.assertFalse(self.stage_id.done)
-        self.assertTrue(self.request_id.user_id)
         self.assertEqual(self.request_id.color, 1)
         self.request_id.write({"schedule_date": False})
         self.assertEqual(self.request_id.schedule_info, "Unscheduled")
@@ -108,12 +104,16 @@ class TestCbMaintenance(SavepointCase):
             {
                 "maintenance_type": "preventive",
                 "schedule_date": "2019-01-01 12:00:00",
-                "technician_id": self.technician_2.id,
                 "equipment_id": self.equipment_id.id,
-                "manager_id": self.user_id_2.id,
             }
         )
         self.assertFalse(self.request_id.user_id)
+        self.request_id.with_context(no_tz=True).write(
+            {"technician_id": self.technician_1.id}
+        )
+        self.assertEqual(self.request_id.user_id, self.user_id)
+        self.request_id.write({"manager_id": self.user_id_2.id})
+        self.assertEqual(self.request_id.user_id, self.user_id_2)
         self.request_id.with_context(
             use_old_onchange_equipment=True
         ).onchange_equipment_id()
@@ -123,7 +123,7 @@ class TestCbMaintenance(SavepointCase):
         self.request_id.onchange_equipment_id()
 
         self.assertEqual(self.request_id.category_id, self.categ_2_id)
-        self.assertEqual(self.request_id.follower_id, self.user_id_2)
+        self.assertEqual(self.request_id.follower_id, self.user_id)
         self.assertTrue(self.request_id.close_datetime)
         self.assertEqual(self.request_id.color, 10)
         self.assertEqual(self.request_id.schedule_info, "01/01/2019 12:00:00")
