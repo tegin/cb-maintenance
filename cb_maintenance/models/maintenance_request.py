@@ -32,9 +32,7 @@ class MaintenanceRequest(models.Model):
         compute="_compute_maintenance_team_id_member_ids",
     )
     user_id = fields.Many2one(
-        compute="_compute_technician_user_id",
-        store=True,
-        string="Technician User",
+        compute="_compute_user_id", store=True, string="Technician User",
     )
 
     schedule_info = fields.Char(compute="_compute_schedule_info", store=True)
@@ -91,10 +89,12 @@ class MaintenanceRequest(models.Model):
         for record in self:
             record.color = 10 if record.maintenance_type == "preventive" else 1
 
-    @api.depends("technician_id")
-    def _compute_technician_user_id(self):
+    @api.depends("manager_id", "technician_id")
+    def _compute_user_id(self):
         for record in self:
-            if record.technician_id.user_ids:
+            if record.manager_id:
+                record.user_id = record.manager_id
+            elif record.technician_id.user_ids:
                 record.user_id = record.technician_id.user_ids[0]
             else:
                 record.user_id = False
