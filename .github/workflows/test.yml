@@ -31,7 +31,10 @@ jobs:
             - uses: actions/checkout@v2
               with:
                   persist-credentials: false
-            - run: pip install setuptools-odoo
+            - run: apt-get update
+            - run: pip install setuptools-odoo wheel
+            - run: apt-get install mupdf-tools libmupdf-dev mupdf poppler-utils -y
+            - run: pip install pymupdf==1.16.18
             - run: pip install -r cb-requirements.txt
             - run:
                   pip install
