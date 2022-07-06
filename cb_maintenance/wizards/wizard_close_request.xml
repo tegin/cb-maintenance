@@ -9,8 +9,8 @@
             <form string="Wizard Close Request">
                 <span
                 >Write the reason for closing this request or leave it blank.</span>
-                <group>
-                    <field name="solution" />
+                <group string="Solution">
+                    <field name="solution" nolabel="1" />
                 </group>
                 <footer>
                     <button
