@@ -17,7 +17,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_remote_ocs](base_remote_ocs/) | 13.0.1.0.0 |  | Use remote and link to OCS
-[cb_maintenance](cb_maintenance/) | 13.0.1.0.0 |  | CB maintenance base
+[cb_maintenance](cb_maintenance/) | 13.0.2.0.0 |  | CB maintenance base
 [cb_maintenance_migration](cb_maintenance_migration/) | 13.0.1.0.0 |  | Migration info
 [cb_maintenance_project](cb_maintenance_project/) | 13.0.1.0.0 |  | Expedientes de Mantenimiento
 [cb_maintenance_report](cb_maintenance_report/) | 13.0.1.0.0 |  | Maintenance Reports
