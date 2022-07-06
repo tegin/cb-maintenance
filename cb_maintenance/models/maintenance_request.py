@@ -16,7 +16,7 @@ class MaintenanceRequest(models.Model):
     company_id = fields.Many2one(default=lambda r: False)
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
-    solution = fields.Text(tracking=True)
+    solution = fields.Html()
 
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(readonly=False, related=False, tracking=True)
@@ -32,7 +32,9 @@ class MaintenanceRequest(models.Model):
         compute="_compute_maintenance_team_id_member_ids",
     )
     user_id = fields.Many2one(
-        compute="_compute_user_id", store=True, string="Technician User",
+        compute="_compute_user_id",
+        store=True,
+        string="Technician User",
     )
 
     schedule_info = fields.Char(compute="_compute_schedule_info", store=True)

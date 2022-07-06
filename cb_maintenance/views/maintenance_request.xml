@@ -131,29 +131,8 @@
                     string="Schedule Info"
                 />
             </field>
-            <field name="description" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
             <field name="company_id" position="attributes">
                 <attribute name="invisible">1</attribute>
-            </field>
-            <field name="description" position="after">
-                <group>
-                    <group string="Description">
-                        <field
-                            name="description"
-                            placeholder="Request description..."
-                            nolabel="1"
-                            style="width: 90%%"
-                        />
-                    </group>
-                    <group
-                        string="Solution"
-                        attrs="{'invisible': [('close_datetime', '=', False)]}"
-                    >
-                        <field name="solution" nolabel="1" style="width: 90%%" />
-                    </group>
-                </group>
             </field>
             <field name="custom_info_template_id" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -161,6 +140,25 @@
             <field name="owner_user_id" position="attributes">
                 <attribute name="invisible">0</attribute>
             </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_request_view_maintenance_plan_form">
+        <field name="name">maintenance.request.form (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field
+            name="inherit_id"
+            ref="maintenance_plan.hr_equipment_request_view_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="before">
+                <page
+                    name="solution"
+                    string="Solution"
+                    attrs="{'invisible': [('close_datetime', '=', False)]}"
+                >
+                    <field name="solution" />
+                </page>
+            </xpath>
         </field>
     </record>
     <record model="ir.ui.view" id="hr_equipment_request_manager_view_form">
@@ -384,12 +382,6 @@
     <record model="ir.ui.menu" id="maintenance.menu_m_request_form">
         <field name="parent_id" ref="maintenance.menu_maintenance_title" />
         <field name="sequence" eval="2" />
-    </record>
-    <record model="ir.ui.menu" id="maintenance.menu_m_request_calendar">
-        <field name="active" eval="False" />
-    </record>
-    <record model="ir.ui.view" id="maintenance_plan.hr_equipment_request_view_form">
-        <field name="active" eval="False" />
     </record>
     <record id="maintenance.maintenance_reporting" model="ir.ui.menu">
         <field name="active" eval="False" />
