@@ -166,7 +166,7 @@ class TestCbMaintenance(SavepointCase):
             .create({"solution": "Closed"})
         )
         wizard_close.close_request()
-        self.assertEqual(self.request_id.solution, "Closed")
+        self.assertIn("Closed", self.request_id.solution)
 
     def test_request_creation(self):
         equipment = self.env["maintenance.equipment"].create(

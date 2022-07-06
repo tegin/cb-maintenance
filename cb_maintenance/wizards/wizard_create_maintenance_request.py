@@ -10,7 +10,7 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
     _description = "Wizard used to create requests"
 
     name = fields.Char(string="Title", required=True)
-    description = fields.Text()
+    description = fields.Html()
     attachment_ids = fields.Many2many(
         "ir.attachment",
         "create_request_ir_attachments_rel",
@@ -48,7 +48,7 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
         return {
             "name": self.name,
             "maintenance_team_id": maintenance_team_id.id,
-            "description": self.description or self.name,
+            "note": self.description or self.name,
             "location_id": self.location_id.id,
             "equipment_id": equipment,
             "category_id": self.equipment_category.id,
