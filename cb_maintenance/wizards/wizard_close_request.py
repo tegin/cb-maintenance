@@ -9,7 +9,7 @@ class WizardCloseRequest(models.TransientModel):
     _name = "wizard.close.request"
     _description = "Wizard used to close requests"
 
-    solution = fields.Text()
+    solution = fields.Html()
     stage_id = fields.Many2one("maintenance.stage")
 
     def close_request(self):

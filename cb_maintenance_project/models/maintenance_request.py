@@ -51,9 +51,9 @@ class MaintenanceRequest(models.Model):
             pos = record.child_ids.mapped("purchase_order_ids")
             pos |= record.purchase_order_ids
             pos = pos.filtered(lambda r: r.state in ["purchase", "done"])
-            record.cost = sum([po.amount_total for po in pos])
+            record.cost = sum(po.amount_total for po in pos)
             invoices = pos.mapped("invoice_ids")
-            record.real_cost = sum([inv.amount_total for inv in invoices])
+            record.real_cost = sum(inv.amount_total for inv in invoices)
 
     @api.depends("maintenance_type", "is_project")
     def _compute_color(self):
