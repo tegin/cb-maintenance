@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models, tools
+from odoo import api, fields, models
 
 
 class MaintenanceEquipment(models.Model):
@@ -51,7 +51,6 @@ class MaintenanceEquipment(models.Model):
         res = super()._prepare_request_from_plan(
             maintenance_plan, next_maintenance_date
         )
-        res["description"] = tools.html2plaintext(maintenance_plan.note)
         technician_id = maintenance_plan.technician_id or False
         category_id = self.category_id if self else False
         category_id = maintenance_plan.category_id or category_id

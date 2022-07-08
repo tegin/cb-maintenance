@@ -189,7 +189,8 @@ class TestCbMaintenance(SavepointCase):
         request = equipment._create_new_request(plan)
         self.assertTrue(request)
         for r in request:
-            self.assertEqual(r.description, "Description")
+            self.assertIn("Description", r.note)
+            self.assertFalse(r.description)
 
     def test_custom_info(self):
         model = self.env["ir.model"].search(
