@@ -140,6 +140,9 @@
             <field name="owner_user_id" position="attributes">
                 <attribute name="invisible">0</attribute>
             </field>
+            <field name="maintenance_type" position="after">
+                <field name="external_link" widget="url" />
+            </field>
         </field>
     </record>
     <record model="ir.ui.view" id="hr_equipment_request_view_maintenance_plan_form">
