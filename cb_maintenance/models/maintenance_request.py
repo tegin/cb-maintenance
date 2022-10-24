@@ -59,6 +59,8 @@ class MaintenanceRequest(models.Model):
 
     attachments_count = fields.Integer(compute="_compute_attachments_count")
 
+    external_link = fields.Char()
+
     # link_ocs = fields.Char(string="Link OCS") # TODO: Not sure if necessary
 
     def _compute_attachments_count(self):
