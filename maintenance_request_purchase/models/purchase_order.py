@@ -23,14 +23,10 @@ class PurchaseOrder(models.Model):
     @api.depends("maintenance_request_ids")
     def _compute_maintenance_requests_count(self):
         for record in self:
-            record.maintenance_requests_count = len(
-                record.maintenance_request_ids.ids
-            )
+            record.maintenance_requests_count = len(record.maintenance_request_ids.ids)
 
     def action_view_maintenance_request(self):
-        action = self.env.ref(
-            "maintenance.hr_equipment_request_action"
-        ).read()[0]
+        action = self.env.ref("maintenance.hr_equipment_request_action").read()[0]
         if len(self.maintenance_request_ids) > 1:
             action["domain"] = [("id", "in", self.maintenance_request_ids.ids)]
         elif self.maintenance_request_ids:

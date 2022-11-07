@@ -15,9 +15,7 @@ class MaintenanceRequest(models.Model):
         "purchase_order_id",
         string="Purchase Orders",
     )
-    purchases_count = fields.Integer(
-        compute="_compute_purchases_count", store=True
-    )
+    purchases_count = fields.Integer(compute="_compute_purchases_count", store=True)
 
     @api.depends("purchase_order_ids")
     def _compute_purchases_count(self):
@@ -25,9 +23,7 @@ class MaintenanceRequest(models.Model):
             record.purchases_count = len(record.purchase_order_ids.ids)
 
     def action_view_purchase(self):
-        action = self.env.ref("purchase.purchase_order_action_generic").read()[
-            0
-        ]
+        action = self.env.ref("purchase.purchase_order_action_generic").read()[0]
         if len(self.purchase_order_ids) > 1:
             action["domain"] = [("id", "in", self.purchase_order_ids.ids)]
             action["views"] = [

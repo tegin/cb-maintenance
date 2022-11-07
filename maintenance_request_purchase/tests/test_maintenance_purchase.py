@@ -7,9 +7,7 @@ from odoo.tests.common import TransactionCase
 class TestMaintenancePurchase(TransactionCase):
     def setUp(self):
         super().setUp()
-        self.team_id = self.env["maintenance.team"].create(
-            {"name": "Maintenance Team"}
-        )
+        self.team_id = self.env["maintenance.team"].create({"name": "Maintenance Team"})
         self.request_1 = self.env["maintenance.request"].create(
             {"name": "Req 1", "maintenance_team_id": self.team_id.id}
         )
@@ -41,9 +39,7 @@ class TestMaintenancePurchase(TransactionCase):
         )
         po_2 = (
             self.env["purchase.order"]
-            .with_context(
-                default_maintenance_request_ids=[(4, self.request_1.id)]
-            )
+            .with_context(default_maintenance_request_ids=[(4, self.request_1.id)])
             .create(
                 {
                     "partner_id": self.supplier.id,
