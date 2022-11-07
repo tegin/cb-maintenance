@@ -4,6 +4,7 @@
 import json
 
 import requests
+
 from odoo import api, fields, models
 
 
@@ -15,9 +16,7 @@ class ResRemote(models.Model):
 
     @api.depends("ocs_id")
     def _compute_ocs_link(self):
-        url = self.env["ir.config_parameter"].get_param(
-            "ocs.api.link", default=False
-        )
+        url = self.env["ir.config_parameter"].get_param("ocs.api.link", default=False)
         for record in self:
             link = False
             if record.ocs_id:
@@ -29,14 +28,10 @@ class ResRemote(models.Model):
 
     @api.model
     def fill_ocs_cron(self):
-        url = self.env["ir.config_parameter"].get_param(
-            "ocs.api.link", default=False
-        )
+        url = self.env["ir.config_parameter"].get_param("ocs.api.link", default=False)
         if not url:
             return False
-        computers_response = requests.get(
-            "%s/ocsapi/v1/computers/search" % url
-        )
+        computers_response = requests.get("%s/ocsapi/v1/computers/search" % url)
         computers_response.raise_for_status()
         computers = json.loads(computers_response.json())
         remotes = self.browse()
@@ -44,9 +39,9 @@ class ResRemote(models.Model):
             remotes |= self._fill_ocs_computer(url, computer_id)
 
         # Updating all the remotes that had not this id
-        self.search(
-            [("id", "not in", remotes.ids), ("ocs_id", "!=", 0)]
-        ).write({"ocs_id": 0})
+        self.search([("id", "not in", remotes.ids), ("ocs_id", "!=", 0)]).write(
+            {"ocs_id": 0}
+        )
         return True
 
     def _fill_ocs_computer(self, url, computer_id):

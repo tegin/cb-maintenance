@@ -4,6 +4,7 @@
 import json
 
 import mock
+
 from odoo.tests.common import TransactionCase
 
 
