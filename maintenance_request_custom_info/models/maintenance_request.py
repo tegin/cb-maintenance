@@ -12,6 +12,4 @@ class MaintenanceRequest(models.Model):
     custom_info_template_id = fields.Many2one(
         context={"default_model": "maintenance.request"}
     )
-    custom_info_ids = fields.One2many(
-        context={"default_model": "maintenance.request"}
-    )
+    custom_info_ids = fields.One2many(context={"default_model": "maintenance.request"})
