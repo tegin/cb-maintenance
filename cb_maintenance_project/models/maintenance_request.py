@@ -16,14 +16,10 @@ class MaintenanceRequest(models.Model):
     parent_id = fields.Many2one(
         "maintenance.request", "Project", index=True, ondelete="cascade"
     )
-    child_ids = fields.One2many(
-        "maintenance.request", "parent_id", "Child Requests"
-    )
+    child_ids = fields.One2many("maintenance.request", "parent_id", "Child Requests")
     parent_path = fields.Char(index=True)
 
-    children_count = fields.Integer(
-        compute="_compute_children_count", store=True
-    )
+    children_count = fields.Integer(compute="_compute_children_count", store=True)
 
     currency_id = fields.Many2one(
         "res.currency",
@@ -69,9 +65,7 @@ class MaintenanceRequest(models.Model):
             record.children_count = len(record.child_ids.ids)
 
     def action_view_children_requests(self):
-        action = self.env.ref(
-            "maintenance.hr_equipment_request_action"
-        ).read()[0]
+        action = self.env.ref("maintenance.hr_equipment_request_action").read()[0]
         if len(self.child_ids) > 1:
             action["domain"] = [("id", "in", self.child_ids.ids)]
         elif self.child_ids:

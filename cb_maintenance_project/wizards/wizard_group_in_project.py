@@ -18,7 +18,5 @@ class WizardGroupInProject(models.TransientModel):
     def assign_to_project(self):
         request = self.env.context.get("active_id", False)
         request = self.env["maintenance.request"].browse(request)
-        request.write(
-            {"is_project": True, "parent_id": self.maintenance_project_id.id}
-        )
+        request.write({"is_project": True, "parent_id": self.maintenance_project_id.id})
         return {"type": "ir.actions.act_window_close"}

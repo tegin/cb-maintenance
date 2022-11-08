@@ -9,9 +9,7 @@ class WizardCreateProjectIssue(models.TransientModel):
     _name = "wizard.create.project.issue"
     _description = "wizard.create.project.issue"
 
-    request_id = fields.Many2one(
-        "maintenance.request", readonly=True, string="Project"
-    )
+    request_id = fields.Many2one("maintenance.request", readonly=True, string="Project")
     name = fields.Char(string="Title", required=True)
     description = fields.Text()
 
