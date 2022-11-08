@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.exceptions import ValidationError
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import Form, SavepointCase
 
 
 class TestCbMaintenance(SavepointCase):
@@ -38,11 +38,17 @@ class TestCbMaintenance(SavepointCase):
                 "partner_id": self.technician_3.id,
             }
         )
+        self.env["maintenance.team"].search([]).write(
+            {
+                "company_id": False,
+            }
+        )
         self.team_id = self.env["maintenance.team"].create(
             {
                 "name": "Team",
                 "user_id": self.user_id_2.id,
                 "member_ids": [(6, 0, [self.user_id.id, self.user_id_2.id])],
+                "company_id": False,
             }
         )
         self.location_id = self.env["maintenance.location"].create({"name": "Location"})
@@ -102,12 +108,12 @@ class TestCbMaintenance(SavepointCase):
             }
         )
         self.assertFalse(self.request_id.user_id)
-        self.request_id.with_context(no_tz=True).write(
-            {"technician_id": self.technician_1.id}
-        )
-        self.assertEqual(self.request_id.user_id, self.user_id)
-        self.request_id.write({"manager_id": self.user_id_2.id})
+        with Form(self.request_id.with_context(no_tz=True)) as f:
+            f.manager_id = self.user_id_2
         self.assertEqual(self.request_id.user_id, self.user_id_2)
+        with Form(self.request_id.with_context(no_tz=True)) as f:
+            f.technician_id = self.technician_1
+        self.assertEqual(self.request_id.user_id, self.user_id)
         self.request_id.with_context(
             use_old_onchange_equipment=True
         ).onchange_equipment_id()
@@ -123,7 +129,6 @@ class TestCbMaintenance(SavepointCase):
         self.assertEqual(self.request_id.schedule_info, "01/01/2019 12:00:00")
         self.request_id.onchange_maintenance_team_id()
         self.assertEqual(self.request_id.manager_id.id, self.user_id_2.id)
-
         action = self.request_id.split_request()
         original_request = action["context"]["original_request"]
         self.assertEqual(original_request, self.request_id.id)
@@ -141,8 +146,6 @@ class TestCbMaintenance(SavepointCase):
         split = self.env["maintenance.request"].browse(action["res_id"])
         self.assertEqual(split.name, "Split Request")
 
-        node = self.stage_id.with_user(user=self.user_id)._get_stage_node()
-        self.assertEqual(node.attrib["invisible"], "1")
         split.write({"stage_id": self.stage_id.id})
         mass_edit = self.env["wizard.mass.change.stage"].create(
             {"stage_id": self.stage_final_id.id}

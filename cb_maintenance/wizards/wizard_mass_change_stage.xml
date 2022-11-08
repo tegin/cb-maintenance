@@ -25,12 +25,11 @@
             </form>
         </field>
     </record>
-    <act_window
-        id="wizard_mass_change_stage_act_multi"
-        name="Set Stage"
-        binding_model="maintenance.request"
-        res_model="wizard.mass.change.stage"
-        view_mode="form"
-        target="new"
-    />
+    <record id="wizard_mass_change_stage_act_multi" model="ir.actions.act_window">
+        <field name="name">Set Stage</field>
+        <field name="res_model">wizard.mass.change.stage</field>
+        <field name="view_mode">form</field>
+        <field name="binding_model_id" ref="model_maintenance_request" />
+        <field name="target">new</field>
+    </record>
 </odoo>

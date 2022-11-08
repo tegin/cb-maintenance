@@ -5,8 +5,6 @@ from dateutil import tz
 
 from odoo import _, api, fields, models
 
-REQUEST_STATES = [("new", "New"), ("open", "Open"), ("closed", "Closed")]
-
 
 class MaintenanceRequest(models.Model):
     _inherit = "maintenance.request"
@@ -14,11 +12,11 @@ class MaintenanceRequest(models.Model):
     custom_info_template_id = fields.Many2one(
         related="category_id.custom_info_template_id", store=True
     )
-    company_id = fields.Many2one(default=lambda r: False)
+    company_id = fields.Many2one(default=False)
 
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
     solution = fields.Html()
-
+    equipment_id = fields.Many2one(check_company=False)
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(readonly=False, related=False, tracking=True)
     close_datetime = fields.Datetime("Closing Date", readonly=True, tracking=True)
@@ -30,25 +28,18 @@ class MaintenanceRequest(models.Model):
         relation="selectable_maintenance_members",
         compute="_compute_maintenance_team_id_member_ids",
     )
-    user_id = fields.Many2one(
-        compute="_compute_user_id",
-        store=True,
-        string="Technician User",
-    )
-
     schedule_info = fields.Char(compute="_compute_schedule_info", store=True)
 
     technician_id = fields.Many2one(
         "res.partner",
         domain="[('is_maintenance_technician', '=', True)]",
         tracking=True,
+        string="Maintenance technician",
     )
     manager_id = fields.Many2one("res.users", string="Manager", default=False)
     kanban_state = fields.Selection(tracking=False)
     color = fields.Integer(compute="_compute_color", store=True)
-    state = fields.Selection(
-        selection=REQUEST_STATES, related="stage_id.state", readonly=True
-    )
+    state = fields.Selection(related="stage_id.state", readonly=True)
 
     stage_id = fields.Many2one(readonly=True)
 
@@ -88,13 +79,13 @@ class MaintenanceRequest(models.Model):
         for record in self:
             record.color = 10 if record.maintenance_type == "preventive" else 1
 
-    @api.depends("manager_id", "technician_id")
-    def _compute_user_id(self):
+    @api.onchange("manager_id", "technician_id")
+    def _onchange_user_id(self):
         for record in self:
-            if record.manager_id:
-                record.user_id = record.manager_id
-            elif record.technician_id.user_ids:
+            if record.technician_id.user_ids:
                 record.user_id = record.technician_id.user_ids[0]
+            elif record.manager_id:
+                record.user_id = record.manager_id
             else:
                 record.user_id = False
 
@@ -128,7 +119,7 @@ class MaintenanceRequest(models.Model):
         for rec in self:
             rec.message_post(
                 message_type="notification",
-                subtype="mail.mt_comment",
+                subtype_xmlid="mail.mt_comment",
                 body=_("Request reassigned to %s.") % team.name,
             )
 
@@ -137,7 +128,7 @@ class MaintenanceRequest(models.Model):
         for rec in self:
             rec.message_post(
                 message_type="notification",
-                subtype="mail.mt_comment",
+                subtype_xmlid="mail.mt_comment",
                 body=_("Request reassigned to %s.") % manager.name,
             )
 
@@ -172,17 +163,15 @@ class MaintenanceRequest(models.Model):
             self.post_team_change_message(vals["maintenance_team_id"])
         return res
 
-    @api.constrains("technician_id", "manager_id")
+    @api.constrains("user_id")
     def _check_follower(self):
         for record in self:
             user = record.manager_id
             if record.technician_id.user_ids:
                 user = record.technician_id.user_ids[0]
             if user != record.follower_id:
-                if record.follower_id:
+                if record.follower_id and record.follower_id != record.owner_user_id:
                     record.message_unsubscribe(record.follower_id.partner_id.ids)
-                if user:
-                    record.message_subscribe(user.partner_id.ids)
                 record.follower_id = user
 
     def split_request(self):

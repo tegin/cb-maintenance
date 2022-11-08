@@ -9,6 +9,7 @@
             name="inherit_id"
             ref="maintenance_request_custom_info.hr_equipment_request_view_form"
         />
+        <field name="priority">99</field>
         <field name="arch" type="xml">
             <form position="attributes">
                 <attribute name="create">false</attribute>
@@ -70,6 +71,10 @@
                         <span> attachment(s)</span>
                     </span>
                 </div>
+            </field>
+            <field name="user_id" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
             </field>
             <field name="user_id" position="after">
                 <field name="maintenance_team_id_member_ids" invisible="1" />

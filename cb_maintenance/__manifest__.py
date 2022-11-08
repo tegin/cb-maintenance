@@ -5,9 +5,9 @@
     "name": "Cb Maintenance",
     "summary": """
         CB maintenance base""",
-    "version": "13.0.2.0.0",
+    "version": "14.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Creu Blanca",
+    "author": "CreuBlanca",
     "website": "https://github.com/tegin/cb-maintenance",
     "depends": [
         "base_fontawesome",
@@ -20,10 +20,11 @@
         "maintenance_request_sequence",
         "maintenance_request_stage_transition",
         "maintenance_team_hierarchy",
-        "mcfix_base",
         "web_widget_open_tab",
+        "base",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "wizards/wizard_close_request.xml",
         "views/maintenance_plan.xml",
         "wizards/wizard_mass_change_stage.xml",
