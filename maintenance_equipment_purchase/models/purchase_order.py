@@ -12,9 +12,7 @@ class PurchaseOrder(models.Model):
     @api.depends("order_line", "order_line.equipment_ids")
     def _compute_equipment_count(self):
         for record in self:
-            record.equipment_count = len(
-                record.order_line.mapped("equipment_ids")
-            )
+            record.equipment_count = len(record.order_line.mapped("equipment_ids"))
 
     def view_equipments(self):
         self.ensure_one()
@@ -42,9 +40,7 @@ class PurchaseOrderLine(models.Model):
     )
     def _compute_qty_received(self):
         super()._compute_qty_received()
-        for record in self.filtered(
-            lambda r: r.product_id.type in ["equipment"]
-        ):
+        for record in self.filtered(lambda r: r.product_id.type in ["equipment"]):
             record.qty_received = sum(
                 wal.product_qty
                 for wal in record.wa_line_ids
