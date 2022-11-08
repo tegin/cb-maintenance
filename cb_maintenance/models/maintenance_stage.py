@@ -3,7 +3,7 @@
 
 from odoo import api, fields, models
 
-from .maintenance_request import REQUEST_STATES
+REQUEST_STATES = [("new", "New"), ("open", "Open"), ("closed", "Closed")]
 
 
 class MaintenanceStage(models.Model):
@@ -19,8 +19,7 @@ class MaintenanceStage(models.Model):
         for record in self:
             record.done = record.state == "closed"
 
-    def _get_stage_node(self):
-        node = super()._get_stage_node()
-        node.attrib["groups"] = "maintenance.group_equipment_manager"
-        self.env["ir.ui.view"]._apply_group("maintenance.request", node, {}, {})
-        return node
+    def _get_stage_node_attrib(self):
+        attrs = super()._get_stage_node_attrib()
+        attrs["groups"] = "maintenance.group_equipment_manager"
+        return attrs

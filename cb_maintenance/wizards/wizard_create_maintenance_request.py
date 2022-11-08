@@ -54,7 +54,9 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
             "category_id": self.equipment_category.id,
             "original_categ_id": self.equipment_category.id,
             "manager_id": (self.equipment_category.technician_user_id.id or False),
+            "user_id": (self.equipment_category.technician_user_id.id or False),
             "priority": self.priority,
+            "owner_user_id": self.env.user.id,
         }
 
     def create_request(self):

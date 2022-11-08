@@ -73,7 +73,7 @@
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_kanban" />
         <field name="arch" type="xml">
-            <xpath expr="//img[hasclass('oe_kanban_avatar')]" position="attributes">
+            <xpath expr="//field[@widget='many2one_avatar_user']" position="attributes">
                 <attribute name="t-if">1==0</attribute>
             </xpath>
             <xpath expr="//field[@name='name']/../.." position="before">

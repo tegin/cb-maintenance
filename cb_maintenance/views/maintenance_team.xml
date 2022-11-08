@@ -42,23 +42,4 @@
             </xpath>
         </field>
     </record>
-    <record model="ir.ui.view" id="maintenance_team_kanban">
-        <field name="name">maintenance.team.form (in cb_maintenance)</field>
-        <field name="model">maintenance.team</field>
-        <field name="inherit_id" ref="maintenance.maintenance_team_kanban" />
-        <field name="arch" type="xml">
-            <xpath
-                expr="//div[hasclass('o_kanban_primary_right')]/div/div[5]"
-                position="attributes"
-            >
-                <attribute name="t-if">1==0</attribute>
-            </xpath>
-            <xpath
-                expr="//div[hasclass('o_kanban_primary_right')]/div/div[6]"
-                position="attributes"
-            >
-                <attribute name="t-if">1==0</attribute>
-            </xpath>
-        </field>
-    </record>
 </odoo>
