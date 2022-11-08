@@ -14,16 +14,19 @@
                     class="fa fa-home"
                     attrs="{'invisible': ['|', ('is_project', '=', True), ('maintenance_type', '!=', 'preventive')]}"
                     style="margin-right: 10px"
+                    title="project"
                 />
                 <i
                     class="fa fa-tools"
                     attrs="{'invisible': ['|', ('is_project', '=', True), ('maintenance_type', '!=', 'corrective')]}"
                     style="margin-right: 10px"
+                    title="project"
                 />
                 <i
                     class="fa fa-project-diagram"
                     attrs="{'invisible': [('is_project', '=', False)]}"
                     style="margin-right: 10px"
+                    title="project"
                 />
             </field>
             <field name="owner_user_id" position="before">
@@ -105,12 +108,18 @@
                 <i
                     class="fa fa-home"
                     t-if="record.maintenance_type.raw_value == 'preventive' and !record.is_project.raw_value"
+                    title="project"
                 />
                 <i
                     class="fa fa-tools"
                     t-if="record.maintenance_type.raw_value == 'corrective' and !record.is_project.raw_value"
+                    title="project"
                 />
-                <i class="fa fa-project-diagram" t-if="record.is_project.raw_value" />
+                <i
+                    class="fa fa-project-diagram"
+                    t-if="record.is_project.raw_value"
+                    title="project"
+                />
             </field>
         </field>
     </record>
