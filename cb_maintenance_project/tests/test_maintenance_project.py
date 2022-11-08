@@ -7,9 +7,7 @@ from odoo.tests.common import TransactionCase
 class TestMaintenanceProject(TransactionCase):
     def setUp(self):
         super().setUp()
-        self.location_id = self.env["maintenance.location"].create(
-            {"name": "Location"}
-        )
+        self.location_id = self.env["maintenance.location"].create({"name": "Location"})
         self.team_id = self.env["maintenance.team"].create({"name": "Team"})
         self.project_id = self.env["maintenance.request"].create(
             {
