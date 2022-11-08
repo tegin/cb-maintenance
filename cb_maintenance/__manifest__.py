@@ -8,7 +8,7 @@
     "version": "13.0.2.0.0",
     "license": "AGPL-3",
     "author": "Creu Blanca",
-    "website": "www.creublanca.es",
+    "website": "https://github.com/tegin/cb-maintenance",
     "depends": [
         "base_fontawesome",
         "base_maintenance",

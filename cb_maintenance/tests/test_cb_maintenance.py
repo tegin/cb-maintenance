@@ -45,9 +45,7 @@ class TestCbMaintenance(SavepointCase):
                 "member_ids": [(6, 0, [self.user_id.id, self.user_id_2.id])],
             }
         )
-        self.location_id = self.env["maintenance.location"].create(
-            {"name": "Location"}
-        )
+        self.location_id = self.env["maintenance.location"].create({"name": "Location"})
         self.categ_id = self.env["maintenance.equipment.category"].create(
             {
                 "name": "Categ 1",
@@ -87,18 +85,14 @@ class TestCbMaintenance(SavepointCase):
         )
 
     def test_cb_maintenance(self):
-        res = self.env["maintenance.equipment"].name_search(
-            self.equipment_id.code
-        )
+        res = self.env["maintenance.equipment"].name_search(self.equipment_id.code)
         self.assertTrue(res)
         self.request_id.write({"maintenance_team_id": self.team_id.id})
         self.assertFalse(self.stage_id.done)
         self.assertEqual(self.request_id.color, 1)
         self.request_id.write({"schedule_date": False})
         self.assertEqual(self.request_id.schedule_info, "Unscheduled")
-        self.assertEqual(
-            len(self.request_id.maintenance_team_id_member_ids), 2
-        )
+        self.assertEqual(len(self.request_id.maintenance_team_id_member_ids), 2)
         self.assertEqual(len(self.categ_id.maintenance_team_id_member_ids), 2)
         self.request_id.with_context(no_tz=True).write(
             {
@@ -169,9 +163,7 @@ class TestCbMaintenance(SavepointCase):
         self.assertIn("Closed", self.request_id.solution)
 
     def test_request_creation(self):
-        equipment = self.env["maintenance.equipment"].create(
-            {"name": "Laptop"}
-        )
+        equipment = self.env["maintenance.equipment"].create({"name": "Laptop"})
 
         plan = self.env["maintenance.plan"].create(
             {
@@ -193,9 +185,7 @@ class TestCbMaintenance(SavepointCase):
             self.assertFalse(r.description)
 
     def test_custom_info(self):
-        model = self.env["ir.model"].search(
-            [("model", "=", "maintenance.request")]
-        )
+        model = self.env["ir.model"].search([("model", "=", "maintenance.request")])
         template_id = self.env["custom.info.template"].create(
             {
                 "name": "Template",
@@ -214,9 +204,9 @@ class TestCbMaintenance(SavepointCase):
                 "planning_step": "week",
             }
         )
-        requests = self.equipment_id.env[
-            "maintenance.equipment"
-        ]._create_new_request(maintenance_plan)
+        requests = self.equipment_id.env["maintenance.equipment"]._create_new_request(
+            maintenance_plan
+        )
         requests.custom_info_ids.invalidate_cache()
         self.assertTrue(requests.custom_info_template_id)
         self.assertTrue(requests.custom_info_ids)

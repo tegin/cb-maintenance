@@ -22,7 +22,5 @@ class MaintenanceStage(models.Model):
     def _get_stage_node(self):
         node = super()._get_stage_node()
         node.attrib["groups"] = "maintenance.group_equipment_manager"
-        self.env["ir.ui.view"]._apply_group(
-            "maintenance.request", node, {}, {}
-        )
+        self.env["ir.ui.view"]._apply_group("maintenance.request", node, {}, {})
         return node
