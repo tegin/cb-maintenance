@@ -31,9 +31,7 @@ class MaintenanceEquipmentCategory(models.Model):
             if record.maintenance_team_id:
                 users = (
                     self.env["maintenance.team"]
-                    .search(
-                        [("id", "child_of", record.maintenance_team_id.id)]
-                    )
+                    .search([("id", "child_of", record.maintenance_team_id.id)])
                     .mapped("member_ids")
                 )
                 record.maintenance_team_id_member_ids = [(6, 0, users.ids)]

@@ -5,9 +5,7 @@ from openupgradelib import openupgrade
 
 @openupgrade.migrate()
 def migrate(env, version):
-    maintenance_plan_form = env.ref(
-        "maintenance_plan.hr_equipment_request_view_form"
-    )
+    maintenance_plan_form = env.ref("maintenance_plan.hr_equipment_request_view_form")
     if not maintenance_plan_form.active:
         maintenance_plan_form.toggle_active()
     menu_request_calendar = env.ref("maintenance.menu_m_request_calendar")

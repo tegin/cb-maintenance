@@ -41,13 +41,9 @@ class MaintenanceEquipment(models.Model):
         max_width=128,
         max_height=128,
     )
-    code = fields.Char(
-        help="Equipment Code", readonly=True, default="/", copy=False
-    )
+    code = fields.Char(help="Equipment Code", readonly=True, default="/", copy=False)
 
-    def _prepare_request_from_plan(
-        self, maintenance_plan, next_maintenance_date
-    ):
+    def _prepare_request_from_plan(self, maintenance_plan, next_maintenance_date):
         res = super()._prepare_request_from_plan(
             maintenance_plan, next_maintenance_date
         )
@@ -70,18 +66,14 @@ class MaintenanceEquipment(models.Model):
     def _compute_complete_name(self):
         for me in self:
             me.complete_name = (
-                "[{}] {}".format(me.code, me.name)
-                if (me.code != "/")
-                else me.name
+                "[{}] {}".format(me.code, me.name) if (me.code != "/") else me.name
             )
 
     @api.model
     def create(self, vals):
         if vals.get("code", "/") == "/":
             code = (
-                self.env["ir.sequence"].next_by_code(
-                    "maintenance.equipment.sequence"
-                )
+                self.env["ir.sequence"].next_by_code("maintenance.equipment.sequence")
                 or "/"
             )
             vals.update({"code": code})

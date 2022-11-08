@@ -53,23 +53,17 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
             "equipment_id": equipment,
             "category_id": self.equipment_category.id,
             "original_categ_id": self.equipment_category.id,
-            "manager_id": (
-                self.equipment_category.technician_user_id.id or False
-            ),
+            "manager_id": (self.equipment_category.technician_user_id.id or False),
             "priority": self.priority,
         }
 
     def create_request(self):
         self.ensure_one()
-        request = self.env["maintenance.request"].create(
-            self.create_request_vals()
-        )
+        request = self.env["maintenance.request"].create(self.create_request_vals())
         request._onchange_custom_info_template_id()
         original_request = self.env.context.get("original_request", False)
         if original_request:
-            original_request = self.env["maintenance.request"].browse(
-                original_request
-            )
+            original_request = self.env["maintenance.request"].browse(original_request)
             request.message_post_with_view(
                 "mail.message_origin_link",
                 values={"self": request, "origin": original_request},

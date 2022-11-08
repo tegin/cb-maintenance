@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from dateutil import tz
+
 from odoo import _, api, fields, models
 
 REQUEST_STATES = [("new", "New"), ("open", "Open"), ("closed", "Closed")]
@@ -20,9 +21,7 @@ class MaintenanceRequest(models.Model):
 
     follower_id = fields.Many2one("res.users", readonly=True)
     category_id = fields.Many2one(readonly=False, related=False, tracking=True)
-    close_datetime = fields.Datetime(
-        "Closing Date", readonly=True, tracking=True
-    )
+    close_datetime = fields.Datetime("Closing Date", readonly=True, tracking=True)
     request_date = fields.Date(tracking=False)
     create_date = fields.Datetime(tracking=True)
 
@@ -53,9 +52,7 @@ class MaintenanceRequest(models.Model):
 
     stage_id = fields.Many2one(readonly=True)
 
-    original_categ_id = fields.Many2one(
-        comodel_name="maintenance.equipment.category"
-    )
+    original_categ_id = fields.Many2one(comodel_name="maintenance.equipment.category")
 
     attachments_count = fields.Integer(compute="_compute_attachments_count")
 
@@ -83,9 +80,7 @@ class MaintenanceRequest(models.Model):
                 tz_name = self.env.user.tz
                 sd = fields.Datetime.from_string(record.schedule_date)
                 if not self.env.context.get("no_tz", False):
-                    sd = sd.replace(tzinfo=tz.tzutc()).astimezone(
-                        tz.gettz(tz_name)
-                    )
+                    sd = sd.replace(tzinfo=tz.tzutc()).astimezone(tz.gettz(tz_name))
                 record.schedule_info = sd.strftime("%d/%m/%Y %H:%M:%S")
 
     @api.depends("maintenance_type")
@@ -109,9 +104,7 @@ class MaintenanceRequest(models.Model):
             if record.maintenance_team_id:
                 users = (
                     self.env["maintenance.team"]
-                    .search(
-                        [("id", "child_of", record.maintenance_team_id.id)]
-                    )
+                    .search([("id", "child_of", record.maintenance_team_id.id)])
                     .mapped("member_ids")
                 )
                 record.maintenance_team_id_member_ids = [(6, 0, users.ids)]
@@ -159,9 +152,7 @@ class MaintenanceRequest(models.Model):
         on_reopen = self.env["maintenance.request"]
         if "stage_id" in vals:
             stage = self.env["maintenance.stage"].browse(vals["stage_id"])
-            vals["close_datetime"] = (
-                fields.Datetime.now() if stage.done else False
-            )
+            vals["close_datetime"] = fields.Datetime.now() if stage.done else False
             vals["solved_id"] = self.env.uid if stage.done else False
             for record in self:
                 if not record.stage_id.done and stage.done:
@@ -189,9 +180,7 @@ class MaintenanceRequest(models.Model):
                 user = record.technician_id.user_ids[0]
             if user != record.follower_id:
                 if record.follower_id:
-                    record.message_unsubscribe(
-                        record.follower_id.partner_id.ids
-                    )
+                    record.message_unsubscribe(record.follower_id.partner_id.ids)
                 if user:
                     record.message_subscribe(user.partner_id.ids)
                 record.follower_id = user

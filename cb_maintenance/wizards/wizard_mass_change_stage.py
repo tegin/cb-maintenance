@@ -14,9 +14,7 @@ class WizardMassChangeStage(models.TransientModel):
 
     def set_stage(self):
         context = dict(self._context or {})
-        requests = self.env["maintenance.request"].browse(
-            context.get("active_ids")
-        )
+        requests = self.env["maintenance.request"].browse(context.get("active_ids"))
         for request in requests:
             if request.stage_id not in self.stage_id.previous_stage_ids:
                 raise ValidationError(
