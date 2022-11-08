@@ -5,12 +5,13 @@
     "name": "Maintenance Request Purchase",
     "summary": """
         Allows you to link PO with maintenance requests""",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Creu Blanca,Odoo Community Association (OCA)",
+    "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/tegin/cb-maintenance",
     "depends": ["base_maintenance", "purchase"],
     "data": [
+        "security/ir.model.access.csv",
         "wizards/wizard_link_maintenance_po.xml",
         "views/maintenance_request.xml",
         "views/purchase_order_views.xml",

@@ -23,7 +23,12 @@ class MaintenanceRequest(models.Model):
             record.purchases_count = len(record.purchase_order_ids.ids)
 
     def action_view_purchase(self):
-        action = self.env.ref("purchase.purchase_order_action_generic").read()[0]
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "purchase.purchase_action_dashboard_list"
+        )
+        # action = self.env.ref("purchase.purchase_action_dashboard_list").sudo().read()[0]
+        # We don't want to loose breadcrumbs
+        action.pop("target")
         if len(self.purchase_order_ids) > 1:
             action["domain"] = [("id", "in", self.purchase_order_ids.ids)]
             action["views"] = [
