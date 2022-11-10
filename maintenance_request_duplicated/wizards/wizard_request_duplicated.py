@@ -23,9 +23,7 @@ class WizardRequestDuplicated(models.TransientModel):
         self.original_request.write(
             {"duplicated_ids": [(4, self.duplicated_request.id)]}
         )
-        stage_id = self.env.ref(
-            "maintenance_request_duplicated.duplicated_stage"
-        )
+        stage_id = self.env.ref("maintenance_request_duplicated.duplicated_stage")
         self.duplicated_request.write(
             {"stage_id": stage_id.id, "solution": _("Duplicated Request")}
         )

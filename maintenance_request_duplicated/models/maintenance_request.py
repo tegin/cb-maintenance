@@ -25,6 +25,4 @@ class MaintenanceRequest(models.Model):
     def deduplicate(self):
         self.ensure_one()
         initial_stage = self._default_stage()
-        self.write(
-            {"duplicated_parent_id": False, "stage_id": initial_stage.id}
-        )
+        self.write({"duplicated_parent_id": False, "stage_id": initial_stage.id})
