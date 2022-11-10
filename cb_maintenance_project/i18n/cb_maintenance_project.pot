@@ -1,0 +1,214 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cb_maintenance_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-05 08:55+0000\n"
+"PO-Revision-Date: 2020-05-05 08:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cb_maintenance_project
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.maintenance_project_form_view
+msgid "Add Issue"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.actions.act_window,name:cb_maintenance_project.wizard_group_in_project_act_window
+msgid "Assign Request to Project"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.maintenance_project_form_view
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.wizard_group_in_project_form_view
+msgid "Assign to Project"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.wizard_create_project_issue_form_view
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.wizard_group_in_project_form_view
+msgid "Cancel"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__child_ids
+msgid "Child Requests"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__children_count
+msgid "Children Count"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.wizard_create_project_issue_form_view
+msgid "Create Issue"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.actions.act_window,name:cb_maintenance_project.wizard_create_project_issue_act_window
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.wizard_create_project_issue_form_view
+msgid "Create Project Issue"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__create_uid
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__create_date
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__description
+msgid "Description"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__display_name
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__cost
+msgid "Estimated Cost"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: selection:wizard.create.project.issue,priority:0
+msgid "High"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__id
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project__id
+msgid "ID"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__is_project
+msgid "Is Project"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.hr_equipment_request_view_form_button_box
+msgid "Issues"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue____last_update
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__write_uid
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__write_date
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__location_id
+msgid "Location"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: selection:wizard.create.project.issue,priority:0
+msgid "Low"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.actions.act_window,name:cb_maintenance_project.maintenance_project_act_window
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_group_in_project__maintenance_project_id
+msgid "Maintenance Project"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.ui.menu,name:cb_maintenance_project.maintenance_project_menu
+msgid "Maintenance Projects"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model,name:cb_maintenance_project.model_maintenance_request
+msgid "Maintenance Request"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: selection:wizard.create.project.issue,priority:0
+msgid "Normal"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__parent_path
+msgid "Parent Path"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__priority
+msgid "Priority"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__parent_id
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__request_id
+msgid "Project"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.hr_equipment_request_view_search
+msgid "Project Issues"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_maintenance_request__real_cost
+msgid "Real Cost"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model.fields,field_description:cb_maintenance_project.field_wizard_create_project_issue__name
+msgid "Title"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: selection:wizard.create.project.issue,priority:0
+msgid "Very High"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model_terms:ir.ui.view,arch_db:cb_maintenance_project.wizard_group_in_project_form_view
+msgid "Wizard Group In Project"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model,name:cb_maintenance_project.model_wizard_create_project_issue
+msgid "wizard.create.project.issue"
+msgstr ""
+
+#. module: cb_maintenance_project
+#: model:ir.model,name:cb_maintenance_project.model_wizard_group_in_project
+msgid "wizard.group.in.project"
+msgstr ""
+
