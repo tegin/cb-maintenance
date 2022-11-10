@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="hr_equipment_view_form">
+        <field name="name">maintenance.equipment.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+        <field name="arch" type="xml">
+            <field name="technician_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="owner_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="partner_id" position="before">
+                <field
+                    name="company_id"
+                    attrs="{'invisible': [('company_id', '=', False)]}"
+                />
+            </field>
+            <field name="partner_ref" position="after">
+                <field name="partner_technician_id" />
+            </field>
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="code" class="oe_edit_only" />
+                        <h3>
+                            <field name="code" />
+                        </h3>
+                    </div>
+                </div>
+                <field
+                    name="image_1024"
+                    widget="image"
+                    class="oe_avatar"
+                    options='{"preview_image": "image_128"}'
+                />
+            </xpath>
+            <div name="button_box" position="inside">
+                <widget
+                    name="web_ribbon"
+                    text="Archived"
+                    bg_color="bg-danger"
+                    attrs="{'invisible': [('active', '=', True)]}"
+                />
+                <field name="active" invisible="1" />
+            </div>
+            <field name="category_id" position="attributes">
+                <attribute name="widget">child_selector</attribute>
+                <attribute
+                    name="options"
+                >{'child_selection_field': 'name', 'no_open': True}</attribute>
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_view_form_plan">
+        <field name="name">maintenance.equipment.form (in maintenance_location)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance_plan.hr_equipment_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='maintenance_team_id']" position="after">
+                <field
+                    name="technician_id"
+                    options="{'no_create': True, 'no_open': True}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_view_kanban">
+        <field name="name">maintenance.equipment.kanban (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@widget='many2one_avatar_user']" position="attributes">
+                <attribute name="t-if">1==0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']/../.." position="before">
+                <strong>
+                    <field
+                        name="code"
+                        nolabel="1"
+                        attrs="{'invisible': [('code', '=', '/')]}"
+                    />
+                </strong>
+            </xpath>
+            <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="after">
+                <div class="o_kanban_image">
+                    <field name="id" t-if="1==0" />
+                    <img
+                        t-att-src="kanban_image('maintenance.equipment', 'image_128', record.id.raw_value)"
+                        alt="default_image"
+                    />
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_view_tree">
+        <field name="name">maintenance.equipment.tree (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree" />
+        <field name="arch" type="xml">
+            <field name="technician_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="owner_user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="name" position="before">
+                <field name="code" />
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_view_search">
+        <field name="name">maintenance.equipment.search (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_search" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="code" />
+                <field name="serial_no" />
+                <field name="partner_technician_id" />
+                <field name="model" />
+            </field>
+            <filter name="assigned" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="available" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="my" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="my" position="after">
+                <separator />
+                <filter
+                    string="Has Maintenance Plans"
+                    name="has_plans"
+                    domain="[('maintenance_plan_count', '!=', 0)]"
+                />
+            </filter>
+        </field>
+    </record>
+    <record id="hr_equipment_view_search_2" model="ir.ui.view">
+        <field
+            name="name"
+        >maintenance.equipment.search fix domain (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment</field>
+        <field
+            name="inherit_id"
+            ref="maintenance_equipment_hierarchy.hr_equipment_view_search"
+        />
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute
+                    name="filter_domain"
+                >['|',('complete_name','ilike',self),('model','ilike',self)]</attribute>
+            </field>
+        </field>
+    </record>
+    <menuitem
+        id="menu_equipment_label"
+        name="Equipment"
+        parent="maintenance.menu_maintenance_title"
+        groups="maintenance.group_equipment_manager"
+        sequence="6"
+    />
+    <menuitem
+        id="maintenance.menu_equipment_form"
+        name="View Equipments"
+        parent="menu_equipment_label"
+        groups="maintenance.group_equipment_manager"
+        sequence="1"
+    />
+    <menuitem
+        id="maintenance_plan.menu_m_plan_form"
+        name="Maintenance Plans"
+        parent="menu_equipment_label"
+        groups="maintenance.group_equipment_manager"
+        sequence="2"
+    />
+</odoo>
