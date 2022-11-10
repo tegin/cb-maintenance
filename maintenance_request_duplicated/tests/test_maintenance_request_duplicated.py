@@ -25,9 +25,7 @@ class TestMaintenanceRequestDuplicated(TransactionCase):
         )
         wizz.mark_as_duplicated()
         self.assertTrue(self.m_request_1.duplicated_ids)
-        self.assertEqual(
-            self.m_request_2.duplicated_parent_id, self.m_request_1
-        )
+        self.assertEqual(self.m_request_2.duplicated_parent_id, self.m_request_1)
 
         self.m_request_2.deduplicate()
         self.assertFalse(self.m_request_2.duplicated_parent_id)
