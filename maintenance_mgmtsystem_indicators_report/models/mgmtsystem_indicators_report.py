@@ -8,6 +8,4 @@ class MgmtsystemIndicatorsReport(models.Model):
 
     _inherit = "mgmtsystem.indicators.report"
 
-    maintenance_request_id = fields.Many2one(
-        comodel_name="maintenance.request"
-    )
+    maintenance_request_id = fields.Many2one(comodel_name="maintenance.request")
