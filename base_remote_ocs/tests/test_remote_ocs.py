@@ -13,7 +13,7 @@ class DemoResponse:
         self.content = content
 
     def json(self):
-        return self.content
+        return json.loads(self.content)
 
     def raise_for_status(self):
         pass
@@ -47,7 +47,7 @@ class TestRemoteOcs(TransactionCase):
         self.assertTrue(self.remote03.ocs_link)
         with mock.patch("requests.get") as mck:
             mck.side_effect = [
-                DemoResponse(json.dumps([[19], [20], [21]])),
+                DemoResponse(json.dumps([{"ID": 19}, {"ID": 20}, {"ID": 21}])),
                 DemoResponse(
                     json.dumps(
                         {
