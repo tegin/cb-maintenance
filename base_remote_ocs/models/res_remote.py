@@ -1,8 +1,6 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import json
-
 import requests
 from odoo import api, fields, models
 
@@ -38,11 +36,10 @@ class ResRemote(models.Model):
             "%s/ocsapi/v1/computers/search" % url
         )
         computers_response.raise_for_status()
-        computers = json.loads(computers_response.json())
+        computers = computers_response.json()
         remotes = self.browse()
-        for [computer_id] in computers:
-            remotes |= self._fill_ocs_computer(url, computer_id)
-
+        for computer in computers:
+            remotes |= self._fill_ocs_computer(url, computer["ID"])
         # Updating all the remotes that had not this id
         self.search(
             [("id", "not in", remotes.ids), ("ocs_id", "!=", 0)]
@@ -54,7 +51,7 @@ class ResRemote(models.Model):
             "{}/ocsapi/v1/computer/{}/hardware".format(url, computer_id)
         )
         computer_response.raise_for_status()
-        computer_data = json.loads(computer_response.json())
+        computer_data = computer_response.json()
         hardware = computer_data[str(computer_id)]["hardware"]
         computer_name = "{}.{}".format(hardware["NAME"], hardware["WORKGROUP"])
         remote = self.search([("name", "=ilike", computer_name)], limit=1)
