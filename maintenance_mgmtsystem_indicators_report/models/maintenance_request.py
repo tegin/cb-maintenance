@@ -19,9 +19,9 @@ class MaintenanceRequest(models.Model):
 
     def action_view_mgmtsystem_indicators_report_ids(self):
         self.ensure_one()
-        action = self.env.ref(
+        action = self.env["ir.actions.act_window"]._for_xml_id(
             "mgmtsystem_indicators_report.mgmtsystem_indicators_report_act_window"
-        ).read()[0]
+        )
         action["domain"] = [("maintenance_request_id", "=", self.id)]
         action["context"] = {"default_maintenance_request_id": self.id}
         return action
