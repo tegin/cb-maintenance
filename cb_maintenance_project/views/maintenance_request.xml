@@ -82,6 +82,7 @@
             </button>
             <field name="priority" position="after">
                 <field name="currency_id" invisible="1" />
+                <field name="purchases_count" invisible="1" />
                 <field
                     name="cost"
                     widget="monetary"
