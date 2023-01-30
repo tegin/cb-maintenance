@@ -176,9 +176,9 @@ class MaintenanceRequest(models.Model):
 
     def split_request(self):
         self.ensure_one()
-        action = self.env.ref(
+        action = self.env["ir.actions.act_window"]._for_xml_id(
             "cb_maintenance.wizard_create_maintenance_request_act_window"
-        ).read()[0]
+        )
         action["name"] = "Split Request %s" % self.code
         action["context"] = {
             "default_equipment_category": self.category_id.id,
