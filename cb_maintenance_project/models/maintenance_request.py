@@ -65,7 +65,9 @@ class MaintenanceRequest(models.Model):
             record.children_count = len(record.child_ids.ids)
 
     def action_view_children_requests(self):
-        action = self.env.ref("maintenance.hr_equipment_request_action").read()[0]
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "maintenance.hr_equipment_request_action"
+        )
         if len(self.child_ids) > 1:
             action["domain"] = [("id", "in", self.child_ids.ids)]
         elif self.child_ids:
