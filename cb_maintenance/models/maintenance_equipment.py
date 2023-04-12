@@ -69,15 +69,16 @@ class MaintenanceEquipment(models.Model):
                 "[{}] {}".format(me.code, me.name) if (me.code != "/") else me.name
             )
 
-    @api.model
-    def create(self, vals):
-        if vals.get("code", "/") == "/":
-            code = (
-                self.env["ir.sequence"].next_by_code("maintenance.equipment.sequence")
-                or "/"
-            )
-            vals.update({"code": code})
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, mvals):
+        equipments = super().create(mvals)
+        for equipment in equipments:
+            if (equipment.code or "/") == "/":
+                equipment.code = (
+                    self.env.ref("cb_maintenance.seq_maintenance_equipment")._next()
+                    or "/"
+                )
+        return equipments
 
     @api.model
     def name_search(self, name="", args=None, operator="ilike", limit=100):
