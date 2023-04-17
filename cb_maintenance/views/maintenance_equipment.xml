@@ -31,12 +31,6 @@
                         </h3>
                     </div>
                 </div>
-                <field
-                    name="image_1024"
-                    widget="image"
-                    class="oe_avatar"
-                    options='{"preview_image": "image_128"}'
-                />
             </xpath>
             <div name="button_box" position="inside">
                 <widget
@@ -84,15 +78,6 @@
                         attrs="{'invisible': [('code', '=', '/')]}"
                     />
                 </strong>
-            </xpath>
-            <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="after">
-                <div class="o_kanban_image">
-                    <field name="id" t-if="1==0" />
-                    <img
-                        t-att-src="kanban_image('maintenance.equipment', 'image_128', record.id.raw_value)"
-                        alt="default_image"
-                    />
-                </div>
             </xpath>
         </field>
     </record>
