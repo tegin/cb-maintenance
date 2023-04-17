@@ -5,7 +5,7 @@
     "name": "Cb Maintenance",
     "summary": """
         CB maintenance base""",
-    "version": "14.0.1.0.0",
+    "version": "14.0.2.0.0",
     "license": "AGPL-3",
     "author": "CreuBlanca",
     "website": "https://github.com/tegin/cb-maintenance",
@@ -14,6 +14,7 @@
         "base_maintenance",
         "attachment_indexation",
         "maintenance_equipment_category_hierarchy",
+        "maintenance_equipment_image",
         "maintenance_equipment_hierarchy",
         "maintenance_location",
         "maintenance_request_custom_info",
