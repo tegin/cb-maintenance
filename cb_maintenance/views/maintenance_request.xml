@@ -109,6 +109,7 @@
             </button>
             <field name="request_date" position="replace">
                 <field name="create_date" string="Request Date" readonly="1" />
+                <field name="request_date" readonly="0" groups="base.group_no_one" />
             </field>
             <field name="category_id" position="attributes">
                 <attribute name="attrs" />
