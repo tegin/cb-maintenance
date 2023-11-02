@@ -13,7 +13,8 @@ class MaintenanceRequest(models.Model):
         related="category_id.custom_info_template_id", store=True
     )
     company_id = fields.Many2one(default=False)
-
+    days_to_close = fields.Integer(store=True, compute="_compute_days_to_close")
+    hours_to_close = fields.Float(store=True, compute="_compute_hours_to_close")
     solved_id = fields.Many2one("res.users", string="Solved by", readonly=True)
     solution = fields.Html()
     equipment_id = fields.Many2one(check_company=False)
@@ -50,6 +51,30 @@ class MaintenanceRequest(models.Model):
     external_link = fields.Char()
 
     # link_ocs = fields.Char(string="Link OCS") # TODO: Not sure if necessary
+    @api.depends("close_datetime", "create_date")
+    def _compute_hours_to_close(self):
+        for record in self:
+            if record.close_datetime and record.close_datetime > record.create_date:
+                record.hours_to_close = (
+                    (record.close_datetime - record.create_date).total_seconds()
+                    / 60
+                    / 60
+                )
+            else:
+                record.hours_to_close = 0.0
+
+    @api.depends("close_date", "request_date")
+    def _compute_days_to_close(self):
+        for record in self:
+            if record.close_date and record.close_date > record.request_date:
+                record.days_to_close = int(
+                    (record.close_date - record.request_date).total_seconds()
+                    / 60
+                    / 60
+                    / 24
+                )
+            else:
+                record.days_to_close = 0
 
     def _compute_attachments_count(self):
         for record in self:
