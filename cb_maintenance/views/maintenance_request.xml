@@ -103,6 +103,14 @@
                     attrs="{'invisible': [('solved_id', '=', False)]}"
                     options="{'no_open': True}"
                 />
+                <field
+                    name="hours_to_close"
+                    attrs="{'invisible': [('close_datetime', '=', False)]}"
+                />
+                <field
+                    name="days_to_close"
+                    attrs="{'invisible': [('close_datetime', '=', False)]}"
+                />
             </field>
             <button name="archive_equipment_request" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -392,8 +400,11 @@
         <field name="parent_id" ref="maintenance.menu_maintenance_title" />
         <field name="sequence" eval="2" />
     </record>
-    <record id="maintenance.maintenance_reporting" model="ir.ui.menu">
-        <field name="active" eval="False" />
+    <record id="maintenance.maintenance_request_reporting" model="ir.ui.menu">
+        <field
+            eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]"
+            name="groups_id"
+        />
     </record>
     <record id="maintenance.menu_m_dashboard" model="ir.ui.menu">
         <field
