@@ -2,19 +2,18 @@
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <data>
         <record
-            id="base_maintenance.action_report_maintenance_request"
-            model="ir.actions.report"
-        >
+        id="base_maintenance.action_report_maintenance_request"
+        model="ir.actions.report"
+    >
             <field
-                name="print_report_name"
-            >'MaintenanceRequest-%s' % (object.code)</field>
+            name="print_report_name"
+        >'MaintenanceRequest-%s' % (object.code)</field>
             <field name="name">Print Maintenance Request</field>
             <field
-                name="groups_id"
-                eval="[(4, ref('maintenance.group_equipment_manager'))]"
-            />
+            name="groups_id"
+            eval="[(4, ref('maintenance.group_equipment_manager'))]"
+        />
         </record>
         <template id="maintenance_request_template">
             <t t-call="web.internal_layout">
@@ -26,26 +25,26 @@
                             </h4>
                             <h3>
                                 <i
-                                    class="fa fa-home"
-                                    t-if="doc.maintenance_type == 'preventive' and not doc.is_project"
-                                />
+                                class="fa fa-home"
+                                t-if="doc.maintenance_type == 'preventive' and not doc.is_project"
+                            />
                                 <i
-                                    class="fa fa-tools"
-                                    t-if="doc.maintenance_type == 'corrective' and not doc.is_project"
-                                />
+                                class="fa fa-tools"
+                                t-if="doc.maintenance_type == 'corrective' and not doc.is_project"
+                            />
                                 <i
-                                    class="fa fa-project-diagram"
-                                    t-if="doc.is_project"
-                                />
+                                class="fa fa-project-diagram"
+                                t-if="doc.is_project"
+                            />
                                 <strong t-field="doc.name" />
                             </h3>
                         </div>
                         <div class="col-2">
                             <span class="label label-primary pull-right">
                                 <span
-                                    style="font-size: 12px;margin-top: 6px"
-                                    t-field="doc.stage_id"
-                                />
+                                style="font-size: 12px;margin-top: 6px"
+                                t-field="doc.stage_id"
+                            />
                             </span>
                         </div>
                     </div>
@@ -70,9 +69,9 @@
                                 <br />
                                 <b>Equipment:</b>
                                 <span
-                                    t-if="doc.equipment_id"
-                                    t-field="doc.equipment_id"
-                                />
+                                t-if="doc.equipment_id"
+                                t-field="doc.equipment_id"
+                            />
                                 <br />
                                 <br />
                                 <b>Category:</b>
@@ -81,9 +80,9 @@
                                 <br />
                                 <b>Maintenance Type:</b>
                                 <span
-                                    t-if="doc.maintenance_type"
-                                    t-field="doc.maintenance_type"
-                                />
+                                t-if="doc.maintenance_type"
+                                t-field="doc.maintenance_type"
+                            />
                                 <br />
                                 <br />
                             </div>
@@ -98,9 +97,9 @@
                                 <br />
                                 <b>Technician:</b>
                                 <span
-                                    t-if="doc.technician_id"
-                                    t-field="doc.technician_id"
-                                />
+                                t-if="doc.technician_id"
+                                t-field="doc.technician_id"
+                            />
                                 <br />
                                 <br />
                                 <b>Last Updated on:</b>
@@ -151,20 +150,20 @@
                                     </td>
                                     <td>
                                         <div t-if="msg.subject"><span
-                                                t-field="msg.subject"
-                                            />: </div>
+                                            t-field="msg.subject"
+                                        />: </div>
                                         <div t-if="msg.message_type == 'notification'">
                                             <span t-field="msg.subtype_id.name" />
                                             <t
-                                                t-foreach='msg.sudo().tracking_value_ids'
-                                                t-as='value'
-                                            >
+                                            t-foreach='msg.sudo().tracking_value_ids'
+                                            t-as='value'
+                                        >
                                                 <li>
                                                     <t t-esc="value.field_desc" />:
                                                     <span>
                                                         <t
-                                                            t-esc="value.new_value_char"
-                                                        />
+                                                        t-esc="value.new_value_char"
+                                                    />
                                                     </span>
                                                 </li>
                                             </t>
@@ -179,14 +178,13 @@
             </t>
         </template>
         <template
-            id="report_maintenance_request"
-            inherit_id="base_maintenance.report_maintenance_request"
-        >
+        id="report_maintenance_request"
+        inherit_id="base_maintenance.report_maintenance_request"
+    >
             <xpath expr="//t/t/t" position="attributes">
                 <attribute
-                    name="t-call"
-                >cb_maintenance_report.maintenance_request_template</attribute>
+                name="t-call"
+            >cb_maintenance_report.maintenance_request_template</attribute>
             </xpath>
         </template>
-    </data>
 </odoo>
