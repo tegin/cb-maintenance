@@ -7,9 +7,9 @@ _fields_to_add = [
         "days_to_close",
         "maintenance.request",
         "maintenance_request",
-        "int",
+        "integer",
         False,
-        "account_statement_import_txt_xlsx",
+        "cb_maintenance",
     ),
     (
         "hours_to_close",
@@ -17,7 +17,7 @@ _fields_to_add = [
         "maintenance_request",
         "float",
         False,
-        "account_statement_import_txt_xlsx",
+        "cb_maintenance",
     ),
 ]
 
