@@ -30,8 +30,11 @@ class MaintenanceEquipment(models.Model):
         technician_id = maintenance_plan.technician_id or False
         category_id = self.category_id if self else False
         category_id = maintenance_plan.category_id or category_id
+        manager_id = maintenance_plan.manager_id
         if technician_id:
             res.update({"technician_id": technician_id.id})
+        if manager_id:
+            res.update({"manager_id": manager_id.id})
         if category_id:
             res.update({"category_id": category_id.id})
         return res
