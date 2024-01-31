@@ -13,6 +13,12 @@
                     options="{'no_open': True, 'no_create': True}"
                 />
                 <field
+                    name="manager_id"
+                    options="{'no_open': True, 'no_create': True}"
+                    domain="[('id', 'in', maintenance_team_id_member_ids)]"
+                />
+                <field name="maintenance_team_id_member_ids" invisible="1" />
+                <field
                     name="category_id"
                     options="{'no_open': True, 'no_create': True, 'child_selection_field': 'name'}"
                     widget="child_selector"
