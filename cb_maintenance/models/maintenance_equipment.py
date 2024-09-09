@@ -9,10 +9,9 @@ class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
     _rec_name = "complete_name"
     _order = "code desc"
+    _rec_names_search = ["complete_name", "code"]
 
-    complete_name = fields.Char(
-        "Complete Name", compute="_compute_complete_name", store=True
-    )
+    complete_name = fields.Char(compute="_compute_complete_name", store=True)
     company_id = fields.Many2one("res.company", readonly=True)
 
     partner_technician_id = fields.Many2one(
@@ -41,8 +40,6 @@ class MaintenanceEquipment(models.Model):
 
     def _create_new_request(self, maintenance_plan):
         requests = super()._create_new_request(maintenance_plan)
-        for request in requests:
-            request._onchange_custom_info_template_id()
         return requests
 
     @api.depends("name", "code")
@@ -62,17 +59,3 @@ class MaintenanceEquipment(models.Model):
                     or "/"
                 )
         return equipments
-
-    @api.model
-    def name_search(self, name="", args=None, operator="ilike", limit=100):
-        # Make a search with default criteria
-        names1 = super().name_search(
-            name=name, args=args, operator=operator, limit=limit
-        )
-        # Make the other search
-        names2 = []
-        if name:
-            domain = [("code", "=ilike", name + "%")]
-            names2 = self.search(domain, limit=limit).name_get()
-        # Merge both results
-        return list(set(names1) | set(names2))[:limit]

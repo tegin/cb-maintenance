@@ -19,13 +19,12 @@ class WizardMassChangeStage(models.TransientModel):
             if request.stage_id not in self.stage_id.previous_stage_ids:
                 raise ValidationError(
                     _(
-                        "Stage of request %s is not valid."
-                        " Transition from %s to %s is not allowed"
-                    )
-                    % (
-                        request.display_name,
-                        request.stage_id.name,
-                        self.stage_id.name,
+                        "Stage of request %(request_display_name)s is not valid."
+                        " Transition from %(request_stage_name)s to"
+                        " %(stage_name)s is not allowed",
+                        request_display_name=request.display_name,
+                        request_stage_name=request.stage_id.name,
+                        stage_name=self.stage_id.name,
                     )
                 )
         return requests.with_context(
