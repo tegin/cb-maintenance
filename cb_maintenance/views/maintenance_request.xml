@@ -182,6 +182,7 @@
             <form position="attributes">
                 <attribute name="create">true</attribute>
                 <attribute name="edit">true</attribute>
+                <attribute name="groups">maintenance.group_equipment_manager</attribute>
             </form>
         </field>
     </record>
@@ -226,6 +227,7 @@
         <field name="arch" type="xml">
             <tree position="attributes">
                 <attribute name="create">true</attribute>
+                <attribute name="groups">maintenance.group_equipment_manager</attribute>
             </tree>
         </field>
     </record>
@@ -262,6 +264,7 @@
         <field name="arch" type="xml">
             <kanban position="attributes">
                 <attribute name="create">true</attribute>
+                <attribute name="groups">maintenance.group_equipment_manager</attribute>
             </kanban>
         </field>
     </record>
