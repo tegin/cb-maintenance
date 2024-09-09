@@ -151,16 +151,6 @@ msgid "Created on"
 msgstr ""
 
 #. module: cb_maintenance
-#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_equipment_category__custom_info_template_id
-msgid "Custom Info Template"
-msgstr ""
-
-#. module: cb_maintenance
-#: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request__custom_info_template_id
-msgid "Custom Information Template"
-msgstr ""
-
-#. module: cb_maintenance
 #: model:ir.model.fields,help:cb_maintenance.field_maintenance_request__request_date
 msgid "Date requested for the maintenance to happen"
 msgstr ""

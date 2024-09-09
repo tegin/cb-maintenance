@@ -5,10 +5,7 @@
     <record model="ir.ui.view" id="hr_equipment_request_view_form">
         <field name="name">maintenance.request.form (in cb_maintenance)</field>
         <field name="model">maintenance.request</field>
-        <field
-            name="inherit_id"
-            ref="maintenance_request_custom_info.hr_equipment_request_view_form"
-        />
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
         <field name="priority">99</field>
         <field name="arch" type="xml">
             <form position="attributes">
@@ -148,9 +145,6 @@
             <field name="company_id" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
-            <field name="custom_info_template_id" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
             <field name="owner_user_id" position="attributes">
                 <attribute name="invisible">0</attribute>
             </field>
@@ -184,14 +178,11 @@
         >maintenance.request.form (in cb_maintenance for manager)</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="hr_equipment_request_view_form" />
-        <field
-            name="groups_id"
-            eval="[(4, ref('maintenance.group_equipment_manager'))]"
-        />
         <field name="arch" type="xml">
             <form position="attributes">
                 <attribute name="create">true</attribute>
                 <attribute name="edit">true</attribute>
+                <attribute name="groups">maintenance.group_equipment_manager</attribute>
             </form>
         </field>
     </record>
@@ -233,13 +224,11 @@
         >maintenance.request.tree (in cb_maintenance for manager)</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance_request_tree_view" />
-        <field
-            name="groups_id"
-            eval="[(4, ref('maintenance.group_equipment_manager'))]"
-        />
+
         <field name="arch" type="xml">
             <tree position="attributes">
                 <attribute name="create">true</attribute>
+                <attribute name="groups">maintenance.group_equipment_manager</attribute>
             </tree>
         </field>
     </record>
@@ -273,13 +262,10 @@
         >maintenance.request.kanban (in cb_maintenance for manager)</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance_request_kanban_view" />
-        <field
-            name="groups_id"
-            eval="[(4, ref('maintenance.group_equipment_manager'))]"
-        />
         <field name="arch" type="xml">
             <kanban position="attributes">
                 <attribute name="create">true</attribute>
+                <attribute name="groups">maintenance.group_equipment_manager</attribute>
             </kanban>
         </field>
     </record>
