@@ -21,7 +21,6 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
 
     priority = fields.Selection(
         [("0", "Normal"), ("1", "Low"), ("2", "High"), ("3", "Very High")],
-        string="Priority",
         default="0",
     )
     equipment_category = fields.Many2one(
@@ -62,7 +61,6 @@ class WizardCreateMaintenanceRequest(models.TransientModel):
     def create_request(self):
         self.ensure_one()
         request = self.env["maintenance.request"].create(self.create_request_vals())
-        request._onchange_custom_info_template_id()
         original_request = self.env.context.get("original_request", False)
         if original_request:
             original_request = self.env["maintenance.request"].browse(original_request)

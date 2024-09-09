@@ -11,19 +11,15 @@ class MaintenanceEquipmentCategory(models.Model):
 
     maintenance_team_id = fields.Many2one("maintenance.team")
     selectable = fields.Boolean(string="Selectable by users")
-    requires_equipment = fields.Boolean(string="Requires Equipment")
-    requires_location = fields.Boolean(string="Requires Location")
+    requires_equipment = fields.Boolean()
+    requires_location = fields.Boolean()
 
     maintenance_team_id_member_ids = fields.Many2many(
         "res.users",
         relation="selectable_maintenance_members",
         compute="_compute_maintenance_team_id_member_ids",
     )
-    sequence = fields.Integer(string="Sequence", default=10)
-
-    custom_info_template_id = fields.Many2one(
-        "custom.info.template", domain=[("model", "=", "maintenance.request")]
-    )
+    sequence = fields.Integer(default=10)
 
     @api.depends("maintenance_team_id")
     def _compute_maintenance_team_id_member_ids(self):
@@ -38,12 +34,13 @@ class MaintenanceEquipmentCategory(models.Model):
             else:
                 record.maintenance_team_id_member_ids = False
 
-    @api.model
-    def create(self, vals):
-        alias_default = False
-        if not vals.get("alias_name"):
-            alias_default = True
-        res = super().create(vals)
-        if alias_default:
-            res.write({"alias_name": False})
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            alias_default = False
+            if not vals.get("alias_name"):
+                alias_default = True
+            res = super().create(vals)
+            if alias_default:
+                res.write({"alias_name": False})
         return res

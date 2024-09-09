@@ -9,9 +9,6 @@ from odoo import _, api, fields, models
 class MaintenanceRequest(models.Model):
     _inherit = "maintenance.request"
 
-    custom_info_template_id = fields.Many2one(
-        related="category_id.custom_info_template_id", store=True
-    )
     company_id = fields.Many2one(default=False)
     days_to_close = fields.Integer(store=True, compute="_compute_days_to_close")
     hours_to_close = fields.Float(store=True, compute="_compute_hours_to_close")
