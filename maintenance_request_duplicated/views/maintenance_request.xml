@@ -7,10 +7,7 @@
             name="name"
         >maintenance.request.form (in maintenance_request_duplicated)</field>
         <field name="model">maintenance.request</field>
-        <field
-            name="inherit_id"
-            ref="cb_maintenance_project.maintenance_project_form_view"
-        />
+        <field name="inherit_id" ref="cb_maintenance.hr_equipment_request_view_form" />
         <field name="arch" type="xml">
             <button name="archive_equipment_request" position="before">
                 <button
@@ -27,10 +24,11 @@
                     attrs="{'invisible': [('duplicated_parent_id', '=', False)]}"
                 />
             </field>
-            <field name="maintenance_type" position="after">
+            <field name="description" position="before">
                 <field
                     name="duplicated_ids"
                     attrs="{'invisible': [('duplicated_ids', '=', [])]}"
+                    colspan="2"
                 >
                     <tree>
                         <field name="name" />
@@ -48,6 +46,24 @@
                     </tree>
                 </field>
             </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="maintenance_request_tree_view">
+        <field
+            name="name"
+        >maintenance.request.tree (in maintenance_request_duplicated)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="cb_maintenance.maintenance_request_tree_view" />
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute
+                    name="decoration-danger"
+                >maintenance_type == 'corrective'</attribute>
+                <attribute
+                    name="decoration-success"
+                >maintenance_type == 'preventive'</attribute>
+                <attribute name="class">o_cb_maintenance</attribute>
+            </tree>
         </field>
     </record>
 </odoo>
