@@ -149,6 +149,7 @@
                 <attribute name="invisible">0</attribute>
             </field>
             <field name="maintenance_type" position="after">
+                <field name="company_id" />
                 <field name="external_link" widget="url" />
             </field>
         </field>

@@ -21,6 +21,7 @@
                             options="{'child_selection_field': 'name'}"
                         />
                         <field name="priority" widget="priority" />
+                        <field name="company_id" />
                     </group>
                 </group>
                 <group>
