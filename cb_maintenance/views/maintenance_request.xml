@@ -228,7 +228,7 @@
         <field name="arch" type="xml">
             <tree position="attributes">
                 <attribute name="create">true</attribute>
-                <attribute name="groups">maintenance.group_equipment_manager</attribute>
+                <!-- <attribute name="groups">maintenance.group_equipment_manager</attribute> -->
             </tree>
         </field>
     </record>
