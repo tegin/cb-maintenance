@@ -5,7 +5,7 @@
     "name": "Cb Maintenance Project",
     "summary": """
         Expedientes de Mantenimiento""",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/tegin/cb-maintenance",
@@ -16,9 +16,14 @@
     ],
     "data": [
         "security/ir.model.access.csv",
-        "templates/assets.xml",
+        # "templates/assets.xml",
         "wizards/wizard_group_in_project.xml",
         "wizards/wizard_create_project_issue.xml",
         "views/maintenance_request.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "cb_maintenance_project/static/src/scss/maintenance.scss",
+        ]
+    },
 }

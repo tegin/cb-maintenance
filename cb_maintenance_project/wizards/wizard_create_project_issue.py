@@ -15,7 +15,6 @@ class WizardCreateProjectIssue(models.TransientModel):
 
     priority = fields.Selection(
         [("0", "Normal"), ("1", "Low"), ("2", "High"), ("3", "Very High")],
-        string="Priority",
         default="0",
     )
 
