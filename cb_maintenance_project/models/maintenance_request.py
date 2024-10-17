@@ -17,7 +17,7 @@ class MaintenanceRequest(models.Model):
         "maintenance.request", "Project", index=True, ondelete="cascade"
     )
     child_ids = fields.One2many("maintenance.request", "parent_id", "Child Requests")
-    parent_path = fields.Char(index=True)
+    parent_path = fields.Char(index=True, unaccent=False)
 
     children_count = fields.Integer(compute="_compute_children_count", store=True)
 
@@ -31,10 +31,9 @@ class MaintenanceRequest(models.Model):
         compute="_compute_cost",
         store=True,
         readonly=True,
+        recursive=True,
     )
-    real_cost = fields.Monetary(
-        string="Real Cost", compute="_compute_cost", store=True, readonly=True
-    )
+    real_cost = fields.Monetary(compute="_compute_cost", store=True, readonly=True)
 
     @api.depends(
         "child_ids.cost",
@@ -53,11 +52,12 @@ class MaintenanceRequest(models.Model):
 
     @api.depends("maintenance_type", "is_project")
     def _compute_color(self):
-        super(
+        result = super(
             MaintenanceRequest, self.filtered(lambda r: not r.is_project)
         )._compute_color()
         for record in self.filtered("is_project"):
             record.color = 4
+        return result
 
     @api.depends("child_ids")
     def _compute_children_count(self):
