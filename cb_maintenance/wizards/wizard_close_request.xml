@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="wizard_close_request_form_view">
+        <field name="name">wizard.close.request.form (in cb_maintenance)</field>
+        <field name="model">wizard.close.request</field>
+        <field name="arch" type="xml">
+            <form string="Wizard Close Request">
+                <span
+                >Write the reason for closing this request or leave it blank.</span>
+                <group string="Solution">
+                    <field name="solution" nolabel="1" />
+                </group>
+                <footer>
+                    <button
+                        name="close_request"
+                        string="Close Request"
+                        class="btn-primary"
+                        type="object"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

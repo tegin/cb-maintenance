@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="hr_equipment_category_view_form">
+        <field
+            name="name"
+        >maintenance.equipment.category.form (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment.category</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_category_view_form" />
+        <field name="arch" type="xml">
+            <field name="technician_user_id" position="before">
+                <field
+                    name="maintenance_team_id"
+                    attrs="{'required': [('parent_id', '=', False)]}"
+                />
+                <field name="maintenance_team_id_member_ids" invisible="1" />
+            </field>
+            <field name="technician_user_id" position="attributes">
+                <attribute
+                    name="domain"
+                >[('id', 'in', maintenance_team_id_member_ids)]</attribute>
+            </field>
+            <field name="technician_user_id" position="after">
+                <field name="selectable" />
+                <field name="requires_equipment" />
+                <field name="requires_location" />
+            </field>
+            <group name="group_alias" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </group>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_category_view_tree">
+        <field
+            name="name"
+        >maintenance.equipment.category.tree (in cb_maintenance)</field>
+        <field name="model">maintenance.equipment.category</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_category_view_tree" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="sequence" widget="handle" />
+            </field>
+        </field>
+    </record>
+</odoo>

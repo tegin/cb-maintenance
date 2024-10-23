@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wizard_close_request_user,access_wizard_close_request_user,model_wizard_close_request,maintenance.group_equipment_manager,1,1,1,0
+
+access_wizard_create_maintenance_request_user,access_wizard_create_maintenance_request_user,model_wizard_create_maintenance_request,base.group_user,1,1,1,0
+
+access_wizard_mass_change_stage_user,access_wizard_mass_change_stage_user,model_wizard_mass_change_stage,maintenance.group_equipment_manager,1,1,1,0
