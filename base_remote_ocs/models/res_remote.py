@@ -30,7 +30,9 @@ class ResRemote(models.Model):
         url = self.env["ir.config_parameter"].get_param("ocs.api.link", default=False)
         if not url:
             return False
-        computers_response = requests.get("%s/ocsapi/v1/computers/search" % url)
+        computers_response = requests.get(
+            "%s/ocsapi/v1/computers/search" % url, timeout=10
+        )
         computers_response.raise_for_status()
         computers = computers_response.json()
         remotes = self.browse()
@@ -44,7 +46,7 @@ class ResRemote(models.Model):
 
     def _fill_ocs_computer(self, url, computer_id):
         computer_response = requests.get(
-            "{}/ocsapi/v1/computer/{}/hardware".format(url, computer_id)
+            "{}/ocsapi/v1/computer/{}/hardware".format(url, computer_id), timeout=10
         )
         computer_response.raise_for_status()
         computer_data = computer_response.json()
