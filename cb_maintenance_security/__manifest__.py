@@ -5,7 +5,7 @@
     "name": "Cb Maintenance Security",
     "summary": """
         Security""",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "CreuBlanca",
     "website": "https://github.com/tegin/cb-maintenance",
