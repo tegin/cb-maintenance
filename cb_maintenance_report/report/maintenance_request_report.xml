@@ -26,15 +26,11 @@
                             <h3>
                                 <i
                                 class="fa fa-home"
-                                t-if="doc.maintenance_type == 'preventive' and not doc.is_project"
+                                t-if="doc.maintenance_type == 'preventive'"
                             />
                                 <i
                                 class="fa fa-tools"
-                                t-if="doc.maintenance_type == 'corrective' and not doc.is_project"
-                            />
-                                <i
-                                class="fa fa-project-diagram"
-                                t-if="doc.is_project"
+                                t-if="doc.maintenance_type == 'corrective'"
                             />
                                 <strong t-field="doc.name" />
                             </h3>
@@ -116,17 +112,7 @@
                                 <br />
                             </div>
                         </div>
-                        <div style="font-size: 12px;">
-                            <t t-if="doc.custom_info_template_id">
-                                <t t-foreach="doc.custom_info_ids" t-as="info_line">
-                                    <b t-field="info_line.name" />
-                                    <b>:</b>
-                                    <span t-field="info_line.value" />
-                                    <br />
-                                    <br />
-                                </t>
-                            </t>
-                        </div>
+
                         <t t-if="doc.description">
                             <h4>
                                 <strong>Description</strong>
