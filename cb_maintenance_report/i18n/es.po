@@ -1,0 +1,138 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* cb_maintenance_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-12 12:11+0000\n"
+"PO-Revision-Date: 2019-12-12 13:17+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid "<b>Requested By:</b>"
+msgstr "<b>Solicitado por</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid "<b>Team:</b>"
+msgstr "<b>Equipo:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Category:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Categoría:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Equipment:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Equipamiento:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Last Updated on:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Última Actualización el:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Location:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Ubicación:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Maintenance Type:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Tipo de Mantenimiento:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Manager:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Gestor:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Priority:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Prioridad:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Request Date:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Fecha de petición:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Schedule Date:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Programado para:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid ""
+"<br/><br/>\n"
+"                                    <b>Technician:</b>"
+msgstr ""
+"<br/><br/>\n"
+"                                    <b>Técnico:</b>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid "<strong>Chatter</strong>"
+msgstr "<strong>Mensajes</strong>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: cb_maintenance_report
+#: model:ir.ui.view,arch_db:cb_maintenance_report.maintenance_request_template
+msgid "<strong>Technical Information</strong>"
+msgstr "<strong>Información Técnica</strong>"
+
+#. module: cb_maintenance_report
+#: model:ir.actions.report,name:cb_maintenance_report.maintenance_request_report
+msgid "Print Maintenance Request"
+msgstr "Imprimir Petición"
