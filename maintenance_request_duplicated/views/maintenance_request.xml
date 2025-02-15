@@ -7,7 +7,8 @@
             name="name"
         >maintenance.request.form (in maintenance_request_duplicated)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="cb_maintenance.hr_equipment_request_view_form" />
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+        <field name="priority">1</field>
         <field name="arch" type="xml">
             <button name="archive_equipment_request" position="before">
                 <button
