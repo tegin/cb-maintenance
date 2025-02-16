@@ -2,6 +2,17 @@
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <record model="ir.ui.view" id="hr_equipment_request_view_owner_form">
+        <field name="name">maintenance.request.form (in cb_maintenance)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <field name="owner_user_id" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </field>
+        </field>
+    </record>
     <record model="ir.ui.view" id="hr_equipment_request_view_form">
         <field name="name">maintenance.request.form (in cb_maintenance)</field>
         <field name="model">maintenance.request</field>
@@ -144,9 +155,6 @@
             </field>
             <field name="company_id" position="attributes">
                 <attribute name="invisible">1</attribute>
-            </field>
-            <field name="owner_user_id" position="attributes">
-                <attribute name="invisible">0</attribute>
             </field>
             <field name="maintenance_type" position="after">
                 <field name="external_link" widget="url" />
