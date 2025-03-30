@@ -10,7 +10,7 @@
                 <span
                 >Write the reason for closing this request or leave it blank.</span>
                 <group string="Solution">
-                    <field name="solution" nolabel="1" />
+                    <field name="solution" nolabel="1" colspan="2" />
                 </group>
                 <footer>
                     <button
