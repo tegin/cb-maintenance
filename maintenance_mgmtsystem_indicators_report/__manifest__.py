@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/tegin/cb-maintenance",
-    "depends": ["maintenance", "mgmtsystem_indicators_report"],
+    "depends": ["base_maintenance", "mgmtsystem_indicators_report"],
     "data": [
         "views/mgmtsystem_indicators_report.xml",
         "views/maintenance_request.xml",

@@ -7,26 +7,24 @@
             name="name"
         >maintenance.request.form (in maintenance_mgmtsystem_indicators_report)</field>
         <field name="model">maintenance.request</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+        <field name="inherit_id" ref="base_maintenance.equipment_request_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//span[hasclass('badge')]/.." position="before">
-                <div name="button_box " class="oe_button_box">
-                    <button
-                        name="action_view_mgmtsystem_indicators_report_ids"
-                        type="object"
-                        class="oe_stat_button"
-                        icon="fa-file"
-                        groups="mgmtsystem.group_mgmtsystem_user"
-                        attrs="{'invisible':[('mgmtsystem_indicators_report_count', '=', 0)]}"
-                    >
-                        <field
-                            name="mgmtsystem_indicators_report_count"
-                            widget="statinfo"
-                            string="Ind. Report"
-                        />
-                    </button>
-                </div>
-            </xpath>
+            <div name="button_box" position="inside">
+                <button
+                    name="action_view_mgmtsystem_indicators_report_ids"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-file"
+                    groups="mgmtsystem.group_mgmtsystem_user"
+                    attrs="{'invisible':[('mgmtsystem_indicators_report_count', '=', 0)]}"
+                >
+                    <field
+                        name="mgmtsystem_indicators_report_count"
+                        widget="statinfo"
+                        string="Ind. Report"
+                    />
+                </button>
+            </div>
             <xpath expr="//header//button[last()]" position="after">
                 <button
                     name='%(mgmtsystem_indicators_report.indicators_report_from_template_act_window)d'
