@@ -42,7 +42,7 @@
                         </group>
                     </group>
                     <group string="Description">
-                        <field name="description" nolabel="1" />
+                        <field name="description" nolabel="1" colspan="2" />
                         <field
                             name="attachment_ids"
                             widget="many2many_binary"
