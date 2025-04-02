@@ -511,6 +511,16 @@ msgid "Title..."
 msgstr ""
 
 #. module: cb_maintenance
+#: model_terms:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+msgid "Add a description here..."
+msgstr ""
+
+#. module: cb_maintenance
+#: model_terms:ir.ui.view,arch_db:cb_maintenance.wizard_create_maintenance_request_form_view
+msgid "Search only for IT or Maintenance"
+msgstr ""
+
+#. module: cb_maintenance
 #: model:ir.model.fields,field_description:cb_maintenance.field_maintenance_request__tree_color
 msgid "Tree Color"
 msgstr ""
