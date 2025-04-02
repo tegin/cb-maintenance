@@ -23,6 +23,7 @@
                                 name="equipment_category"
                                 widget="child_selector"
                                 options="{'child_selection_field': 'name', 'no_open': True}"
+                                placeholder="Search only for IT or Maintenance"
                             />
                             <field
                                 name="equipment_id"
@@ -42,7 +43,12 @@
                         </group>
                     </group>
                     <group string="Description">
-                        <field name="description" nolabel="1" />
+                        <field
+                            name="description"
+                            nolabel="1"
+                            colspan="2"
+                            placeholder="Add a description here..."
+                        />
                         <field
                             name="attachment_ids"
                             widget="many2many_binary"
