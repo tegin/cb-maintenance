@@ -47,6 +47,28 @@ class MaintenanceRequest(models.Model):
 
     external_link = fields.Char()
 
+    total_purchase_amount = fields.Monetary(
+        compute="_compute_total_purchase_amount",
+        store=True,
+        groups="purchase.group_purchase_user",
+    )
+
+    currency_id = fields.Many2one(
+        "res.currency", string="Currency", compute="_compute_currency", store=True
+    )
+
+    @api.depends("purchase_order_ids.amount_total")
+    def _compute_total_purchase_amount(self):
+        for record in self:
+            record.total_purchase_amount = sum(
+                record.purchase_order_ids.mapped("amount_total")
+            )
+
+    @api.depends("company_id")
+    def _compute_currency(self):
+        for record in self:
+            record.currency_id = record.company_id.currency_id
+
     # link_ocs = fields.Char(string="Link OCS") # TODO: Not sure if necessary
     @api.depends("close_datetime", "create_date")
     def _compute_hours_to_close(self):
