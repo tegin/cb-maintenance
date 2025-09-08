@@ -20,7 +20,7 @@ msgstr ""
 #. module: cb_maintenance
 #: model_terms:ir.ui.view,arch_db:cb_maintenance.hr_equipment_request_view_form
 msgid "<span> attachment(s)</span>"
-msgstr "<span> adjunto(s)</span>"
+msgstr "<span> Adjunto(s)</span>"
 
 #. module: cb_maintenance
 #: model_terms:ir.ui.view,arch_db:cb_maintenance.wizard_close_request_form_view
